@@ -6,12 +6,9 @@ package lvgl_go
 #cgo LDFLAGS: -Llib -llvgl
 */
 import "C"
-import (
-	"unsafe"
-)
 
 func SetText(obj *LvObj, str string) {
-	C.lv_label_set_text((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.CString(str))
+	C.lv_label_set_text(LvObjToC(obj), C.CString(str))
 }
 
 func Demo() {

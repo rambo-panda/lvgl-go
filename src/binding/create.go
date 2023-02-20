@@ -39,5 +39,13 @@ func Create(t string, parent *LvObj) *LvObj {
 
 	ret := reflect.ValueOf(_lv).MethodByName(_lv.ToMethoName()).Call(in)
 
-	return (*LvObj)(ret[0].Interface().(*C.struct__lv_obj_t))
+	return LvObjToGo(ret[0].Interface().(*C.struct__lv_obj_t))
+}
+
+func LvObjToC(o *LvObj) *C.struct__lv_obj_t {
+	return (*C.struct__lv_obj_t)(unsafe.Pointer(o))
+}
+
+func LvObjToGo(o *C.struct__lv_obj_t) *LvObj {
+	return (*LvObj)(o)
 }
