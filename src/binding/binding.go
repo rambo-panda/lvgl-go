@@ -1,7 +1,17 @@
 package lvgl_go
 
-func S() {
-	println("this is Test")
+import "lvgl-go/src/binding/lib"
+
+// /*
+// #include "lv_init.h"
+// #cgo CFLAGS: -I./include/
+// #cgo LDFLAGS: -Llib -llvgl
+// */
+// import "C"
+
+func Init() {
+	println("-----")
+	lib.Ready()
 }
 
 // /*
