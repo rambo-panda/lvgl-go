@@ -10,6 +10,8 @@ import (
 	"unsafe"
 )
 
+const SCREEN string = "SCREEN"
+
 type s_create struct {
 	t string
 }
@@ -31,7 +33,7 @@ func (f s_create) CreateScreen(parent *C.struct__lv_obj_t) *C.struct__lv_obj_t {
 }
 
 func Create(t string, parent *LvObj) *LvObj {
-	if parent == nil && t != "screen" {
+	if parent == nil && t != SCREEN {
 		parent = (*LvObj)(unsafe.Pointer(C.lv_scr_act()))
 	}
 
