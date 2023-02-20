@@ -1,3 +1,3 @@
-module go-lvgl
+module lvgl-go
 
 go 1.17
