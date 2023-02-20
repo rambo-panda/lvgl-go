@@ -1,10 +1,12 @@
 package main
 
-import lvgl_go "lvgl-go/src/binding"
-
-import "C"
+import (
+	lvgl_go "lvgl-go/src/binding"
+	"lvgl-go/src/binding/lib"
+)
 
 func main() {
-	println("fdsfdsf")
-	lvgl_go.Init()
+	lib.Ready()
+	lvgl_go.Demo()
+	lib.TaskHandler(0)
 }

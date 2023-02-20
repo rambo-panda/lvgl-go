@@ -35,8 +35,6 @@ static lv_disp_t *createDisplay()
 
 void lv_ready()
 {
-    printf("jjjjj lv_ready");
-    return ;
     if (lv_is_initialized())
     {
         return;
@@ -53,16 +51,13 @@ void lv_ready()
     createDisplay();
 }
 
-lv_obj_t *createCanvas(int autoLoad)
-{
-    lv_obj_t *scr = lv_obj_create(NULL);
+void lv_task_handler2(uint32_t ms) {
+    ms = ms == 0 ? LV_DISP_DEF_REFR_PERIOD : ms;
 
-    if (autoLoad)
-    {
-        lv_scr_load(scr);
+    while(1){
+		lv_timer_handler_run_in_period(ms);
+        usleep(ms * 1e3);
     }
-
-    // lv_obj_get_screen
-
-    return scr;
 }
+
+// const int lv_disp_def_refr_period  = LV_DISP_DEF_REFR_PERIOD;

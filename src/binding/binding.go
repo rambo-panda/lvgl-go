@@ -1,17 +1,32 @@
 package lvgl_go
 
-import "lvgl-go/src/binding/lib"
+/*
+#include "lv_init.h"
+#cgo CFLAGS: -I./include/
+#cgo LDFLAGS: -Llib -llvgl
+*/
+import "C"
+import "unsafe"
 
-// /*
-// #include "lv_init.h"
-// #cgo CFLAGS: -I./include/
-// #cgo LDFLAGS: -Llib -llvgl
-// */
-// import "C"
+type LvObj C.struct__lv_obj_t
 
-func Init() {
-	println("-----")
-	lib.Ready()
+func Label(parent *LvObj) *LvObj {
+	if parent == nil {
+		parent = (*LvObj)(unsafe.Pointer(C.lv_scr_act()))
+	}
+
+	_parent := (*C.struct__lv_obj_t)(unsafe.Pointer(parent))
+
+	return (*LvObj)(unsafe.Pointer(C.lv_label_create(_parent)))
+}
+
+func SetText(obj *LvObj, str string) {
+	C.lv_label_set_text((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.CString(str))
+}
+
+func Demo() {
+	label := Label(nil)
+	SetText(label, "hello world")
 }
 
 // /*

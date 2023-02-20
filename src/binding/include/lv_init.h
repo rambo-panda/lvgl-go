@@ -6,14 +6,8 @@
 #define LV_LVGL_H_INCLUDE_SIMPLE
 
 void lv_ready();
-static inline void handlerJob()
-{
-    while (1)
-    {
-        lv_timer_handler_run_in_period(LV_DISP_DEF_REFR_PERIOD);
-        usleep(LV_DISP_DEF_REFR_PERIOD * 1e3);
-    }
-};
+void lv_task_handler2(uint32_t ms);
+// extern const int lv_disp_def_refr_period;
 
 #if USE_SDL == 1
 #include "./sdl/sdl.h"
