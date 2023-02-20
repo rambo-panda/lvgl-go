@@ -60,4 +60,6 @@ void lv_task_handler2(uint32_t ms) {
     }
 }
 
+const unsigned lv_size_content = LV_SIZE_CONTENT;
+
 // const int lv_disp_def_refr_period  = LV_DISP_DEF_REFR_PERIOD;

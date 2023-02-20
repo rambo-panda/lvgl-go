@@ -8,6 +8,7 @@
 void lv_ready();
 void lv_task_handler2(uint32_t ms);
 // extern const int lv_disp_def_refr_period;
+extern const unsigned lv_size_content;
 
 #if USE_SDL == 1
 #include "./sdl/sdl.h"
