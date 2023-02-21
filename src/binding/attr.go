@@ -14,6 +14,16 @@ func toShort(a any) C.short {
 	return a.(C.short)
 }
 
+var textObjs = map[*C.lv_obj_class_t]func(o *C.struct__lv_obj_t, args ...any){
+	&C.lv_label_class: func(label *C.struct__lv_obj_t, args ...any) {
+		C.lv_label_set_text(label, C.CString(args[0].(string)))
+	},
+	&C.lv_checkbox_class:  func(o *C.struct__lv_obj_t, args ...any) {},
+	&C.lv_dropdown_class:  func(o *C.struct__lv_obj_t, args ...any) {},
+	&C.lv_spangroup_class: func(o *C.struct__lv_obj_t, args ...any) {},
+	&C.lv_textarea_class:  func(o *C.struct__lv_obj_t, args ...any) {},
+}
+
 type s_attr struct {
 	t string
 }
@@ -46,21 +56,21 @@ func (f s_attr) SetParent(o *C.struct__lv_obj_t, args ...any) {
 func (f s_attr) SetChild(o *C.struct__lv_obj_t, args ...any) {
 	C.lv_obj_set_parent(o, args[0].(*C.struct__lv_obj_t))
 }
+
+// lv_obj_center -> lv_obj_align(o, LV_ALIGN_CENTER) -> 1. lvy_obj_set_style_align 2. lv_obj_set_pos(0, 0)
+// lv_obj_set_align -> lv_obj_set_style_align(o, align, 0)
 func (f s_attr) SetAlign(o *C.struct__lv_obj_t, args ...any) {
 	C.lv_obj_set_align(o, (C.uint8_t)(args[0].(uint8)))
 }
-func (f s_attr) SetText(o *C.struct__lv_obj_t, args ...any) {
-	textObjs := [...]float32{1000.0, 2.0, 3.4, 7.0, 50.0}
+func (f s_attr) SetObjCenter(o *C.struct__lv_obj_t, args ...any) {
+	C.lv_obj_center(o)
 }
 
-// use Map https://stackoverflow.com/questions/46377302/golang-when-iterate-map-how-to-get-key-as-pointer
-const textObjs := [...]*C.LV_OBJ_CLASS_ARR{
-	&C.lv_label_class,
-	&C.lv_checkbox_class,
-	&C.lv_dropdown_class,
-	&C.lv_spangroup_class,
-	&C.lv_textarea_class
-};
+func (f s_attr) SetText(o *C.struct__lv_obj_t, args ...any) {
+	if fn, ok := textObjs[C.lv_obj_get_class(o)]; ok {
+		fn(o, args...)
+	}
+}
 
 func Attr(o *LvObj, t string, args ...any) *LvObj {
 	if o == nil {
