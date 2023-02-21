@@ -49,6 +49,18 @@ func (f s_attr) SetChild(o *C.struct__lv_obj_t, args ...any) {
 func (f s_attr) SetAlign(o *C.struct__lv_obj_t, args ...any) {
 	C.lv_obj_set_align(o, (C.uint8_t)(args[0].(uint8)))
 }
+func (f s_attr) SetText(o *C.struct__lv_obj_t, args ...any) {
+	textObjs := [...]float32{1000.0, 2.0, 3.4, 7.0, 50.0}
+}
+
+// use Map https://stackoverflow.com/questions/46377302/golang-when-iterate-map-how-to-get-key-as-pointer
+const textObjs := [...]*C.LV_OBJ_CLASS_ARR{
+	&C.lv_label_class,
+	&C.lv_checkbox_class,
+	&C.lv_dropdown_class,
+	&C.lv_spangroup_class,
+	&C.lv_textarea_class
+};
 
 func Attr(o *LvObj, t string, args ...any) *LvObj {
 	if o == nil {
@@ -76,18 +88,3 @@ func Attr(o *LvObj, t string, args ...any) *LvObj {
 
 	return o
 }
-
-// func Create(t string, parent *LvObj) *LvObj {
-// 	if parent == nil && t != "screen" {
-// 		parent = (*LvObj)(unsafe.Pointer(C.lv_scr_act()))
-// 	}
-
-// 	_lv := &s_create{t: strings.ToLower(t)}
-
-// 	in := make([]reflect.Value, 1)
-// 	in[0] = reflect.ValueOf((*C.struct__lv_obj_t)(unsafe.Pointer(parent)))
-
-// 	ret := reflect.ValueOf(_lv).MethodByName(_lv.ToMethoName()).Call(in)
-
-// 	return LvObjToGo(ret[0].Interface().(*C.struct__lv_obj_t))
-// }
