@@ -78,10 +78,10 @@ type LvEventT C.lv_event_t
 type LvCoverResT C.lv_cover_res_t
 type LvAnimEnableT C.lv_anim_enable_t
 type LvFlexFlowT C.lv_flex_flow_t
+type LvImgCfT C.lv_img_cf_t
 
 // type LvMonkeyT C.lv_monkey_t
 // type LvDispRotT C.lv_disp_rot_t
-// type LvImgCfT C.lv_img_cf_t
 // type LvPinyinDictT C.lv_pinyin_dict_t
 // type LvImePinyinModeT C.lv_ime_pinyin_mode_t
 
