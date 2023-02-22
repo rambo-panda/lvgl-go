@@ -31,6 +31,10 @@ type LvScrollSnapT C.lv_scroll_snap_t
 type LvCoordT C.lv_coord_t
 type LvImgSizeModeT C.lv_img_size_mode_t
 type LvLabelLongModeT C.lv_label_long_mode_t
+type LvStyleT C.lv_style_t
+type LvFlexFlowT C.lv_flex_flow_t
+type LvFlexAlignT C.lv_flex_align_t
+type LvGridAlignT C.lv_grid_align_t
 
 const (
 	LV_SIZE_CONTENT C.int = C._LV_SIZE_CONTENT
