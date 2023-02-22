@@ -1,5 +1,38 @@
 #include "lv_init.h"
 
+
+const unsigned lv_size_content = LV_SIZE_CONTENT;
+
+// const int lv_disp_def_refr_period  = LV_DISP_DEF_REFR_PERIOD;
+
+static char *METHOD_NAME_SUF = "_create";
+
+static char *joinStr(int a, ...) {
+    if (a <= 1) {
+        return "";
+    }
+
+    ARGS(a, char *);
+
+    char *str = (char *)malloc(1);
+    
+    if (str == NULL) {
+        printf("Not enough space to allocate string");
+        return NULL;
+    }
+
+    for(int i = 0; i < a; i++) {
+        str = (char *) realloc(str, strlen(str) + strlen(args[i]));
+        if (str == NULL) {
+            printf("Not enough space to allocate string");
+            return NULL;
+        }
+        strcat(str, args[i]);
+    }
+
+    return str;
+}
+
 // TODO: 因为下面static原因，且目前对于多屏(屋里显示器)支持有些多余，暂时不考虑
 static lv_disp_t *createDisplay()
 {
@@ -60,6 +93,34 @@ void lv_task_handler2(uint32_t ms) {
     }
 }
 
-const unsigned lv_size_content = LV_SIZE_CONTENT;
 
-// const int lv_disp_def_refr_period  = LV_DISP_DEF_REFR_PERIOD;
+lv_obj_t *Create(char *t, lv_obj_t *parent) {
+  if (t == "layer") {
+    return lv_obj_create(NULL);
+  }
+
+  lv_obj_t *p = parent == NULL ? lv_scr_act() : parent;
+
+  void *fnPtr =
+      dlsym(RTLD_DEFAULT, GEN_FN(joinStr, METHOD_NAME_PRE, t, METHOD_NAME_SUF));
+
+  if (fnPtr == NULL) {
+    return NULL;
+  }
+
+  ffi_type *types[] = {&ffi_type_pointer};
+  void *args[] = {&p};
+
+  ffi_cif cif;
+  if (ffi_prep_cif(&cif, FFI_DEFAULT_ABI, sizeof(args) / sizeof(*args),
+                   &ffi_type_pointer, types) != FFI_OK) {
+    return NULL;
+  }
+
+  // 生成用于保存返回值的内存
+  void *returnPtr;
+
+  ffi_call(&cif, fnPtr, &returnPtr, args);
+
+  return (lv_obj_t *)(returnPtr);
+}

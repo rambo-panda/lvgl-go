@@ -5,6 +5,24 @@
 
 #define LV_LVGL_H_INCLUDE_SIMPLE
 
+#define METHOD_NAME_PRE  "lv_"
+
+#define COUNT_ARGS(...) (sizeof((int[]){0, ##__VA_ARGS__}) / sizeof(int) - 1)
+
+#define GEN_FN(func, ...) (func(COUNT_ARGS(__VA_ARGS__), __VA_ARGS__))
+// #define gen_fn(func, ...) (#func(COUNT_ARGS(__VA_ARGS__), __VA_ARGS__))
+
+#define ARGS(count, __type)                                                    \
+  __type args[count];                                                          \
+  va_list _args;                                                               \
+  va_start(_args, count);                                                      \
+  for (int X_I = 0; X_I < count; X_I++) {                                      \
+    args[X_I] = va_arg(_args, __type);                                         \
+  }                                                                            \
+  va_end(_args)
+
+lv_obj_t *Create(char *t, lv_obj_t *parent);
+
 void lv_ready();
 void lv_task_handler2(uint32_t ms);
 // extern const int lv_disp_def_refr_period;
