@@ -1,4 +1,4 @@
-package lvgl_go
+package lib
 
 /*
 #include "lv_init.h"
@@ -6,8 +6,29 @@ static const int _LV_SIZE_CONTENT = LV_SIZE_CONTENT;
 */
 import "C"
 
-type LvObj C.struct__lv_obj_t
-type LvSpan C.struct__lv_span_t
+type LvObjT C.lv_obj_t
+type LvStylePropT C.lv_style_prop_t
+type LvStyleValueT C.lv_style_value_t
+type LvStyleSelectorT C.lv_style_selector_t
+type LvCoordT C.lv_coord_t
+type LvAlignT C.lv_align_t
+type LvColorT C.lv_color_t
+type LvOpaT C.lv_opa_t
+type LvGradDirT C.lv_grad_dir_t
+type LvGradDscT C.lv_grad_dsc_t
+type LvDitherModeT C.lv_dither_mode_t
+type LvBorderSideT C.lv_border_side_t
+type LvFontT C.lv_font_t
+type LvTextDecorT C.lv_text_decor_t
+type LvTextAlignT C.lv_text_align_t
+type LvColorFilterDscT C.lv_color_filter_dsc_t
+type LvAnimT C.lv_anim_t
+type LvStyleTransitionDscT C.lv_style_transition_dsc_t
+type LvBlendModeT C.lv_blend_mode_t
+type LvBaseDirT C.lv_base_dir_t
+type LvScrollbarModeT C.lv_scrollbar_mode_t
+type LvDirT C.lv_dir_t
+type LvScrollSnapT C.lv_scroll_snap_t
 
 const (
 	LV_SIZE_CONTENT C.int = C._LV_SIZE_CONTENT
