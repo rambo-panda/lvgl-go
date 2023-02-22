@@ -419,3 +419,83 @@ func ParentForObj(obj *lib.LvObjT, parent *lib.LvObjT) {
 	C.lv_obj_set_parent((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), (*C.struct__lv_obj_t)(unsafe.Pointer(parent)))
 
 }
+func FlexFlowForObj(obj *lib.LvObjT, flow lib.LvFlexFlowT) {
+	C.lv_obj_set_flex_flow((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_flex_flow_t(flow))
+
+}
+func FlexAlignForObj(obj *lib.LvObjT, main_place lib.LvFlexAlignT, cross_place lib.LvFlexAlignT, track_cross_place lib.LvFlexAlignT) {
+	C.lv_obj_set_flex_align((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_flex_align_t(main_place), C.lv_flex_align_t(cross_place), C.lv_flex_align_t(track_cross_place))
+
+}
+func FlexGrowForObj(obj *lib.LvObjT, grow uint8) {
+	C.lv_obj_set_flex_grow((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.uint8_t(grow))
+
+}
+func StyleFlexFlowForObj(obj *lib.LvObjT, value lib.LvFlexFlowT, selector lib.LvStyleSelectorT) {
+	C.lv_obj_set_style_flex_flow((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_flex_flow_t(value), C.lv_style_selector_t(selector))
+
+}
+func StyleFlexMainPlaceForObj(obj *lib.LvObjT, value lib.LvFlexAlignT, selector lib.LvStyleSelectorT) {
+	C.lv_obj_set_style_flex_main_place((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_flex_align_t(value), C.lv_style_selector_t(selector))
+
+}
+func StyleFlexCrossPlaceForObj(obj *lib.LvObjT, value lib.LvFlexAlignT, selector lib.LvStyleSelectorT) {
+	C.lv_obj_set_style_flex_cross_place((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_flex_align_t(value), C.lv_style_selector_t(selector))
+
+}
+func StyleFlexTrackPlaceForObj(obj *lib.LvObjT, value lib.LvFlexAlignT, selector lib.LvStyleSelectorT) {
+	C.lv_obj_set_style_flex_track_place((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_flex_align_t(value), C.lv_style_selector_t(selector))
+
+}
+func StyleFlexGrowForObj(obj *lib.LvObjT, value uint8, selector lib.LvStyleSelectorT) {
+	C.lv_obj_set_style_flex_grow((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.uint8_t(value), C.lv_style_selector_t(selector))
+
+}
+func GridAlignForObj(obj *lib.LvObjT, column_align lib.LvGridAlignT, row_align lib.LvGridAlignT) {
+	C.lv_obj_set_grid_align((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_grid_align_t(column_align), C.lv_grid_align_t(row_align))
+
+}
+func GridCellForObj(obj *lib.LvObjT, column_align lib.LvGridAlignT, col_pos uint8, col_span uint8, row_align lib.LvGridAlignT, row_pos uint8, row_span uint8) {
+	C.lv_obj_set_grid_cell((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_grid_align_t(column_align), C.uint8_t(col_pos), C.uint8_t(col_span), C.lv_grid_align_t(row_align), C.uint8_t(row_pos), C.uint8_t(row_span))
+
+}
+func StyleGridRowAlignForObj(obj *lib.LvObjT, value lib.LvGridAlignT, selector lib.LvStyleSelectorT) {
+	C.lv_obj_set_style_grid_row_align((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_grid_align_t(value), C.lv_style_selector_t(selector))
+
+}
+func StyleGridColumnAlignForObj(obj *lib.LvObjT, value lib.LvGridAlignT, selector lib.LvStyleSelectorT) {
+	C.lv_obj_set_style_grid_column_align((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_grid_align_t(value), C.lv_style_selector_t(selector))
+
+}
+func StyleGridCellColumnPosForObj(obj *lib.LvObjT, value lib.LvCoordT, selector lib.LvStyleSelectorT) {
+	C.lv_obj_set_style_grid_cell_column_pos((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+
+}
+func StyleGridCellColumnSpanForObj(obj *lib.LvObjT, value lib.LvCoordT, selector lib.LvStyleSelectorT) {
+	C.lv_obj_set_style_grid_cell_column_span((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+
+}
+func StyleGridCellRowPosForObj(obj *lib.LvObjT, value lib.LvCoordT, selector lib.LvStyleSelectorT) {
+	C.lv_obj_set_style_grid_cell_row_pos((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+
+}
+func StyleGridCellRowSpanForObj(obj *lib.LvObjT, value lib.LvCoordT, selector lib.LvStyleSelectorT) {
+	C.lv_obj_set_style_grid_cell_row_span((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+
+}
+func StyleGridCellXAlignForObj(obj *lib.LvObjT, value lib.LvCoordT, selector lib.LvStyleSelectorT) {
+	C.lv_obj_set_style_grid_cell_x_align((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+
+}
+func StyleGridCellYAlignForObj(obj *lib.LvObjT, value lib.LvCoordT, selector lib.LvStyleSelectorT) {
+	C.lv_obj_set_style_grid_cell_y_align((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+
+}
+func TileForObj(tv *lib.LvObjT, tile_obj *lib.LvObjT, anim_en lib.LvAnimEnableT) {
+	C.lv_obj_set_tile((*C.struct__lv_obj_t)(unsafe.Pointer(tv)), (*C.lv_obj_t)(unsafe.Pointer(tile_obj)), C.lv_anim_enable_t(anim_en))
+
+}
+func TileIdForObj(tv *lib.LvObjT, col_id uint32, row_id uint32, anim_en lib.LvAnimEnableT) {
+	C.lv_obj_set_tile_id((*C.struct__lv_obj_t)(unsafe.Pointer(tv)), C.uint(col_id), C.uint(row_id), C.lv_anim_enable_t(anim_en))
+
+}

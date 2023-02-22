@@ -12,26 +12,26 @@ import (
 )
 
 func TextForLabel(obj *lib.LvObjT, text string) {
-	C.lv_label_set_text((*C.lv_obj_t)(unsafe.Pointer(obj)), C.CString(text))
+	C.lv_label_set_text((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.CString(text))
 
 }
 func TextStaticForLabel(obj *lib.LvObjT, text string) {
-	C.lv_label_set_text_static((*C.lv_obj_t)(unsafe.Pointer(obj)), C.CString(text))
+	C.lv_label_set_text_static((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.CString(text))
 
 }
 func LongModeForLabel(obj *lib.LvObjT, long_mode lib.LvLabelLongModeT) {
-	C.lv_label_set_long_mode((*C.lv_obj_t)(unsafe.Pointer(obj)), C.lv_label_long_mode_t(long_mode))
+	C.lv_label_set_long_mode((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_label_long_mode_t(long_mode))
 
 }
 func RecolorForLabel(obj *lib.LvObjT, en bool) {
-	C.lv_label_set_recolor((*C.lv_obj_t)(unsafe.Pointer(obj)), C.bool(en))
+	C.lv_label_set_recolor((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.bool(en))
 
 }
 func TextSelStartForLabel(obj *lib.LvObjT, index uint32) {
-	C.lv_label_set_text_sel_start((*C.lv_obj_t)(unsafe.Pointer(obj)), C.uint(index))
+	C.lv_label_set_text_sel_start((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.uint(index))
 
 }
 func TextSelEndForLabel(obj *lib.LvObjT, index uint32) {
-	C.lv_label_set_text_sel_end((*C.lv_obj_t)(unsafe.Pointer(obj)), C.uint(index))
+	C.lv_label_set_text_sel_end((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.uint(index))
 
 }
