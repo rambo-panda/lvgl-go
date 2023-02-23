@@ -8,9 +8,20 @@ package set
 import "C"
 import (
 	lib "lvgl-go/src/lib"
+	"unsafe"
 )
 
 type SetTextarea set
+
+func CreateTextarea(o *lib.LvObjT) SetTextarea {
+	return SetTextarea{
+		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
+	}
+}
+
+func (setter SetTextarea) GetObj() *lib.LvObjT {
+	return (*lib.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
+}
 
 func (setter SetTextarea) SetText(txt string) SetTextarea {
 	C.lv_textarea_set_text(setter.CStructLvObjT, C.CString(txt))

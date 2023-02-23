@@ -8,9 +8,20 @@ package set
 import "C"
 import (
 	lib "lvgl-go/src/lib"
+	"unsafe"
 )
 
 type SetSpangroup set
+
+func CreateSpangroup(o *lib.LvObjT) SetSpangroup {
+	return SetSpangroup{
+		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
+	}
+}
+
+func (setter SetSpangroup) GetObj() *lib.LvObjT {
+	return (*lib.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
+}
 
 func (setter SetSpangroup) SetAlign(align lib.LvTextAlignT) SetSpangroup {
 	C.lv_spangroup_set_align(setter.CStructLvObjT, C.lv_text_align_t(align))

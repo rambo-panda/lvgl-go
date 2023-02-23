@@ -8,9 +8,20 @@ package set
 import "C"
 import (
 	lib "lvgl-go/src/lib"
+	"unsafe"
 )
 
 type SetArc set
+
+func CreateArc(o *lib.LvObjT) SetArc {
+	return SetArc{
+		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
+	}
+}
+
+func (setter SetArc) GetObj() *lib.LvObjT {
+	return (*lib.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
+}
 
 func (setter SetArc) SetStartAngle(start uint16) SetArc {
 	C.lv_arc_set_start_angle(setter.CStructLvObjT, C.ushort(start))

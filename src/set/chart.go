@@ -13,6 +13,16 @@ import (
 
 type SetChart set
 
+func CreateChart(o *lib.LvObjT) SetChart {
+	return SetChart{
+		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
+	}
+}
+
+func (setter SetChart) GetObj() *lib.LvObjT {
+	return (*lib.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
+}
+
 func (setter SetChart) SetType(_type lib.LvChartTypeT) SetChart {
 	C.lv_chart_set_type(setter.CStructLvObjT, C.lv_chart_type_t(_type))
 
@@ -83,8 +93,18 @@ func (setter SetChart) SetNextValue(ser *lib.LvChartSeriesT, value lib.LvCoordT)
 
 	return setter
 }
+func (setter SetChart) SetNextValue2(ser *lib.LvChartSeriesT, x_value lib.LvCoordT, y_value lib.LvCoordT) SetChart {
+	C.lv_chart_set_next_value2(setter.CStructLvObjT, (*C.lv_chart_series_t)(unsafe.Pointer(ser)), C.lv_coord_t(x_value), C.lv_coord_t(y_value))
+
+	return setter
+}
 func (setter SetChart) SetValueById(ser *lib.LvChartSeriesT, id uint16, value lib.LvCoordT) SetChart {
 	C.lv_chart_set_value_by_id(setter.CStructLvObjT, (*C.lv_chart_series_t)(unsafe.Pointer(ser)), C.ushort(id), C.lv_coord_t(value))
+
+	return setter
+}
+func (setter SetChart) SetValueById2(ser *lib.LvChartSeriesT, id uint16, x_value lib.LvCoordT, y_value lib.LvCoordT) SetChart {
+	C.lv_chart_set_value_by_id2(setter.CStructLvObjT, (*C.lv_chart_series_t)(unsafe.Pointer(ser)), C.ushort(id), C.lv_coord_t(x_value), C.lv_coord_t(y_value))
 
 	return setter
 }

@@ -13,6 +13,16 @@ import (
 
 type SetStyle set
 
+func CreateStyle(o *lib.LvObjT) SetStyle {
+	return SetStyle{
+		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
+	}
+}
+
+func (setter SetStyle) GetObj() *lib.LvObjT {
+	return (*lib.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
+}
+
 func (setter SetStyle) SetWidth(style *lib.LvStyleT, value lib.LvCoordT) SetStyle {
 	C.lv_style_set_width((*C.lv_style_t)(unsafe.Pointer(style)), C.lv_coord_t(value))
 

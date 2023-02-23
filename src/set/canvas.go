@@ -13,6 +13,16 @@ import (
 
 type SetCanvas set
 
+func CreateCanvas(o *lib.LvObjT) SetCanvas {
+	return SetCanvas{
+		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
+	}
+}
+
+func (setter SetCanvas) GetObj() *lib.LvObjT {
+	return (*lib.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
+}
+
 func (setter SetCanvas) SetBuffer(buf any, w lib.LvCoordT, h lib.LvCoordT, cf lib.LvImgCfT) SetCanvas {
 	C.lv_canvas_set_buffer(setter.CStructLvObjT, unsafe.Pointer(&buf), C.lv_coord_t(w), C.lv_coord_t(h), C.lv_img_cf_t(cf))
 

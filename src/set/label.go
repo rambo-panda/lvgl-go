@@ -8,9 +8,20 @@ package set
 import "C"
 import (
 	lib "lvgl-go/src/lib"
+	"unsafe"
 )
 
 type SetLabel set
+
+func CreateLabel(o *lib.LvObjT) SetLabel {
+	return SetLabel{
+		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
+	}
+}
+
+func (setter SetLabel) GetObj() *lib.LvObjT {
+	return (*lib.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
+}
 
 func (setter SetLabel) SetText(text string) SetLabel {
 	C.lv_label_set_text(setter.CStructLvObjT, C.CString(text))

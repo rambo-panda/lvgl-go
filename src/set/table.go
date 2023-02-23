@@ -8,9 +8,20 @@ package set
 import "C"
 import (
 	lib "lvgl-go/src/lib"
+	"unsafe"
 )
 
 type SetTable set
+
+func CreateTable(o *lib.LvObjT) SetTable {
+	return SetTable{
+		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
+	}
+}
+
+func (setter SetTable) GetObj() *lib.LvObjT {
+	return (*lib.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
+}
 
 func (setter SetTable) SetCellValue(row uint16, col uint16, txt string) SetTable {
 	C.lv_table_set_cell_value(setter.CStructLvObjT, C.ushort(row), C.ushort(col), C.CString(txt))

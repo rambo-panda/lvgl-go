@@ -8,9 +8,20 @@ package set
 import "C"
 import (
 	lib "lvgl-go/src/lib"
+	"unsafe"
 )
 
 type SetBar set
+
+func CreateBar(o *lib.LvObjT) SetBar {
+	return SetBar{
+		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
+	}
+}
+
+func (setter SetBar) GetObj() *lib.LvObjT {
+	return (*lib.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
+}
 
 func (setter SetBar) SetValue(value int32, anim lib.LvAnimEnableT) SetBar {
 	C.lv_bar_set_value(setter.CStructLvObjT, C.int(value), C.lv_anim_enable_t(anim))
