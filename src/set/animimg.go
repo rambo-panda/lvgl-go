@@ -6,9 +6,6 @@ package set
 #include "lv_init.h"
 */
 import "C"
-import (
-	lib "lvgl-go/src/lib"
-)
 
 type SetAnimimg set
 
