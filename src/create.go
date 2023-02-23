@@ -19,7 +19,7 @@ type s_create struct {
 	Set
 }
 func (f s_create) GetObj() *lib.LvObjT {
-	return f.Set._o;
+	return f.Set.o;
 }
 
 func (f s_create) ToMethoName() string {
