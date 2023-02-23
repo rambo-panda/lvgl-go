@@ -13,7 +13,13 @@ import (
 const SCREEN string = "SCREEN"
 
 type s_create struct {
-	t string
+	o string
+	o int
+
+	Set
+}
+func (f s_create) GetObj() *lib.LvObjT {
+	return f.Set._o;
 }
 
 func (f s_create) ToMethoName() string {
