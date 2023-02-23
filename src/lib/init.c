@@ -92,35 +92,3 @@ void lv_task_handler2(uint32_t ms) {
         usleep(ms * 1e3);
     }
 }
-
-
-lv_obj_t *Create(char *t, lv_obj_t *parent) {
-  if (t == "layer") {
-    return lv_obj_create(NULL);
-  }
-
-  lv_obj_t *p = parent == NULL ? lv_scr_act() : parent;
-
-  void *fnPtr =
-      dlsym(RTLD_DEFAULT, GEN_FN(joinStr, METHOD_NAME_PRE, t, METHOD_NAME_SUF));
-
-  if (fnPtr == NULL) {
-    return NULL;
-  }
-
-  ffi_type *types[] = {&ffi_type_pointer};
-  void *args[] = {&p};
-
-  ffi_cif cif;
-  if (ffi_prep_cif(&cif, FFI_DEFAULT_ABI, sizeof(args) / sizeof(*args),
-                   &ffi_type_pointer, types) != FFI_OK) {
-    return NULL;
-  }
-
-  // 生成用于保存返回值的内存
-  void *returnPtr;
-
-  ffi_call(&cif, fnPtr, &returnPtr, args);
-
-  return (lv_obj_t *)(returnPtr);
-}

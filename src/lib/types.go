@@ -27,11 +27,8 @@ type LvAnimT C.lv_anim_t
 type LvStyleTransitionDscT C.lv_style_transition_dsc_t
 type LvBlendModeT C.lv_blend_mode_t
 type LvBaseDirT C.lv_base_dir_t
-type LvStylePropT C.lv_style_prop_t
 type LvStyleValueT C.lv_style_value_t
 type LvAnimTimelineT C.lv_anim_timeline_t
-type LvAreaT C.lv_area_t
-type LvObjT C.lv_obj_t
 type LvFlexAlignT C.lv_flex_align_t
 type LvGridAlignT C.lv_grid_align_t
 type LvChartTypeT C.lv_chart_type_t
@@ -39,7 +36,6 @@ type LvChartAxisT C.lv_chart_axis_t
 type LvChartUpdateModeT C.lv_chart_update_mode_t
 type LvChartSeriesT C.lv_chart_series_t
 type LvChartCursorT C.lv_chart_cursor_t
-type LvPointT C.lv_point_t
 type LvImgbtnStateT C.lv_imgbtn_state_t
 type LvSpanT C.lv_span_t
 type LvSpanOverflowT C.lv_span_overflow_t
@@ -79,6 +75,13 @@ type LvCoverResT C.lv_cover_res_t
 type LvAnimEnableT C.lv_anim_enable_t
 type LvFlexFlowT C.lv_flex_flow_t
 type LvImgCfT C.lv_img_cf_t
+type LvPartT C.lv_part_t
+type LvStylePropT C.lv_style_prop_t
+type LvAreaT C.lv_area_t
+type LvObjT C.struct__lv_obj_t
+type LvStateT uint16
+type LvPointT C.lv_point_t
+type LvObjClassT C.struct__lv_obj_class_t
 
 // type LvMonkeyT C.lv_monkey_t
 // type LvDispRotT C.lv_disp_rot_t

@@ -1,72 +1,75 @@
 package lvgl_go
 
 /*
+#cgo CFLAGS: -I./include/
+#cgo LDFLAGS: -L./lib -llvgl
 #include "lv_init.h"
 */
 import "C"
 import (
-	"reflect"
-	"strings"
+	"lvgl-go/src/lib"
+	"lvgl-go/src/set"
 	"unsafe"
 )
 
-const SCREEN string = "SCREEN"
-
-type s_create struct {
-	o string
-	o int
-
-	Set
-}
-func (f s_create) GetObj() *lib.LvObjT {
-	return f.Set.o;
-}
-
-func (f s_create) ToMethoName() string {
-	return genMethodBuilder("Create", f.t)
-}
-func (f s_create) CreateLabel(parent *C.struct__lv_obj_t) *C.struct__lv_obj_t {
-	return C.lv_label_create(parent)
-}
-func (f s_create) CreateImg(parent *C.struct__lv_obj_t) *C.struct__lv_obj_t {
-	return C.lv_img_create(parent)
-}
-func (f s_create) CreateObj(parent *C.struct__lv_obj_t) *C.struct__lv_obj_t {
-	return C.lv_obj_create(parent)
-}
-func (f s_create) CreateScreen(parent *C.struct__lv_obj_t) *C.struct__lv_obj_t {
-	return f.CreateObj(parent)
-}
-
-func Create(t string, parent *LvObj) *LvObj {
-	if parent == nil && t != SCREEN {
-		parent = (*LvObj)(unsafe.Pointer(C.lv_scr_act()))
+func getParent(o *lib.LvObjT) *lib.LvObjT {
+	if o == nil {
+		return (*lib.LvObjT)(unsafe.Pointer(C.lv_scr_act()))
 	}
 
-	_lv := &s_create{t: strings.ToLower(t)}
-
-	in := make([]reflect.Value, 1)
-	in[0] = reflect.ValueOf((*C.struct__lv_obj_t)(unsafe.Pointer(parent)))
-
-	ret := reflect.ValueOf(_lv).MethodByName(_lv.ToMethoName()).Call(in)
-
-	return LvObjToGo(ret[0].Interface().(*C.struct__lv_obj_t))
+	return o
 }
-
-func LvObjToC(o *LvObj) *C.struct__lv_obj_t {
-	return (*C.struct__lv_obj_t)(unsafe.Pointer(o))
+func CreateAnimimg(o *lib.LvObjT) set.SetAnimimg {
+	return set.CreateAnimimg(getParent(o))
 }
-
-func LvObjToGo(o *C.struct__lv_obj_t) *LvObj {
-	return (*LvObj)(o)
+func CreateArc(o *lib.LvObjT) set.SetArc {
+	return set.CreateArc(getParent(o))
 }
-
-func mkAdd(a int) func(int) int {
-	return func(b int) int {
-		return a + b
-	}
+func CreateArea(o *lib.LvObjT) set.SetArea {
+	return set.CreateArea(getParent(o))
 }
-
-func genMethodBuilder(pre string, f string) string {
-	return strings.Join([]string{pre, strings.ToUpper(f[:1]), f[1:]}, "")
+func CreateBar(o *lib.LvObjT) set.SetBar {
+	return set.CreateBar(getParent(o))
+}
+func CreateCanvas(o *lib.LvObjT) set.SetCanvas {
+	return set.CreateCanvas(getParent(o))
+}
+func CreateChart(o *lib.LvObjT) set.SetChart {
+	return set.CreateChart(getParent(o))
+}
+func CreateCheckbox(o *lib.LvObjT) set.SetCheckbox {
+	return set.CreateCheckbox(getParent(o))
+}
+func CreateImg(o *lib.LvObjT) set.SetImg {
+	return set.CreateImg(getParent(o))
+}
+func CreateLabel(o *lib.LvObjT) set.SetLabel {
+	return set.CreateLabel(getParent(o))
+}
+func CreateLed(o *lib.LvObjT) set.SetLed {
+	return set.CreateLed(getParent(o))
+}
+func CreateLine(o *lib.LvObjT) set.SetLine {
+	return set.CreateLine(getParent(o))
+}
+func CreateObj(o *lib.LvObjT) set.SetObj {
+	return set.CreateObj(getParent(o))
+}
+func CreateSpan(o *lib.LvObjT) set.SetSpan {
+	return set.CreateSpan(getParent(o))
+}
+func CreateSpangroup(o *lib.LvObjT) set.SetSpangroup {
+	return set.CreateSpangroup(getParent(o))
+}
+func CreateStyle(o *lib.LvObjT) set.SetStyle {
+	return set.CreateStyle(getParent(o))
+}
+func CreateTable(o *lib.LvObjT) set.SetTable {
+	return set.CreateTable(getParent(o))
+}
+func CreateTextarea(o *lib.LvObjT) set.SetTextarea {
+	return set.CreateTextarea(getParent(o))
+}
+func CreateTheme(o *lib.LvObjT) set.SetTheme {
+	return set.CreateTheme(getParent(o))
 }
