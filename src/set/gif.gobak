@@ -1,6 +1,5 @@
-// #define LV_USE_GIF 0
-// TODO: 头文件暂时不添加对gif的支持
 // package set
+//TODO: #define LV_USE_GIF 0
 
 // /*
 // #cgo CFLAGS: -I../include/
@@ -9,14 +8,12 @@
 // */
 // import "C"
 // import (
-// 	lib "lvgl-go/src/lib"
 // 	"unsafe"
+//   lib "lvgl-go/src/lib"
 // )
-
 // type SetGif set
-
 // func (setter SetGif) SetSrc(src any) SetGif {
-// 	C.lv_gif_set_src(setter.cObj, unsafe.Pointer(&src))
+//    C.lv_gif_set_src(setter.cObj,unsafe.Pointer(&src))
 
-// 	return setter
+//   return setter
 // }
