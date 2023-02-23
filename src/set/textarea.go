@@ -8,58 +8,72 @@ package set
 import "C"
 import (
 	lib "lvgl-go/src/lib"
-	"unsafe"
 )
 
-func TextForTextarea(obj *lib.LvObjT, txt string) {
-	C.lv_textarea_set_text((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.CString(txt))
+type SetTextarea set
 
+func (setter SetTextarea) SetText(txt string) SetTextarea {
+	C.lv_textarea_set_text(setter.cObj, C.CString(txt))
+
+	return setter
 }
-func PlaceholderTextForTextarea(obj *lib.LvObjT, txt string) {
-	C.lv_textarea_set_placeholder_text((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.CString(txt))
+func (setter SetTextarea) SetPlaceholderText(txt string) SetTextarea {
+	C.lv_textarea_set_placeholder_text(setter.cObj, C.CString(txt))
 
+	return setter
 }
-func CursorPosForTextarea(obj *lib.LvObjT, pos int32) {
-	C.lv_textarea_set_cursor_pos((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.int(pos))
+func (setter SetTextarea) SetCursorPos(pos int32) SetTextarea {
+	C.lv_textarea_set_cursor_pos(setter.cObj, C.int(pos))
 
+	return setter
 }
-func CursorClickPosForTextarea(obj *lib.LvObjT, en bool) {
-	C.lv_textarea_set_cursor_click_pos((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.bool(en))
+func (setter SetTextarea) SetCursorClickPos(en bool) SetTextarea {
+	C.lv_textarea_set_cursor_click_pos(setter.cObj, C.bool(en))
 
+	return setter
 }
-func PasswordModeForTextarea(obj *lib.LvObjT, en bool) {
-	C.lv_textarea_set_password_mode((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.bool(en))
+func (setter SetTextarea) SetPasswordMode(en bool) SetTextarea {
+	C.lv_textarea_set_password_mode(setter.cObj, C.bool(en))
 
+	return setter
 }
-func PasswordBulletForTextarea(obj *lib.LvObjT, bullet string) {
-	C.lv_textarea_set_password_bullet((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.CString(bullet))
+func (setter SetTextarea) SetPasswordBullet(bullet string) SetTextarea {
+	C.lv_textarea_set_password_bullet(setter.cObj, C.CString(bullet))
 
+	return setter
 }
-func OneLineForTextarea(obj *lib.LvObjT, en bool) {
-	C.lv_textarea_set_one_line((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.bool(en))
+func (setter SetTextarea) SetOneLine(en bool) SetTextarea {
+	C.lv_textarea_set_one_line(setter.cObj, C.bool(en))
 
+	return setter
 }
-func AcceptedCharsForTextarea(obj *lib.LvObjT, list string) {
-	C.lv_textarea_set_accepted_chars((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.CString(list))
+func (setter SetTextarea) SetAcceptedChars(list string) SetTextarea {
+	C.lv_textarea_set_accepted_chars(setter.cObj, C.CString(list))
 
+	return setter
 }
-func MaxLengthForTextarea(obj *lib.LvObjT, num uint32) {
-	C.lv_textarea_set_max_length((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.uint(num))
+func (setter SetTextarea) SetMaxLength(num uint32) SetTextarea {
+	C.lv_textarea_set_max_length(setter.cObj, C.uint(num))
 
+	return setter
 }
-func InsertReplaceForTextarea(obj *lib.LvObjT, txt string) {
-	C.lv_textarea_set_insert_replace((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.CString(txt))
+func (setter SetTextarea) SetInsertReplace(txt string) SetTextarea {
+	C.lv_textarea_set_insert_replace(setter.cObj, C.CString(txt))
 
+	return setter
 }
-func TextSelectionForTextarea(obj *lib.LvObjT, en bool) {
-	C.lv_textarea_set_text_selection((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.bool(en))
+func (setter SetTextarea) SetTextSelection(en bool) SetTextarea {
+	C.lv_textarea_set_text_selection(setter.cObj, C.bool(en))
 
+	return setter
 }
-func PasswordShowTimeForTextarea(obj *lib.LvObjT, time uint16) {
-	C.lv_textarea_set_password_show_time((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.ushort(time))
+func (setter SetTextarea) SetPasswordShowTime(time uint16) SetTextarea {
+	C.lv_textarea_set_password_show_time(setter.cObj, C.ushort(time))
 
+	return setter
 }
-func AlignForTextarea(obj *lib.LvObjT, align lib.LvTextAlignT) {
-	C.lv_textarea_set_align((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_text_align_t(align))
+func (setter SetTextarea) SetAlign(align lib.LvTextAlignT) SetTextarea {
+	C.lv_textarea_set_align(setter.cObj, C.lv_text_align_t(align))
 
+	return setter
 }

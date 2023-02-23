@@ -11,11 +11,15 @@ import (
 	"unsafe"
 )
 
-func WidthForArea(area_p *lib.LvAreaT, w lib.LvCoordT) {
+type SetArea set
+
+func (setter SetArea) SetWidth(area_p *lib.LvAreaT, w lib.LvCoordT) SetArea {
 	C.lv_area_set_width((*C.lv_area_t)(unsafe.Pointer(area_p)), C.lv_coord_t(w))
 
+	return setter
 }
-func HeightForArea(area_p *lib.LvAreaT, h lib.LvCoordT) {
+func (setter SetArea) SetHeight(area_p *lib.LvAreaT, h lib.LvCoordT) SetArea {
 	C.lv_area_set_height((*C.lv_area_t)(unsafe.Pointer(area_p)), C.lv_coord_t(h))
 
+	return setter
 }

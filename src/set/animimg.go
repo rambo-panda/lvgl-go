@@ -8,14 +8,17 @@ package set
 import "C"
 import (
 	lib "lvgl-go/src/lib"
-	"unsafe"
 )
 
-func DurationForAnimimg(img *lib.LvObjT, duration uint32) {
-	C.lv_animimg_set_duration((*C.struct__lv_obj_t)(unsafe.Pointer(img)), C.uint(duration))
+type SetAnimimg set
 
+func (setter SetAnimimg) SetDuration(duration uint32) SetAnimimg {
+	C.lv_animimg_set_duration(setter.cObj, C.uint(duration))
+
+	return setter
 }
-func RepeatCountForAnimimg(img *lib.LvObjT, count uint16) {
-	C.lv_animimg_set_repeat_count((*C.struct__lv_obj_t)(unsafe.Pointer(img)), C.ushort(count))
+func (setter SetAnimimg) SetRepeatCount(count uint16) SetAnimimg {
+	C.lv_animimg_set_repeat_count(setter.cObj, C.ushort(count))
 
+	return setter
 }

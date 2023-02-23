@@ -8,22 +8,27 @@ package set
 import "C"
 import (
 	lib "lvgl-go/src/lib"
-	"unsafe"
 )
 
-func ValueForBar(obj *lib.LvObjT, value int32, anim lib.LvAnimEnableT) {
-	C.lv_bar_set_value((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.int(value), C.lv_anim_enable_t(anim))
+type SetBar set
 
+func (setter SetBar) SetValue(value int32, anim lib.LvAnimEnableT) SetBar {
+	C.lv_bar_set_value(setter.cObj, C.int(value), C.lv_anim_enable_t(anim))
+
+	return setter
 }
-func StartValueForBar(obj *lib.LvObjT, start_value int32, anim lib.LvAnimEnableT) {
-	C.lv_bar_set_start_value((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.int(start_value), C.lv_anim_enable_t(anim))
+func (setter SetBar) SetStartValue(start_value int32, anim lib.LvAnimEnableT) SetBar {
+	C.lv_bar_set_start_value(setter.cObj, C.int(start_value), C.lv_anim_enable_t(anim))
 
+	return setter
 }
-func RangeForBar(obj *lib.LvObjT, min int32, max int32) {
-	C.lv_bar_set_range((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.int(min), C.int(max))
+func (setter SetBar) SetRange(min int32, max int32) SetBar {
+	C.lv_bar_set_range(setter.cObj, C.int(min), C.int(max))
 
+	return setter
 }
-func ModeForBar(obj *lib.LvObjT, mode lib.LvBarModeT) {
-	C.lv_bar_set_mode((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_bar_mode_t(mode))
+func (setter SetBar) SetMode(mode lib.LvBarModeT) SetBar {
+	C.lv_bar_set_mode(setter.cObj, C.lv_bar_mode_t(mode))
 
+	return setter
 }

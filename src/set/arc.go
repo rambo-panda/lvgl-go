@@ -8,50 +8,62 @@ package set
 import "C"
 import (
 	lib "lvgl-go/src/lib"
-	"unsafe"
 )
 
-func StartAngleForArc(obj *lib.LvObjT, start uint16) {
-	C.lv_arc_set_start_angle((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.ushort(start))
+type SetArc set
 
+func (setter SetArc) SetStartAngle(start uint16) SetArc {
+	C.lv_arc_set_start_angle(setter.cObj, C.ushort(start))
+
+	return setter
 }
-func EndAngleForArc(obj *lib.LvObjT, end uint16) {
-	C.lv_arc_set_end_angle((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.ushort(end))
+func (setter SetArc) SetEndAngle(end uint16) SetArc {
+	C.lv_arc_set_end_angle(setter.cObj, C.ushort(end))
 
+	return setter
 }
-func AnglesForArc(obj *lib.LvObjT, start uint16, end uint16) {
-	C.lv_arc_set_angles((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.ushort(start), C.ushort(end))
+func (setter SetArc) SetAngles(start uint16, end uint16) SetArc {
+	C.lv_arc_set_angles(setter.cObj, C.ushort(start), C.ushort(end))
 
+	return setter
 }
-func BgStartAngleForArc(obj *lib.LvObjT, start uint16) {
-	C.lv_arc_set_bg_start_angle((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.ushort(start))
+func (setter SetArc) SetBgStartAngle(start uint16) SetArc {
+	C.lv_arc_set_bg_start_angle(setter.cObj, C.ushort(start))
 
+	return setter
 }
-func BgEndAngleForArc(obj *lib.LvObjT, end uint16) {
-	C.lv_arc_set_bg_end_angle((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.ushort(end))
+func (setter SetArc) SetBgEndAngle(end uint16) SetArc {
+	C.lv_arc_set_bg_end_angle(setter.cObj, C.ushort(end))
 
+	return setter
 }
-func BgAnglesForArc(obj *lib.LvObjT, start uint16, end uint16) {
-	C.lv_arc_set_bg_angles((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.ushort(start), C.ushort(end))
+func (setter SetArc) SetBgAngles(start uint16, end uint16) SetArc {
+	C.lv_arc_set_bg_angles(setter.cObj, C.ushort(start), C.ushort(end))
 
+	return setter
 }
-func RotationForArc(obj *lib.LvObjT, rotation uint16) {
-	C.lv_arc_set_rotation((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.ushort(rotation))
+func (setter SetArc) SetRotation(rotation uint16) SetArc {
+	C.lv_arc_set_rotation(setter.cObj, C.ushort(rotation))
 
+	return setter
 }
-func ModeForArc(obj *lib.LvObjT, t lib.LvArcModeT) {
-	C.lv_arc_set_mode((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_arc_mode_t(t))
+func (setter SetArc) SetMode(_type lib.LvArcModeT) SetArc {
+	C.lv_arc_set_mode(setter.cObj, C.lv_arc_mode_t(_type))
 
+	return setter
 }
-func ValueForArc(obj *lib.LvObjT, value int16) {
-	C.lv_arc_set_value((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.short(value))
+func (setter SetArc) SetValue(value int16) SetArc {
+	C.lv_arc_set_value(setter.cObj, C.short(value))
 
+	return setter
 }
-func RangeForArc(obj *lib.LvObjT, min int16, max int16) {
-	C.lv_arc_set_range((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.short(min), C.short(max))
+func (setter SetArc) SetRange(min int16, max int16) SetArc {
+	C.lv_arc_set_range(setter.cObj, C.short(min), C.short(max))
 
+	return setter
 }
-func ChangeRateForArc(obj *lib.LvObjT, rate uint16) {
-	C.lv_arc_set_change_rate((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.ushort(rate))
+func (setter SetArc) SetChangeRate(rate uint16) SetArc {
+	C.lv_arc_set_change_rate(setter.cObj, C.ushort(rate))
 
+	return setter
 }
