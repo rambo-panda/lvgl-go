@@ -8,5 +8,5 @@ package set
 import "C"
 
 type set struct {
-	CStructLvObjT *C.lv_obj_t
+	CStructLvObjT *C.struct__lv_obj_t
 }
