@@ -10,12 +10,12 @@ import "C"
 type SetCheckbox set
 
 func (setter SetCheckbox) SetText(txt string) SetCheckbox {
-	C.lv_checkbox_set_text(setter.cObj, C.CString(txt))
+	C.lv_checkbox_set_text(setter.CStructLvObjT, C.CString(txt))
 
 	return setter
 }
 func (setter SetCheckbox) SetTextStatic(txt string) SetCheckbox {
-	C.lv_checkbox_set_text_static(setter.cObj, C.CString(txt))
+	C.lv_checkbox_set_text_static(setter.CStructLvObjT, C.CString(txt))
 
 	return setter
 }

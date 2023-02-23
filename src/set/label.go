@@ -13,32 +13,32 @@ import (
 type SetLabel set
 
 func (setter SetLabel) SetText(text string) SetLabel {
-	C.lv_label_set_text(setter.cObj, C.CString(text))
+	C.lv_label_set_text(setter.CStructLvObjT, C.CString(text))
 
 	return setter
 }
 func (setter SetLabel) SetTextStatic(text string) SetLabel {
-	C.lv_label_set_text_static(setter.cObj, C.CString(text))
+	C.lv_label_set_text_static(setter.CStructLvObjT, C.CString(text))
 
 	return setter
 }
 func (setter SetLabel) SetLongMode(long_mode lib.LvLabelLongModeT) SetLabel {
-	C.lv_label_set_long_mode(setter.cObj, C.lv_label_long_mode_t(long_mode))
+	C.lv_label_set_long_mode(setter.CStructLvObjT, C.lv_label_long_mode_t(long_mode))
 
 	return setter
 }
 func (setter SetLabel) SetRecolor(en bool) SetLabel {
-	C.lv_label_set_recolor(setter.cObj, C.bool(en))
+	C.lv_label_set_recolor(setter.CStructLvObjT, C.bool(en))
 
 	return setter
 }
 func (setter SetLabel) SetTextSelStart(index uint32) SetLabel {
-	C.lv_label_set_text_sel_start(setter.cObj, C.uint(index))
+	C.lv_label_set_text_sel_start(setter.CStructLvObjT, C.uint(index))
 
 	return setter
 }
 func (setter SetLabel) SetTextSelEnd(index uint32) SetLabel {
-	C.lv_label_set_text_sel_end(setter.cObj, C.uint(index))
+	C.lv_label_set_text_sel_end(setter.CStructLvObjT, C.uint(index))
 
 	return setter
 }

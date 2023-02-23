@@ -1,4 +1,4 @@
-package set
+package get
 
 /*
 #cgo CFLAGS: -I../include/
@@ -7,6 +7,6 @@ package set
 */
 import "C"
 
-type set struct {
+type Get struct {
 	CStructLvObjT *C.lv_obj_t
 }

@@ -13,12 +13,12 @@ import (
 type SetLed set
 
 func (setter SetLed) SetColor(color lib.LvColorT) SetLed {
-	C.lv_led_set_color(setter.cObj, C.lv_color_t(color))
+	C.lv_led_set_color(setter.CStructLvObjT, C.lv_color_t(color))
 
 	return setter
 }
 func (setter SetLed) SetBrightness(bright uint8) SetLed {
-	C.lv_led_set_brightness(setter.cObj, C.uint8_t(bright))
+	C.lv_led_set_brightness(setter.CStructLvObjT, C.uint8_t(bright))
 
 	return setter
 }

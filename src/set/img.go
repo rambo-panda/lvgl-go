@@ -63,42 +63,42 @@ func (setter DecoderImg) DecoderSetCloseCb(decoder *lib.LvImgDecoderT, close_cb 
 type SetImg set
 
 func (setter SetImg) SetSrc(src any) SetImg {
-	C.lv_img_set_src(setter.cObj, unsafe.Pointer(&src))
+	C.lv_img_set_src(setter.CStructLvObjT, unsafe.Pointer(&src))
 
 	return setter
 }
 func (setter SetImg) SetOffsetX(x lib.LvCoordT) SetImg {
-	C.lv_img_set_offset_x(setter.cObj, C.lv_coord_t(x))
+	C.lv_img_set_offset_x(setter.CStructLvObjT, C.lv_coord_t(x))
 
 	return setter
 }
 func (setter SetImg) SetOffsetY(y lib.LvCoordT) SetImg {
-	C.lv_img_set_offset_y(setter.cObj, C.lv_coord_t(y))
+	C.lv_img_set_offset_y(setter.CStructLvObjT, C.lv_coord_t(y))
 
 	return setter
 }
 func (setter SetImg) SetAngle(angle int16) SetImg {
-	C.lv_img_set_angle(setter.cObj, C.short(angle))
+	C.lv_img_set_angle(setter.CStructLvObjT, C.short(angle))
 
 	return setter
 }
 func (setter SetImg) SetPivot(x lib.LvCoordT, y lib.LvCoordT) SetImg {
-	C.lv_img_set_pivot(setter.cObj, C.lv_coord_t(x), C.lv_coord_t(y))
+	C.lv_img_set_pivot(setter.CStructLvObjT, C.lv_coord_t(x), C.lv_coord_t(y))
 
 	return setter
 }
 func (setter SetImg) SetZoom(zoom uint16) SetImg {
-	C.lv_img_set_zoom(setter.cObj, C.ushort(zoom))
+	C.lv_img_set_zoom(setter.CStructLvObjT, C.ushort(zoom))
 
 	return setter
 }
 func (setter SetImg) SetAntialias(antialias bool) SetImg {
-	C.lv_img_set_antialias(setter.cObj, C.bool(antialias))
+	C.lv_img_set_antialias(setter.CStructLvObjT, C.bool(antialias))
 
 	return setter
 }
 func (setter SetImg) SetSizeMode(mode lib.LvImgSizeModeT) SetImg {
-	C.lv_img_set_size_mode(setter.cObj, C.lv_img_size_mode_t(mode))
+	C.lv_img_set_size_mode(setter.CStructLvObjT, C.lv_img_size_mode_t(mode))
 
 	return setter
 }
