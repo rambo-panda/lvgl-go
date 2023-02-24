@@ -20,10 +20,6 @@ func CreateSpan(o *types.LvObjT) Span {
 	}
 }
 
-func (setter Span) GetObj() *types.LvObjT {
-	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
-}
-
 func (setter Span) Text(span *types.LvSpanT, text string) Span {
 	C.lv_span_set_text((*C.lv_span_t)(unsafe.Pointer(span)), C.CString(text))
 

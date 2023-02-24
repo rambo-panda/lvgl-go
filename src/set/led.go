@@ -20,10 +20,6 @@ func CreateLed(o *types.LvObjT) Led {
 	}
 }
 
-func (setter Led) GetObj() *types.LvObjT {
-	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
-}
-
 func (setter Led) Color(color types.LvColorT) Led {
 	C.lv_led_set_color(setter.CStructLvObjT, C.lv_color_t(color))
 

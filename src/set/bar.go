@@ -20,10 +20,6 @@ func CreateBar(o *types.LvObjT) Bar {
 	}
 }
 
-func (setter Bar) GetObj() *types.LvObjT {
-	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
-}
-
 func (setter Bar) Value(value int32, anim types.LvAnimEnableT) Bar {
 	C.lv_bar_set_value(setter.CStructLvObjT, C.int(value), C.lv_anim_enable_t(anim))
 

@@ -8,27 +8,8 @@ import types "lvgl-go/src/types"
 #include "lv_init.h"
 */
 import "C"
-import (
-	"unsafe"
-)
 
 type Label set
-
-// func CreateLabel(o CI) Label {
-// 	return Label{
-// 		CStructLvObjT:
-// 	}
-// }
-
-// func CreateLabel(o *types.LvObjT) Label {
-// 	return Label{
-// 		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
-// 	}
-// }
-
-func (setter Label) GetObj() *types.LvObjT {
-	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
-}
 
 func (setter Label) Text(text string) Label {
 	j := C.CString(text)

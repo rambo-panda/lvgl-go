@@ -20,10 +20,6 @@ func CreateTextarea(o *types.LvObjT) Textarea {
 	}
 }
 
-func (setter Textarea) GetObj() *types.LvObjT {
-	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
-}
-
 func (setter Textarea) Text(txt string) Textarea {
 	C.lv_textarea_set_text(setter.CStructLvObjT, C.CString(txt))
 

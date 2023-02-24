@@ -20,10 +20,6 @@ func CreateObj(o *types.LvObjT) Obj {
 	}
 }
 
-func (setter Obj) GetObj() *types.LvObjT {
-	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
-}
-
 func (setter Obj) LocalStyleProp(obj *types.LvObjT, prop types.LvStylePropT, value types.LvStyleValueT, selector types.LvStyleSelectorT) Obj {
 	C.lv_obj_set_local_style_prop((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_style_prop_t(prop), C.lv_style_value_t(value), C.lv_style_selector_t(selector))
 

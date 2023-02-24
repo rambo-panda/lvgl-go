@@ -20,10 +20,6 @@ func CreateChart(o *types.LvObjT) Chart {
 	}
 }
 
-func (setter Chart) GetObj() *types.LvObjT {
-	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
-}
-
 func (setter Chart) Type(_type types.LvChartTypeT) Chart {
 	C.lv_chart_set_type(setter.CStructLvObjT, C.lv_chart_type_t(_type))
 

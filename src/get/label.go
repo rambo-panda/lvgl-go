@@ -19,9 +19,6 @@ func CreateLable(o *types.LvObjT) Label {
 		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
 	}
 }
-func (setter Label) Obj() *types.LvObjT {
-	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
-}
 
 func (getter Label) Text() string {
 	res := C.lv_label_get_text(getter.CStructLvObjT)

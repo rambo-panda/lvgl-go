@@ -19,9 +19,6 @@ func CreateObj(o *types.LvObjT) Obj {
 		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
 	}
 }
-func (setter Obj) Obj() *types.LvObjT {
-	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
-}
 
 func (getter Obj) StyleProp(part types.LvPartT, prop types.LvStylePropT) types.LvStyleValueT {
 	res := C.lv_obj_get_style_prop(getter.CStructLvObjT, C.lv_part_t(part), C.lv_style_prop_t(prop))

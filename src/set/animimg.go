@@ -20,10 +20,6 @@ func CreateAnimimg(o *types.LvObjT) Animimg {
 	}
 }
 
-func (setter Animimg) GetObj() *types.LvObjT {
-	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
-}
-
 func (setter Animimg) Duration(duration uint32) Animimg {
 	C.lv_animimg_set_duration(setter.CStructLvObjT, C.uint(duration))
 
