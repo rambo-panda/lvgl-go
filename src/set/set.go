@@ -1,7 +1,5 @@
 package set
 
-import types "lvgl-go/src/types"
-
 /*
 #cgo CFLAGS: -I../include/
 #cgo LDFLAGS: -L../lib -llvgl

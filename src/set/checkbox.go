@@ -12,24 +12,24 @@ import (
 	"unsafe"
 )
 
-type SetCheckbox set
+type Checkbox set
 
-func CreateCheckbox(o *types.LvObjT) SetCheckbox {
-	return SetCheckbox{
+func CreateCheckbox(o *types.LvObjT) Checkbox {
+	return Checkbox{
 		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
 	}
 }
 
-func (setter SetCheckbox) GetObj() *types.LvObjT {
+func (setter Checkbox) GetObj() *types.LvObjT {
 	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
 }
 
-func (setter SetCheckbox) SetText(txt string) SetCheckbox {
+func (setter Checkbox) Text(txt string) Checkbox {
 	C.lv_checkbox_set_text(setter.CStructLvObjT, C.CString(txt))
 
 	return setter
 }
-func (setter SetCheckbox) SetTextStatic(txt string) SetCheckbox {
+func (setter Checkbox) TextStatic(txt string) Checkbox {
 	C.lv_checkbox_set_text_static(setter.CStructLvObjT, C.CString(txt))
 
 	return setter

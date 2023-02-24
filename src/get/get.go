@@ -7,6 +7,7 @@ package get
 */
 import "C"
 
-type Get struct {
-	CStructLvObjT *C.struct__lv_obj_t
+type TgetC *C.struct__lv_obj_t
+type get struct {
+	CStructLvObjT TgetC
 }
