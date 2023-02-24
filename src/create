@@ -1,0 +1,20 @@
+_setAnimimg  set.SetAnimimg
+_setArea     set.SetArea
+_setCanvas   set.SetCanvas
+_setCheckbox set.SetCheckbox
+_setLabel    set.SetLabel
+_setLine     set.SetLine
+_setSpangrou set.SetSpangroup
+_setTable    set.SetTable
+_setTheme    set.SetTheme
+_setArc      set.SetArc
+_setBar      set.SetBar
+_setChart    set.SetChart
+_setImg      set.SetImg
+_setLed      set.SetLed
+_setObj      set.SetObj
+_setSpan     set.SetSpan
+_setStyle    set.SetStyle
+_setTextarea set.SetTextarea
+
+set.SetAnimimg| set.SetArea| set.SetCanvas| set.SetCheckbox| set.SetLabel| set.SetLine| set.SetSpangroup| set.SetTable| set.SetTheme| set.SetArc| set.SetBar| set.SetChart| set.SetImg| set.SetLed| set.SetObj| set.SetSpan| set.SetStyle| set.SetTextarea

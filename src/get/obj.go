@@ -13,6 +13,15 @@ import (
 
 type GetObj Get
 
+func CreateObj(o *lib.LvObjT) GetObj {
+	return GetObj{
+		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
+	}
+}
+func (setter GetObj) GetObj() *lib.LvObjT {
+	return (*lib.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
+}
+
 func (getter GetObj) GetStyleProp(part lib.LvPartT, prop lib.LvStylePropT) lib.LvStyleValueT {
 	res := C.lv_obj_get_style_prop(getter.CStructLvObjT, C.lv_part_t(part), C.lv_style_prop_t(prop))
 

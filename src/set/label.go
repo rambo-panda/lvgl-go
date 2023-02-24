@@ -24,7 +24,8 @@ func (setter SetLabel) GetObj() *lib.LvObjT {
 }
 
 func (setter SetLabel) SetText(text string) SetLabel {
-	C.lv_label_set_text(setter.CStructLvObjT, C.CString(text))
+	j := C.CString(text)
+	C.lv_label_set_text(setter.CStructLvObjT, j)
 
 	return setter
 }
