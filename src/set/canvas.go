@@ -20,10 +20,6 @@ func CreateCanvas(o *types.LvObjT) Canvas {
 	}
 }
 
-func (setter Canvas) GetObj() *types.LvObjT {
-	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
-}
-
 func (setter Canvas) Buffer(buf any, w types.LvCoordT, h types.LvCoordT, cf types.LvImgCfT) Canvas {
 	C.lv_canvas_set_buffer(setter.CStructLvObjT, unsafe.Pointer(&buf), C.lv_coord_t(w), C.lv_coord_t(h), C.lv_img_cf_t(cf))
 

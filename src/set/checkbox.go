@@ -20,10 +20,6 @@ func CreateCheckbox(o *types.LvObjT) Checkbox {
 	}
 }
 
-func (setter Checkbox) GetObj() *types.LvObjT {
-	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
-}
-
 func (setter Checkbox) Text(txt string) Checkbox {
 	C.lv_checkbox_set_text(setter.CStructLvObjT, C.CString(txt))
 

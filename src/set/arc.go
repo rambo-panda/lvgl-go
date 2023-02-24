@@ -20,10 +20,6 @@ func CreateArc(o *types.LvObjT) Arc {
 	}
 }
 
-func (setter Arc) GetObj() *types.LvObjT {
-	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
-}
-
 func (setter Arc) StartAngle(start uint16) Arc {
 	C.lv_arc_set_start_angle(setter.CStructLvObjT, C.ushort(start))
 

@@ -20,10 +20,6 @@ func CreateTheme(o *types.LvObjT) Theme {
 	}
 }
 
-func (setter Theme) GetObj() *types.LvObjT {
-	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
-}
-
 func (setter Theme) Parent(new_theme *types.LvThemeT, parent *types.LvThemeT) Theme {
 	C.lv_theme_set_parent((*C.lv_theme_t)(unsafe.Pointer(new_theme)), (*C.lv_theme_t)(unsafe.Pointer(parent)))
 

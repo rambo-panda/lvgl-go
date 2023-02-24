@@ -20,10 +20,6 @@ func CreateTable(o *types.LvObjT) Table {
 	}
 }
 
-func (setter Table) GetObj() *types.LvObjT {
-	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
-}
-
 func (setter Table) CellValue(row uint16, col uint16, txt string) Table {
 	C.lv_table_set_cell_value(setter.CStructLvObjT, C.ushort(row), C.ushort(col), C.CString(txt))
 

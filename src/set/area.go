@@ -20,10 +20,6 @@ func CreateArea(o *types.LvObjT) Area {
 	}
 }
 
-func (setter Area) GetObj() *types.LvObjT {
-	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
-}
-
 func (setter Area) Width(area_p *types.LvAreaT, w types.LvCoordT) Area {
 	C.lv_area_set_width((*C.lv_area_t)(unsafe.Pointer(area_p)), C.lv_coord_t(w))
 

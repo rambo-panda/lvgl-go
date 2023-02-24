@@ -20,10 +20,6 @@ func CreateSpangroup(o *types.LvObjT) Spangroup {
 	}
 }
 
-func (setter Spangroup) GetObj() *types.LvObjT {
-	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
-}
-
 func (setter Spangroup) Align(align types.LvTextAlignT) Spangroup {
 	C.lv_spangroup_set_align(setter.CStructLvObjT, C.lv_text_align_t(align))
 

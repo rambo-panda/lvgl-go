@@ -20,10 +20,6 @@ func CreateLine(o *types.LvObjT) Line {
 	}
 }
 
-func (setter Line) GetObj() *types.LvObjT {
-	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
-}
-
 func (setter Line) YInvert(en bool) Line {
 	C.lv_line_set_y_invert(setter.CStructLvObjT, C.bool(en))
 

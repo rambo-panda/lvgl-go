@@ -20,10 +20,6 @@ func CreateStyle(o *types.LvObjT) Style {
 	}
 }
 
-func (setter Style) GetObj() *types.LvObjT {
-	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
-}
-
 func (setter Style) Width(style *types.LvStyleT, value types.LvCoordT) Style {
 	C.lv_style_set_width((*C.lv_style_t)(unsafe.Pointer(style)), C.lv_coord_t(value))
 

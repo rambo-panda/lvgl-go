@@ -20,10 +20,6 @@ func CreateImg(o *types.LvObjT) Img {
 	}
 }
 
-func (setter Img) GetObj() *types.LvObjT {
-	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
-}
-
 func (setter Img) Src(src any) Img {
 	C.lv_img_set_src(setter.CStructLvObjT, unsafe.Pointer(&src))
 

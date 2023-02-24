@@ -7,8 +7,8 @@ package set
 */
 import "C"
 
-type TsetC *C.struct__lv_obj_t
+type LvObjT *C.struct__lv_obj_t
 
 type set struct {
-	CStructLvObjT TsetC
+	CStructLvObjT LvObjT
 }
