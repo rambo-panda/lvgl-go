@@ -1,5 +1,7 @@
 package set
 
+import types "lvgl-go/src/types"
+
 /*
 #cgo CFLAGS: -I../include/
 #cgo LDFLAGS: -L../lib -llvgl
@@ -7,6 +9,8 @@ package set
 */
 import "C"
 
+type TsetC *C.struct__lv_obj_t
+
 type set struct {
-	CStructLvObjT *C.struct__lv_obj_t
+	CStructLvObjT TsetC
 }

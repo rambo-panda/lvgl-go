@@ -1,5 +1,7 @@
 package set
 
+import types "lvgl-go/src/types"
+
 /*
 #cgo CFLAGS: -I../include/
 #cgo LDFLAGS: -L../lib -llvgl
@@ -7,20 +9,19 @@ package set
 */
 import "C"
 import (
-	lib "lvgl-go/src/lib"
 	"unsafe"
 )
 
 type SetArc set
 
-func CreateArc(o *lib.LvObjT) SetArc {
+func CreateArc(o *types.LvObjT) SetArc {
 	return SetArc{
 		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
 	}
 }
 
-func (setter SetArc) GetObj() *lib.LvObjT {
-	return (*lib.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
+func (setter SetArc) GetObj() *types.LvObjT {
+	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
 }
 
 func (setter SetArc) SetStartAngle(start uint16) SetArc {
@@ -58,7 +59,7 @@ func (setter SetArc) SetRotation(rotation uint16) SetArc {
 
 	return setter
 }
-func (setter SetArc) SetMode(_type lib.LvArcModeT) SetArc {
+func (setter SetArc) SetMode(_type types.LvArcModeT) SetArc {
 	C.lv_arc_set_mode(setter.CStructLvObjT, C.lv_arc_mode_t(_type))
 
 	return setter

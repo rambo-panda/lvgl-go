@@ -1,26 +1,27 @@
 package set
 
+import (
+	types "lvgl-go/src/types"
+	"unsafe"
+)
+
 /*
 #cgo CFLAGS: -I../include/
 #cgo LDFLAGS: -L../lib -llvgl
 #include "lv_init.h"
 */
 import "C"
-import (
-	lib "lvgl-go/src/lib"
-	"unsafe"
-)
 
 type SetAnimimg set
 
-func CreateAnimimg(o *lib.LvObjT) SetAnimimg {
+func CreateAnimimg(o *types.LvObjT) SetAnimimg {
 	return SetAnimimg{
 		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
 	}
 }
 
-func (setter SetAnimimg) GetObj() *lib.LvObjT {
-	return (*lib.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
+func (setter SetAnimimg) GetObj() *types.LvObjT {
+	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
 }
 
 func (setter SetAnimimg) SetDuration(duration uint32) SetAnimimg {

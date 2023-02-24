@@ -1,5 +1,7 @@
 package set
 
+import types "lvgl-go/src/types"
+
 /*
 #cgo CFLAGS: -I../include/
 #cgo LDFLAGS: -L../lib -llvgl
@@ -7,20 +9,25 @@ package set
 */
 import "C"
 import (
-	lib "lvgl-go/src/lib"
 	"unsafe"
 )
 
 type SetLabel set
 
-func CreateLabel(o *lib.LvObjT) SetLabel {
-	return SetLabel{
-		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
-	}
-}
+// func CreateLabel(o CI) SetLabel {
+// 	return SetLabel{
+// 		CStructLvObjT:
+// 	}
+// }
 
-func (setter SetLabel) GetObj() *lib.LvObjT {
-	return (*lib.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
+// func CreateLabel(o *types.LvObjT) SetLabel {
+// 	return SetLabel{
+// 		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
+// 	}
+// }
+
+func (setter SetLabel) GetObj() *types.LvObjT {
+	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
 }
 
 func (setter SetLabel) SetText(text string) SetLabel {
@@ -34,7 +41,7 @@ func (setter SetLabel) SetTextStatic(text string) SetLabel {
 
 	return setter
 }
-func (setter SetLabel) SetLongMode(long_mode lib.LvLabelLongModeT) SetLabel {
+func (setter SetLabel) SetLongMode(long_mode types.LvLabelLongModeT) SetLabel {
 	C.lv_label_set_long_mode(setter.CStructLvObjT, C.lv_label_long_mode_t(long_mode))
 
 	return setter
