@@ -14,33 +14,41 @@ import (
 )
 
 type tCreate[
-	SetT set.SetAnimimg | set.SetArea | set.SetCanvas | set.SetCheckbox | set.SetLabel | set.SetLine | set.SetSpangroup | set.SetTable | set.SetTheme | set.SetArc | set.SetBar | set.SetChart | set.SetImg | set.SetLed | set.SetObj | set.SetSpan | set.SetStyle | set.SetTextarea,
-	GetT get.Get | get.GetLabel | get.GetObj] struct {
-	// _setAnimimg  set.SetAnimimg
-	// _setArea     set.SetArea
-	// _setCanvas   set.SetCanvas
-	// _setCheckbox set.SetCheckbox
-	// _setLabel    set.SetLabel
-	// _setLine     set.SetLine
-	// _setSpangrou set.SetSpangroup
-	// _setTable    set.SetTable
-	// _setTheme    set.SetTheme
-	// _setArc      set.SetArc
-	// _setBar      set.SetBar
-	// _setChart    set.SetChart
-	// _setImg      set.SetImg
-	// _setLed      set.SetLed
-	// _setObj      set.SetObj
-	// _setSpan     set.SetSpan
-	// _setStyle    set.SetStyle
-	// _setTextarea set.SetTextarea
+	SetT set.Animimg | set.Area | set.Canvas | set.Checkbox | set.Label | set.Line | set.Spangroup | set.Table | set.Theme | set.Arc | set.Bar | set.Chart | set.Img | set.Led | set.Obj | set.Span | set.Style | set.Textarea,
+	GetT get.Label | get.Obj] struct {
+	// _setAnimimg  set.Animimg
+	// _setArea     set.Area
+	// _setCanvas   set.Canvas
+	// _setCheckbox set.Checkbox
+	// _setLabel    set.Label
+	// _setLine     set.Line
+	// _setSpangrou set.Spangroup
+	// _setTable    set.Table
+	// _setTheme    set.Theme
+	// _setArc      set.Arc
+	// _setBar      set.Bar
+	// _setChart    set.Chart
+	// _setImg      set.Img
+	// _setLed      set.Led
+	// _setObj      set.Obj
+	// _setSpan     set.Span
+	// _setStyle    set.Style
+	// _setTextarea set.Textarea
 	Set SetT
 	Get GetT
 }
 
-func c2goObj(o *C.struct__lv_obj_t) *types.LvObjT {
-	return (*types.LvObjT)(unsafe.Pointer(o))
-}
+// func c2goObj[T *C.struct__lv_obj_t | set.TsetC](o T, t string) *lib.LvObjT {
+// 	switch t {
+// 	case "darwin":
+// 		fmt.Println("OS X.")
+// 	case "linux":
+// 		return (*lib.LvObjT)(unsafe.Pointer(o))
+// 	default:
+// 		return (*lib.LvObjT)(unsafe.Pointer(o))
+// 	}
+// }
+
 func getParent(o *types.LvObjT) *C.struct__lv_obj_t {
 	if o == nil {
 		return C.lv_scr_act()
@@ -52,7 +60,7 @@ func getParent(o *types.LvObjT) *C.struct__lv_obj_t {
 //	func CreateAnimimg(o *types.LvObjT) tCreate {
 //		var c tCreate[set.SetAnimimg, get.GetObj]
 //		return tCreate{
-//			Set: set.CreateAnimimg(getParent(o)),
+//			: set.CreateAnimimg(getParent(o)),
 //		}
 //	}
 //
@@ -83,12 +91,15 @@ func getParent(o *types.LvObjT) *C.struct__lv_obj_t {
 //	func CreateImg(o *types.LvObjT) set.SetImg {
 //		return set.CreateImg(getParent(o))
 //	}
-func CreateLabel(o *types.LvObjT) tCreate[set.SetLabel, get.GetLabel] {
+func c2goObj(o *C.struct__lv_obj_t) *types.LvObjT {
+	return (*types.LvObjT)(unsafe.Pointer(o))
+}
+func CreateLabel(o *types.LvObjT) tCreate[set.Label, get.Label] {
 	p := getParent(o)
 	label := C.lv_label_create(p)
 	j := c2goObj(label)
 
-	return tCreate[set.SetLabel, get.GetLabel]{
+	return tCreate[set.Label, get.Label]{
 		Set: set.CreateLabel(j),
 		// Get: get.CreateLable(j),
 	}

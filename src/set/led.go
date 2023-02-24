@@ -12,24 +12,24 @@ import (
 	"unsafe"
 )
 
-type SetLed set
+type Led set
 
-func CreateLed(o *types.LvObjT) SetLed {
-	return SetLed{
+func CreateLed(o *types.LvObjT) Led {
+	return Led{
 		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
 	}
 }
 
-func (setter SetLed) GetObj() *types.LvObjT {
+func (setter Led) GetObj() *types.LvObjT {
 	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
 }
 
-func (setter SetLed) SetColor(color types.LvColorT) SetLed {
+func (setter Led) Color(color types.LvColorT) Led {
 	C.lv_led_set_color(setter.CStructLvObjT, C.lv_color_t(color))
 
 	return setter
 }
-func (setter SetLed) SetBrightness(bright uint8) SetLed {
+func (setter Led) Brightness(bright uint8) Led {
 	C.lv_led_set_brightness(setter.CStructLvObjT, C.uint8_t(bright))
 
 	return setter

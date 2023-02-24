@@ -1,6 +1,9 @@
 package set
 
-import "lvgl-go/src/types"
+import (
+	"lvgl-go/src/types"
+	"unsafe"
+)
 
 /*
 #cgo CFLAGS: -I../include/
@@ -8,55 +11,52 @@ import "lvgl-go/src/types"
 #include "lv_init.h"
 */
 import "C"
-import (
-	"unsafe"
-)
 
-type SetLabel set
+type Label set
 
-// func CreateLabel(o CI) SetLabel {
-// 	return SetLabel{
+// func CreateLabel(o CI) Label {
+// 	return Label{
 // 		CStructLvObjT:
 // 	}
 // }
 
-func CreateLabel(o *types.LvObjT) SetLabel {
-	return SetLabel{
+func CreateLabel(o *types.LvObjT) Label {
+	return Label{
 		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
 	}
 }
 
-func (setter SetLabel) GetObj() *types.LvObjT {
+func (setter Label) GetObj() *types.LvObjT {
 	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
 }
 
-func (setter SetLabel) SetText(text string) SetLabel {
+func (setter Label) Text(text string) Label {
 	j := C.CString(text)
 	C.lv_label_set_text(setter.CStructLvObjT, j)
 
 	return setter
 }
-func (setter SetLabel) SetTextStatic(text string) SetLabel {
+func (setter Label) TextStatic(text string) Label {
 	C.lv_label_set_text_static(setter.CStructLvObjT, C.CString(text))
 
 	return setter
 }
-func (setter SetLabel) SetLongMode(long_mode types.LvLabelLongModeT) SetLabel {
+func (setter Label) LongMode(long_mode types.LvLabelLongModeT) Label {
 	C.lv_label_set_long_mode(setter.CStructLvObjT, C.lv_label_long_mode_t(long_mode))
 
 	return setter
 }
-func (setter SetLabel) SetRecolor(en bool) SetLabel {
+func (setter Label) Recolor(en bool) Label {
 	C.lv_label_set_recolor(setter.CStructLvObjT, C.bool(en))
 
 	return setter
 }
-func (setter SetLabel) SetTextSelStart(index uint32) SetLabel {
+func (setter Label) TextSelStart(index uint32) Label {
 	C.lv_label_set_text_sel_start(setter.CStructLvObjT, C.uint(index))
 
 	return setter
 }
-func (setter SetLabel) SetTextSelEnd(index uint32) SetLabel {
+func (setter Label) TextSelEnd(index uint32) Label {
 	C.lv_label_set_text_sel_end(setter.CStructLvObjT, C.uint(index))
 
 	return setter

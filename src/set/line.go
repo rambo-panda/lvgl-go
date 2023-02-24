@@ -12,19 +12,19 @@ import (
 	"unsafe"
 )
 
-type SetLine set
+type Line set
 
-func CreateLine(o *types.LvObjT) SetLine {
-	return SetLine{
+func CreateLine(o *types.LvObjT) Line {
+	return Line{
 		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
 	}
 }
 
-func (setter SetLine) GetObj() *types.LvObjT {
+func (setter Line) GetObj() *types.LvObjT {
 	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
 }
 
-func (setter SetLine) SetYInvert(en bool) SetLine {
+func (setter Line) YInvert(en bool) Line {
 	C.lv_line_set_y_invert(setter.CStructLvObjT, C.bool(en))
 
 	return setter

@@ -8,7 +8,7 @@ import (
 func main() {
 	lib.Ready()
 	label := lvgl_go.CreateLabel(nil)
-	label.Set.SetText("jjjjj")
+	label.Set.Text("jjjjj")
 	// lvgl_go.Demo()
 	lib.TaskHandler(0)
 }

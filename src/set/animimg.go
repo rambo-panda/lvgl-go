@@ -12,24 +12,24 @@ import (
 */
 import "C"
 
-type SetAnimimg set
+type Animimg set
 
-func CreateAnimimg(o *types.LvObjT) SetAnimimg {
-	return SetAnimimg{
+func CreateAnimimg(o *types.LvObjT) Animimg {
+	return Animimg{
 		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
 	}
 }
 
-func (setter SetAnimimg) GetObj() *types.LvObjT {
+func (setter Animimg) GetObj() *types.LvObjT {
 	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
 }
 
-func (setter SetAnimimg) SetDuration(duration uint32) SetAnimimg {
+func (setter Animimg) Duration(duration uint32) Animimg {
 	C.lv_animimg_set_duration(setter.CStructLvObjT, C.uint(duration))
 
 	return setter
 }
-func (setter SetAnimimg) SetRepeatCount(count uint16) SetAnimimg {
+func (setter Animimg) RepeatCount(count uint16) Animimg {
 	C.lv_animimg_set_repeat_count(setter.CStructLvObjT, C.ushort(count))
 
 	return setter

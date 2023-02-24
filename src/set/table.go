@@ -12,34 +12,34 @@ import (
 	"unsafe"
 )
 
-type SetTable set
+type Table set
 
-func CreateTable(o *types.LvObjT) SetTable {
-	return SetTable{
+func CreateTable(o *types.LvObjT) Table {
+	return Table{
 		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
 	}
 }
 
-func (setter SetTable) GetObj() *types.LvObjT {
+func (setter Table) GetObj() *types.LvObjT {
 	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
 }
 
-func (setter SetTable) SetCellValue(row uint16, col uint16, txt string) SetTable {
+func (setter Table) CellValue(row uint16, col uint16, txt string) Table {
 	C.lv_table_set_cell_value(setter.CStructLvObjT, C.ushort(row), C.ushort(col), C.CString(txt))
 
 	return setter
 }
-func (setter SetTable) SetRowCnt(row_cnt uint16) SetTable {
+func (setter Table) RowCnt(row_cnt uint16) Table {
 	C.lv_table_set_row_cnt(setter.CStructLvObjT, C.ushort(row_cnt))
 
 	return setter
 }
-func (setter SetTable) SetColCnt(col_cnt uint16) SetTable {
+func (setter Table) ColCnt(col_cnt uint16) Table {
 	C.lv_table_set_col_cnt(setter.CStructLvObjT, C.ushort(col_cnt))
 
 	return setter
 }
-func (setter SetTable) SetColWidth(col_id uint16, w types.LvCoordT) SetTable {
+func (setter Table) ColWidth(col_id uint16, w types.LvCoordT) Table {
 	C.lv_table_set_col_width(setter.CStructLvObjT, C.ushort(col_id), C.lv_coord_t(w))
 
 	return setter
