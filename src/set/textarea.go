@@ -1,5 +1,7 @@
 package set
 
+import types "lvgl-go/src/types"
+
 /*
 #cgo CFLAGS: -I../include/
 #cgo LDFLAGS: -L../lib -llvgl
@@ -7,20 +9,19 @@ package set
 */
 import "C"
 import (
-	lib "lvgl-go/src/lib"
 	"unsafe"
 )
 
 type SetTextarea set
 
-func CreateTextarea(o *lib.LvObjT) SetTextarea {
+func CreateTextarea(o *types.LvObjT) SetTextarea {
 	return SetTextarea{
 		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
 	}
 }
 
-func (setter SetTextarea) GetObj() *lib.LvObjT {
-	return (*lib.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
+func (setter SetTextarea) GetObj() *types.LvObjT {
+	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
 }
 
 func (setter SetTextarea) SetText(txt string) SetTextarea {
@@ -83,7 +84,7 @@ func (setter SetTextarea) SetPasswordShowTime(time uint16) SetTextarea {
 
 	return setter
 }
-func (setter SetTextarea) SetAlign(align lib.LvTextAlignT) SetTextarea {
+func (setter SetTextarea) SetAlign(align types.LvTextAlignT) SetTextarea {
 	C.lv_textarea_set_align(setter.CStructLvObjT, C.lv_text_align_t(align))
 
 	return setter

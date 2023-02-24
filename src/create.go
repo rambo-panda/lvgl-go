@@ -8,8 +8,8 @@ package lvgl_go
 import "C"
 import (
 	"lvgl-go/src/get"
-	"lvgl-go/src/lib"
 	"lvgl-go/src/set"
+	"lvgl-go/src/types"
 	"unsafe"
 )
 
@@ -38,10 +38,10 @@ type tCreate[
 	Get GetT
 }
 
-func c2goObj(o *C.struct__lv_obj_t) *lib.LvObjT {
-	return (*lib.LvObjT)(unsafe.Pointer(o))
+func c2goObj(o *C.struct__lv_obj_t) *types.LvObjT {
+	return (*types.LvObjT)(unsafe.Pointer(o))
 }
-func getParent(o *lib.LvObjT) *C.struct__lv_obj_t {
+func getParent(o *types.LvObjT) *C.struct__lv_obj_t {
 	if o == nil {
 		return C.lv_scr_act()
 	}
@@ -49,75 +49,75 @@ func getParent(o *lib.LvObjT) *C.struct__lv_obj_t {
 	return (*C.struct__lv_obj_t)(unsafe.Pointer(o))
 }
 
-//	func CreateAnimimg(o *lib.LvObjT) tCreate {
+//	func CreateAnimimg(o *types.LvObjT) tCreate {
 //		var c tCreate[set.SetAnimimg, get.GetObj]
 //		return tCreate{
 //			Set: set.CreateAnimimg(getParent(o)),
 //		}
 //	}
 //
-//	func CreateArc(o *lib.LvObjT) _create {
+//	func CreateArc(o *types.LvObjT) _create {
 //		return set.CreateArc(getParent(o))
 //	}
 //
-//	func CreateArea(o *lib.LvObjT) set.SetArea {
+//	func CreateArea(o *types.LvObjT) set.SetArea {
 //		return set.CreateArea(getParent(o))
 //	}
 //
-//	func CreateBar(o *lib.LvObjT) set.SetBar {
+//	func CreateBar(o *types.LvObjT) set.SetBar {
 //		return set.CreateBar(getParent(o))
 //	}
 //
-//	func CreateCanvas(o *lib.LvObjT) set.SetCanvas {
+//	func CreateCanvas(o *types.LvObjT) set.SetCanvas {
 //		return set.CreateCanvas(getParent(o))
 //	}
 //
-//	func CreateChart(o *lib.LvObjT) set.SetChart {
+//	func CreateChart(o *types.LvObjT) set.SetChart {
 //		return set.CreateChart(getParent(o))
 //	}
 //
-//	func CreateCheckbox(o *lib.LvObjT) set.SetCheckbox {
+//	func CreateCheckbox(o *types.LvObjT) set.SetCheckbox {
 //		return set.CreateCheckbox(getParent(o))
 //	}
 //
-//	func CreateImg(o *lib.LvObjT) set.SetImg {
+//	func CreateImg(o *types.LvObjT) set.SetImg {
 //		return set.CreateImg(getParent(o))
 //	}
-func CreateLabel(o *lib.LvObjT) tCreate[set.SetLabel, get.GetLabel] {
+func CreateLabel(o *types.LvObjT) tCreate[set.SetLabel, get.GetLabel] {
 	p := getParent(o)
 	label := C.lv_label_create(p)
 	j := c2goObj(label)
 
 	return tCreate[set.SetLabel, get.GetLabel]{
 		Set: set.CreateLabel(j),
-		Get: get.CreateLable(j),
+		// Get: get.CreateLable(j),
 	}
 }
 
-// func CreateLed(o *lib.LvObjT) set.SetLed {
+// func CreateLed(o *types.LvObjT) set.SetLed {
 // 	return set.CreateLed(getParent(o))
 // }
-// func CreateLine(o *lib.LvObjT) set.SetLine {
+// func CreateLine(o *types.LvObjT) set.SetLine {
 // 	return set.CreateLine(getParent(o))
 // }
-// func CreateObj(o *lib.LvObjT) set.SetObj {
+// func CreateObj(o *types.LvObjT) set.SetObj {
 // 	return set.CreateObj(getParent(o))
 // }
-// func CreateSpan(o *lib.LvObjT) set.SetSpan {
+// func CreateSpan(o *types.LvObjT) set.SetSpan {
 // 	return set.CreateSpan(getParent(o))
 // }
-// func CreateSpangroup(o *lib.LvObjT) set.SetSpangroup {
+// func CreateSpangroup(o *types.LvObjT) set.SetSpangroup {
 // 	return set.CreateSpangroup(getParent(o))
 // }
-// func CreateStyle(o *lib.LvObjT) set.SetStyle {
+// func CreateStyle(o *types.LvObjT) set.SetStyle {
 // 	return set.CreateStyle(getParent(o))
 // }
-// func CreateTable(o *lib.LvObjT) set.SetTable {
+// func CreateTable(o *types.LvObjT) set.SetTable {
 // 	return set.CreateTable(getParent(o))
 // }
-// func CreateTextarea(o *lib.LvObjT) set.SetTextarea {
+// func CreateTextarea(o *types.LvObjT) set.SetTextarea {
 // 	return set.CreateTextarea(getParent(o))
 // }
-// func CreateTheme(o *lib.LvObjT) set.SetTheme {
+// func CreateTheme(o *types.LvObjT) set.SetTheme {
 // 	return set.CreateTheme(getParent(o))
 // }

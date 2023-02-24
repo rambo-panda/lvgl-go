@@ -1,7 +1,8 @@
-package lib
+package types
 
 /*
 #include "lv_init.h"
+#cgo CFLAGS: -I../include/
 static const int _LV_SIZE_CONTENT = LV_SIZE_CONTENT;
 */
 import "C"

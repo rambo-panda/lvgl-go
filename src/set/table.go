@@ -1,5 +1,7 @@
 package set
 
+import types "lvgl-go/src/types"
+
 /*
 #cgo CFLAGS: -I../include/
 #cgo LDFLAGS: -L../lib -llvgl
@@ -7,20 +9,19 @@ package set
 */
 import "C"
 import (
-	lib "lvgl-go/src/lib"
 	"unsafe"
 )
 
 type SetTable set
 
-func CreateTable(o *lib.LvObjT) SetTable {
+func CreateTable(o *types.LvObjT) SetTable {
 	return SetTable{
 		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
 	}
 }
 
-func (setter SetTable) GetObj() *lib.LvObjT {
-	return (*lib.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
+func (setter SetTable) GetObj() *types.LvObjT {
+	return (*types.LvObjT)(unsafe.Pointer(setter.CStructLvObjT))
 }
 
 func (setter SetTable) SetCellValue(row uint16, col uint16, txt string) SetTable {
@@ -38,7 +39,7 @@ func (setter SetTable) SetColCnt(col_cnt uint16) SetTable {
 
 	return setter
 }
-func (setter SetTable) SetColWidth(col_id uint16, w lib.LvCoordT) SetTable {
+func (setter SetTable) SetColWidth(col_id uint16, w types.LvCoordT) SetTable {
 	C.lv_table_set_col_width(setter.CStructLvObjT, C.ushort(col_id), C.lv_coord_t(w))
 
 	return setter
