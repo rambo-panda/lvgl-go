@@ -5,12 +5,10 @@ package create
 #cgo LDFLAGS: -L../lib -llvgl
 #include "lv_init.h"
 */
-import "C"
 import (
 	"lvgl-go/src/get"
 	"lvgl-go/src/set"
 	"lvgl-go/src/types"
-	"unsafe"
 )
 
 type tCreate[
@@ -18,14 +16,6 @@ type tCreate[
 	GetT get.Label | get.Obj] struct {
 	Set SetT
 	Get GetT
-}
-
-func getParent(o *types.LvObjT) *C.struct__lv_obj_t {
-	if o == nil {
-		return C.lv_scr_act()
-	}
-
-	return (*C.struct__lv_obj_t)(unsafe.Pointer(o))
 }
 
 //	func CreateAnimimg(o *types.LvObjT) tCreate {
@@ -62,16 +52,15 @@ func getParent(o *types.LvObjT) *C.struct__lv_obj_t {
 //	func CreateImg(o *types.LvObjT) set.SetImg {
 //		return set.CreateImg(getParent(o))
 //	}
-func c2goObj(o *C.struct__lv_obj_t) *types.LvObjT {
-	return (*types.LvObjT)(unsafe.Pointer(o))
-}
 func CreateLabel(o *types.LvObjT) tCreate[set.Label, get.Label] {
-	p := getParent(o)
-	label := C.lv_label_create(p)
-	j := c2goObj(label)
+	// p := lib.GetParent(o)
+	// _p := (*C.struct__lv_obj_t)(unsafe.Pointer(p))
+	// label := C.lv_label_create(_p)
+
+	// j := c2goObj(label)
 
 	return tCreate[set.Label, get.Label]{
-		Set: set.CreateLabel(j),
+		Set: set.CreateLabel(o),
 		// Get: get.CreateLable(j),
 	}
 }
