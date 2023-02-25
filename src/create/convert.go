@@ -1,5 +1,18 @@
 package create
 
+/*
+#include "lv_init.h"
+*/
+import "C"
+import (
+	"lvgl-go/src/types"
+	"unsafe"
+)
+
+func Go2CObj(o *types.LvObjT) *C.struct__lv_obj_t {
+	return (*C.struct__lv_obj_t)(unsafe.Pointer(o))
+}
+
 // import (
 // 	"lvgl-go/src/get"
 // 	"lvgl-go/src/set"

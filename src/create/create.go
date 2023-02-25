@@ -5,8 +5,10 @@ package create
 #cgo LDFLAGS: -L../lib -llvgl
 #include "lv_init.h"
 */
+import "C"
 import (
 	"lvgl-go/src/get"
+	"lvgl-go/src/lib"
 	"lvgl-go/src/set"
 	"lvgl-go/src/types"
 )
@@ -14,6 +16,7 @@ import (
 type tCreate[
 	SetT set.Animimg | set.Area | set.Canvas | set.Checkbox | set.Label | set.Line | set.Spangroup | set.Table | set.Theme | set.Arc | set.Bar | set.Chart | set.Img | set.Led | set.Obj | set.Span | set.Style | set.Textarea,
 	GetT get.Label | get.Obj] struct {
+	o   *types.LvObjT
 	Set SetT
 	Get GetT
 }
@@ -53,20 +56,24 @@ type tCreate[
 //		return set.CreateImg(getParent(o))
 //	}
 func CreateLabel(o *types.LvObjT) tCreate[set.Label, get.Label] {
-	return tCreate[set.Label, get.Label]{
-		Set: set.CreateLabel(o),
-		// Get: get.CreateLable(j),
-	}
-}
-func CreateObj(o any) tCreate[set.Label, get.Label] {
-	_o := convert(o)
+	goO := lib.C2GoObj(C.lv_label_create(Go2CObj(lib.GetParent(o))))
 
 	return tCreate[set.Label, get.Label]{
-		o:   _o,
-		Set: set.CreateLable(_o),
-		Get: get.CreateLable(_o),
+		o:   goO,
+		Set: set.CreateLabel(goO),
+		Get: get.CreateLable(goO),
 	}
 }
+
+// func CreateObj(o any) tCreate[set.Label, get.Label] {
+// 	// _o := convert(o)
+
+// 	return tCreate[set.Label, get.Label]{
+// 		o:   _o,
+// 		Set: set.CreateLable(_o),
+// 		Get: get.CreateLable(_o),
+// 	}
+// }
 
 // func CreateLed(o *types.LvObjT) set.SetLed {
 // 	return set.CreateLed(getParent(o))

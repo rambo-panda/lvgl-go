@@ -14,10 +14,8 @@ import "C"
 type Label set
 
 func CreateLabel(o *types.LvObjT) Label {
-	label := C.lv_label_create(Go2CObj(o, true))
-
 	return Label{
-		CStructLvObjT: label,
+		CStructLvObjT: Go2CObj(o),
 	}
 }
 func (setter Label) Text(text string) Label {

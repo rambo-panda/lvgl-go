@@ -20,7 +20,7 @@ func CreateObj(o *types.LvObjT) Obj {
 	if nil == o {
 		_o = C.lv_obj_create(nil) // create a screen
 	} else {
-		_o = Go2CObj(o, false)
+		_o = Go2CObj(o)
 	}
 
 	return Obj{

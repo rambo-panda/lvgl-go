@@ -7,25 +7,14 @@ package set
 */
 import "C"
 import (
-	"lvgl-go/src/lib"
 	types "lvgl-go/src/types"
 	"unsafe"
 )
 
-type _ct *C.struct__lv_obj_t
 type set struct {
-	CStructLvObjT _ct
+	CStructLvObjT *C.struct__lv_obj_t
 }
 
-func Go2CObj(o *types.LvObjT, parent bool) _ct {
-	_o := o
-	if parent {
-		_o = lib.GetParent(o)
-	}
-
-	return (_ct)(unsafe.Pointer(_o))
-}
-
-func getObj(l any) _ct {
-	return (_ct)(l.(unsafe.Pointer))
+func Go2CObj(o *types.LvObjT) *C.struct__lv_obj_t {
+	return (*C.struct__lv_obj_t)(unsafe.Pointer(o))
 }
