@@ -31,7 +31,13 @@ func C2GoObj(o any) *types.LvObjT {
 }
 
 func IsNil(o any) bool {
-	return o == nil || reflect.ValueOf(o).IsNil()
+	if o == nil {
+		return true
+	}
+
+	l := reflect.ValueOf(o)
+
+	return l.Kind() == reflect.Pointer && l.IsNil()
 }
 
 func GetParent(o any) *types.LvObjT {
