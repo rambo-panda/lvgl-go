@@ -1,73 +1,22 @@
-package lvgl_go
+package create
 
-/*
-#cgo CFLAGS: -I./include/
-#cgo LDFLAGS: -L./lib -llvgl
-#include "lv_init.h"
-*/
-import "C"
 import (
-	"fmt"
 	"lvgl-go/src/get"
-	"lvgl-go/src/lib"
 	"lvgl-go/src/set"
-	"unsafe"
+	types "lvgl-go/src/types"
 )
 
 type tCreate[
-	T set.Animimg | set.Area | set.Canvas | set.Checkbox | set.Label | set.Line | set.Spangroup | set.Table | set.Theme | set.Arc | set.Bar | set.Chart | set.Img | set.Led | set.Obj | set.Span | set.Style | set.Textarea,
-	T get.Label | get.Obj] struct {
-	// _setAnimimg  set.Animimg
-	// _setArea     set.Area
-	// _setCanvas   set.Canvas
-	// _setCheckbox set.Checkbox
-	// _setLabel    set.Label
-	// _setLine     set.Line
-	// _setSpangrou set.Spangroup
-	// _setTable    set.Table
-	// _setTheme    set.Theme
-	// _setArc      set.Arc
-	// _setBar      set.Bar
-	// _setChart    set.Chart
-	// _setImg      set.Img
-	// _setLed      set.Led
-	// _setObj      set.Obj
-	// _setSpan     set.Span
-	// _setStyle    set.Style
-	// _setTextarea set.Textarea
-	Set T
-	Get T
+	// TODO: any是因为有些set/get未实现
+	SetT any | set.Animimg | set.Area | set.Canvas | set.Checkbox | set.Label | set.Line | set.Spangroup | set.Table | set.Theme | set.Arc | set.Bar | set.Chart | set.Img | set.Led | set.Obj | set.Span | set.Style | set.Textarea,
+	GetT any | get.Label | get.Obj] struct {
+	o   *types.LvObjT
+	Set SetT
+	Get GetT
 }
 
-// func c2goObj[T *C.struct__lv_obj_t | set.TsetC](o T, t string) *lib.LvObjT {
-// 	switch t {
-// 	case "darwin":
-// 		fmt.Println("OS X.")
-// 	case "linux":
-// 		return (*lib.LvObjT)(unsafe.Pointer(o))
-// 	default:
-// 		return (*lib.LvObjT)(unsafe.Pointer(o))
-// 	}
-// }
-
-func go2cObj(o *lib.LvObjT, t string) any {
-	_o := unsafe.Pointer(o)
-
-	switch t {
-	case "darwin":
-		fmt.Println("OS X.")
-	case "set":
-		return (*set.TsetC)(unsafe.Pointer(o))
-	default:
-		return (*C.struct__lv_obj_t)(_o)
-	}
-}
-func getParent(o *lib.LvObjT) *C.struct__lv_obj_t {
-	if o == nil {
-		return C.lv_scr_act()
-	}
-
-	return go2cObj(o)
+func (c tCreate[SetT, GetT]) getObj() *types.LvObjT {
+	return c.o
 }
 
 //	func CreateAnimimg(o *lib.LvObjT) tCreate {
@@ -104,15 +53,13 @@ func getParent(o *lib.LvObjT) *C.struct__lv_obj_t {
 //	func CreateImg(o *lib.LvObjT) set.Img {
 //		return set.CreateImg(getParent(o))
 //	}
-func CreateLabel(o *lib.LvObjT) tCreate[set.Label, get.Label] {
-	p := getParent(o)
-	label := C.lv_label_create(p)
-	// j := c2goObj(label)
-	j := label
+func CreateLabel(o any) tCreate[set.Label, get.Label] {
+	_o := convert(o)
 
 	return tCreate[set.Label, get.Label]{
-		: set.CreateLabel(j),
-		: get.CreateLable(j),
+		o:   _o,
+		Set: set.CreateLable(_o),
+		Get: get.CreateLable(_o),
 	}
 }
 

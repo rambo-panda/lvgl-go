@@ -1,6 +1,8 @@
 package set
 
-import types "lvgl-go/src/types"
+import (
+	types "lvgl-go/src/types"
+)
 
 /*
 #cgo CFLAGS: -I../include/
@@ -10,6 +12,14 @@ import types "lvgl-go/src/types"
 import "C"
 
 type Label set
+
+func CreateLable(o *types.LvObjT) Label {
+	label := C.lv_label_create(Go2CObj(o))
+
+	return Label{
+		CStructLvObjT: label,
+	}
+}
 
 func (setter Label) Text(text string) Label {
 	j := C.CString(text)
