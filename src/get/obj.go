@@ -1,6 +1,9 @@
 package get
 
-import types "lvgl-go/src/types"
+import (
+	types "lvgl-go/src/types"
+	"unsafe"
+)
 
 /*
 #cgo CFLAGS: -I../include/
@@ -8,15 +11,12 @@ import types "lvgl-go/src/types"
 #include "lv_init.h"
 */
 import "C"
-import (
-	"unsafe"
-)
 
 type Obj get
 
 func CreateObj(o *types.LvObjT) Obj {
 	return Obj{
-		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
+		CStructLvObjT: Go2CObj(o),
 	}
 }
 

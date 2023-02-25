@@ -15,16 +15,8 @@ import "C"
 type Obj set
 
 func CreateObj(o *types.LvObjT) Obj {
-	var _o *C.struct__lv_obj_t
-
-	if nil == o {
-		_o = C.lv_obj_create(nil) // create a screen
-	} else {
-		_o = Go2CObj(o)
-	}
-
 	return Obj{
-		CStructLvObjT: _o,
+		CStructLvObjT: Go2CObj(o),
 	}
 }
 

@@ -14,11 +14,16 @@ import (
 )
 
 type tCreate[
-	SetT set.Animimg | set.Area | set.Canvas | set.Checkbox | set.Label | set.Line | set.Spangroup | set.Table | set.Theme | set.Arc | set.Bar | set.Chart | set.Img | set.Led | set.Obj | set.Span | set.Style | set.Textarea,
-	GetT get.Label | get.Obj] struct {
+	// TODO: any是因为有些set/get未实现
+	SetT any | set.Animimg | set.Area | set.Canvas | set.Checkbox | set.Label | set.Line | set.Spangroup | set.Table | set.Theme | set.Arc | set.Bar | set.Chart | set.Img | set.Led | set.Obj | set.Span | set.Style | set.Textarea,
+	GetT any | get.Label | get.Obj] struct {
 	o   *types.LvObjT
 	Set SetT
 	Get GetT
+}
+
+func (t tCreate[SetT, GetT]) getObj() *types.LvObjT {
+	return t.o
 }
 
 //	func CreateAnimimg(o *types.LvObjT) tCreate {
@@ -65,24 +70,21 @@ func CreateLabel(o *types.LvObjT) tCreate[set.Label, get.Label] {
 	}
 }
 
-// func CreateObj(o any) tCreate[set.Label, get.Label] {
-// 	// _o := convert(o)
+func CreateObj(o any) tCreate[set.Obj, get.Obj] {
+	_o := convertObj(o)
 
-// 	return tCreate[set.Label, get.Label]{
-// 		o:   _o,
-// 		Set: set.CreateLable(_o),
-// 		Get: get.CreateLable(_o),
-// 	}
-// }
+	return tCreate[set.Obj, get.Obj]{
+		o:   _o,
+		Set: set.CreateObj(_o),
+		Get: get.CreateObj(_o),
+	}
+}
 
 // func CreateLed(o *types.LvObjT) set.SetLed {
 // 	return set.CreateLed(getParent(o))
 // }
 // func CreateLine(o *types.LvObjT) set.SetLine {
 // 	return set.CreateLine(getParent(o))
-// }
-// func CreateObj(o *types.LvObjT) set.SetObj {
-// 	return set.CreateObj(getParent(o))
 // }
 // func CreateSpan(o *types.LvObjT) set.SetSpan {
 // 	return set.CreateSpan(getParent(o))
