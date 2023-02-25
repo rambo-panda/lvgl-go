@@ -12,20 +12,20 @@ import (
 	"unsafe"
 )
 
-type _cs *C.struct__lv_obj_t
+type _ct *C.struct__lv_obj_t
 type set struct {
-	CStructLvObjT _cs
+	CStructLvObjT _ct
 }
 
-func Go2CObj(o *types.LvObjT, parent bool) *C.struct__lv_obj_t {
+func Go2CObj(o *types.LvObjT, parent bool) _ct {
 	_o := o
 	if parent {
 		_o = lib.GetParent(o)
 	}
 
-	return (*C.struct__lv_obj_t)(unsafe.Pointer(_o))
+	return (_ct)(unsafe.Pointer(_o))
 }
 
-func getObj(l any) _cs {
-	return (_cs)(l.(unsafe.Pointer))
+func getObj(l any) _ct {
+	return (_ct)(l.(unsafe.Pointer))
 }

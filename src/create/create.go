@@ -53,12 +53,6 @@ type tCreate[
 //		return set.CreateImg(getParent(o))
 //	}
 func CreateLabel(o *types.LvObjT) tCreate[set.Label, get.Label] {
-	// p := lib.GetParent(o)
-	// _p := (*C.struct__lv_obj_t)(unsafe.Pointer(p))
-	// label := C.lv_label_create(_p)
-
-	// j := c2goObj(label)
-
 	return tCreate[set.Label, get.Label]{
 		Set: set.CreateLabel(o),
 		// Get: get.CreateLable(j),
