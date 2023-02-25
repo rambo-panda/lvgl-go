@@ -20,513 +20,513 @@ func CreateObj(o *types.LvObjT) Obj {
 	}
 }
 
-func (setter Obj) LocalStyleProp(obj *types.LvObjT, prop types.LvStylePropT, value types.LvStyleValueT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_local_style_prop((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_style_prop_t(prop), C.lv_style_value_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) LocalStyleProp(prop types.LvStylePropT, value types.LvStyleValueT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_local_style_prop(setter.CStructLvObjT, C.lv_style_prop_t(prop), C.lv_style_value_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) LocalStylePropMeta(obj *types.LvObjT, prop types.LvStylePropT, meta uint16, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_local_style_prop_meta((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_style_prop_t(prop), C.ushort(meta), C.lv_style_selector_t(selector))
+func (setter Obj) LocalStylePropMeta(prop types.LvStylePropT, meta uint16, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_local_style_prop_meta(setter.CStructLvObjT, C.lv_style_prop_t(prop), C.ushort(meta), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleWidth(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_width((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleWidth(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_width(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleMinWidth(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_min_width((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleMinWidth(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_min_width(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleMaxWidth(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_max_width((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleMaxWidth(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_max_width(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleHeight(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_height((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleHeight(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_height(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleMinHeight(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_min_height((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleMinHeight(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_min_height(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleMaxHeight(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_max_height((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleMaxHeight(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_max_height(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleX(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_x((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleX(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_x(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleY(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_y((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleY(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_y(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleAlign(obj *types.LvObjT, value types.LvAlignT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_align((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_align_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleAlign(value types.LvAlignT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_align(setter.CStructLvObjT, C.lv_align_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleTransformWidth(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_transform_width((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleTransformWidth(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_transform_width(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleTransformHeight(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_transform_height((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleTransformHeight(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_transform_height(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleTranslateX(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_translate_x((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleTranslateX(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_translate_x(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleTranslateY(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_translate_y((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleTranslateY(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_translate_y(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleTransformZoom(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_transform_zoom((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleTransformZoom(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_transform_zoom(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleTransformAngle(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_transform_angle((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleTransformAngle(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_transform_angle(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleTransformPivotX(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_transform_pivot_x((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleTransformPivotX(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_transform_pivot_x(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleTransformPivotY(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_transform_pivot_y((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleTransformPivotY(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_transform_pivot_y(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StylePadTop(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_pad_top((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StylePadTop(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_pad_top(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StylePadBottom(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_pad_bottom((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StylePadBottom(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_pad_bottom(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StylePadLeft(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_pad_left((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StylePadLeft(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_pad_left(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StylePadRight(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_pad_right((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StylePadRight(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_pad_right(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StylePadRow(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_pad_row((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StylePadRow(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_pad_row(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StylePadColumn(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_pad_column((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StylePadColumn(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_pad_column(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleBgColor(obj *types.LvObjT, value types.LvColorT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_bg_color((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_color_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleBgColor(value types.LvColorT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_bg_color(setter.CStructLvObjT, C.lv_color_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleBgOpa(obj *types.LvObjT, value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_bg_opa((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_opa_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleBgOpa(value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_bg_opa(setter.CStructLvObjT, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleBgGradColor(obj *types.LvObjT, value types.LvColorT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_bg_grad_color((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_color_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleBgGradColor(value types.LvColorT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_bg_grad_color(setter.CStructLvObjT, C.lv_color_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleBgGradDir(obj *types.LvObjT, value types.LvGradDirT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_bg_grad_dir((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_grad_dir_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleBgGradDir(value types.LvGradDirT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_bg_grad_dir(setter.CStructLvObjT, C.lv_grad_dir_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleBgMainStop(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_bg_main_stop((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleBgMainStop(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_bg_main_stop(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleBgGradStop(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_bg_grad_stop((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleBgGradStop(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_bg_grad_stop(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleBgGrad(obj *types.LvObjT, value *types.LvGradDscT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_bg_grad((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), (*C.lv_grad_dsc_t)(unsafe.Pointer(value)), C.lv_style_selector_t(selector))
+func (setter Obj) StyleBgGrad(value *types.LvGradDscT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_bg_grad(setter.CStructLvObjT, (*C.lv_grad_dsc_t)(unsafe.Pointer(value)), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleBgDitherMode(obj *types.LvObjT, value types.LvDitherModeT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_bg_dither_mode((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_dither_mode_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleBgDitherMode(value types.LvDitherModeT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_bg_dither_mode(setter.CStructLvObjT, C.lv_dither_mode_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleBgImgSrc(obj *types.LvObjT, value any, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_bg_img_src((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), unsafe.Pointer(&value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleBgImgSrc(value any, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_bg_img_src(setter.CStructLvObjT, unsafe.Pointer(&value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleBgImgOpa(obj *types.LvObjT, value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_bg_img_opa((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_opa_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleBgImgOpa(value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_bg_img_opa(setter.CStructLvObjT, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleBgImgRecolor(obj *types.LvObjT, value types.LvColorT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_bg_img_recolor((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_color_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleBgImgRecolor(value types.LvColorT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_bg_img_recolor(setter.CStructLvObjT, C.lv_color_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleBgImgRecolorOpa(obj *types.LvObjT, value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_bg_img_recolor_opa((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_opa_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleBgImgRecolorOpa(value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_bg_img_recolor_opa(setter.CStructLvObjT, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleBgImgTiled(obj *types.LvObjT, value bool, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_bg_img_tiled((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.bool(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleBgImgTiled(value bool, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_bg_img_tiled(setter.CStructLvObjT, C.bool(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleBorderColor(obj *types.LvObjT, value types.LvColorT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_border_color((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_color_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleBorderColor(value types.LvColorT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_border_color(setter.CStructLvObjT, C.lv_color_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleBorderOpa(obj *types.LvObjT, value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_border_opa((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_opa_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleBorderOpa(value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_border_opa(setter.CStructLvObjT, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleBorderWidth(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_border_width((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleBorderWidth(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_border_width(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleBorderSide(obj *types.LvObjT, value types.LvBorderSideT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_border_side((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_border_side_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleBorderSide(value types.LvBorderSideT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_border_side(setter.CStructLvObjT, C.lv_border_side_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleBorderPost(obj *types.LvObjT, value bool, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_border_post((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.bool(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleBorderPost(value bool, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_border_post(setter.CStructLvObjT, C.bool(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleOutlineWidth(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_outline_width((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleOutlineWidth(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_outline_width(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleOutlineColor(obj *types.LvObjT, value types.LvColorT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_outline_color((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_color_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleOutlineColor(value types.LvColorT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_outline_color(setter.CStructLvObjT, C.lv_color_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleOutlineOpa(obj *types.LvObjT, value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_outline_opa((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_opa_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleOutlineOpa(value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_outline_opa(setter.CStructLvObjT, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleOutlinePad(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_outline_pad((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleOutlinePad(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_outline_pad(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleShadowWidth(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_shadow_width((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleShadowWidth(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_shadow_width(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleShadowOfsX(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_shadow_ofs_x((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleShadowOfsX(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_shadow_ofs_x(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleShadowOfsY(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_shadow_ofs_y((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleShadowOfsY(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_shadow_ofs_y(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleShadowSpread(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_shadow_spread((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleShadowSpread(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_shadow_spread(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleShadowColor(obj *types.LvObjT, value types.LvColorT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_shadow_color((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_color_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleShadowColor(value types.LvColorT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_shadow_color(setter.CStructLvObjT, C.lv_color_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleShadowOpa(obj *types.LvObjT, value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_shadow_opa((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_opa_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleShadowOpa(value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_shadow_opa(setter.CStructLvObjT, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleImgOpa(obj *types.LvObjT, value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_img_opa((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_opa_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleImgOpa(value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_img_opa(setter.CStructLvObjT, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleImgRecolor(obj *types.LvObjT, value types.LvColorT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_img_recolor((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_color_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleImgRecolor(value types.LvColorT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_img_recolor(setter.CStructLvObjT, C.lv_color_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleImgRecolorOpa(obj *types.LvObjT, value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_img_recolor_opa((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_opa_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleImgRecolorOpa(value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_img_recolor_opa(setter.CStructLvObjT, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleLineWidth(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_line_width((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleLineWidth(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_line_width(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleLineDashWidth(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_line_dash_width((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleLineDashWidth(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_line_dash_width(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleLineDashGap(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_line_dash_gap((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleLineDashGap(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_line_dash_gap(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleLineRounded(obj *types.LvObjT, value bool, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_line_rounded((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.bool(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleLineRounded(value bool, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_line_rounded(setter.CStructLvObjT, C.bool(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleLineColor(obj *types.LvObjT, value types.LvColorT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_line_color((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_color_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleLineColor(value types.LvColorT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_line_color(setter.CStructLvObjT, C.lv_color_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleLineOpa(obj *types.LvObjT, value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_line_opa((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_opa_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleLineOpa(value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_line_opa(setter.CStructLvObjT, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleArcWidth(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_arc_width((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleArcWidth(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_arc_width(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleArcRounded(obj *types.LvObjT, value bool, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_arc_rounded((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.bool(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleArcRounded(value bool, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_arc_rounded(setter.CStructLvObjT, C.bool(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleArcColor(obj *types.LvObjT, value types.LvColorT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_arc_color((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_color_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleArcColor(value types.LvColorT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_arc_color(setter.CStructLvObjT, C.lv_color_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleArcOpa(obj *types.LvObjT, value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_arc_opa((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_opa_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleArcOpa(value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_arc_opa(setter.CStructLvObjT, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleArcImgSrc(obj *types.LvObjT, value any, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_arc_img_src((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), unsafe.Pointer(&value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleArcImgSrc(value any, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_arc_img_src(setter.CStructLvObjT, unsafe.Pointer(&value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleTextColor(obj *types.LvObjT, value types.LvColorT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_text_color((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_color_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleTextColor(value types.LvColorT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_text_color(setter.CStructLvObjT, C.lv_color_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleTextOpa(obj *types.LvObjT, value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_text_opa((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_opa_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleTextOpa(value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_text_opa(setter.CStructLvObjT, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleTextFont(obj *types.LvObjT, value *types.LvFontT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_text_font((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), (*C.lv_font_t)(unsafe.Pointer(value)), C.lv_style_selector_t(selector))
+func (setter Obj) StyleTextFont(value *types.LvFontT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_text_font(setter.CStructLvObjT, (*C.lv_font_t)(unsafe.Pointer(value)), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleTextLetterSpace(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_text_letter_space((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleTextLetterSpace(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_text_letter_space(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleTextLineSpace(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_text_line_space((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleTextLineSpace(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_text_line_space(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleTextDecor(obj *types.LvObjT, value types.LvTextDecorT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_text_decor((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_text_decor_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleTextDecor(value types.LvTextDecorT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_text_decor(setter.CStructLvObjT, C.lv_text_decor_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleTextAlign(obj *types.LvObjT, value types.LvTextAlignT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_text_align((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_text_align_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleTextAlign(value types.LvTextAlignT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_text_align(setter.CStructLvObjT, C.lv_text_align_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleRadius(obj *types.LvObjT, value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_radius((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleRadius(value types.LvCoordT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_radius(setter.CStructLvObjT, C.lv_coord_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleClipCorner(obj *types.LvObjT, value bool, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_clip_corner((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.bool(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleClipCorner(value bool, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_clip_corner(setter.CStructLvObjT, C.bool(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleOpa(obj *types.LvObjT, value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_opa((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_opa_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleOpa(value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_opa(setter.CStructLvObjT, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleColorFilterDsc(obj *types.LvObjT, value *types.LvColorFilterDscT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_color_filter_dsc((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), (*C.lv_color_filter_dsc_t)(unsafe.Pointer(value)), C.lv_style_selector_t(selector))
+func (setter Obj) StyleColorFilterDsc(value *types.LvColorFilterDscT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_color_filter_dsc(setter.CStructLvObjT, (*C.lv_color_filter_dsc_t)(unsafe.Pointer(value)), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleColorFilterOpa(obj *types.LvObjT, value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_color_filter_opa((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_opa_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleColorFilterOpa(value types.LvOpaT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_color_filter_opa(setter.CStructLvObjT, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleAnim(obj *types.LvObjT, value *types.LvAnimT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_anim((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), (*C.lv_anim_t)(unsafe.Pointer(value)), C.lv_style_selector_t(selector))
+func (setter Obj) StyleAnim(value *types.LvAnimT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_anim(setter.CStructLvObjT, (*C.lv_anim_t)(unsafe.Pointer(value)), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleAnimTime(obj *types.LvObjT, value uint32, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_anim_time((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.uint(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleAnimTime(value uint32, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_anim_time(setter.CStructLvObjT, C.uint(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleAnimSpeed(obj *types.LvObjT, value uint32, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_anim_speed((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.uint(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleAnimSpeed(value uint32, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_anim_speed(setter.CStructLvObjT, C.uint(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleTransition(obj *types.LvObjT, value *types.LvStyleTransitionDscT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_transition((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), (*C.lv_style_transition_dsc_t)(unsafe.Pointer(value)), C.lv_style_selector_t(selector))
+func (setter Obj) StyleTransition(value *types.LvStyleTransitionDscT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_transition(setter.CStructLvObjT, (*C.lv_style_transition_dsc_t)(unsafe.Pointer(value)), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleBlendMode(obj *types.LvObjT, value types.LvBlendModeT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_blend_mode((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_blend_mode_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleBlendMode(value types.LvBlendModeT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_blend_mode(setter.CStructLvObjT, C.lv_blend_mode_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleLayout(obj *types.LvObjT, value uint16, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_layout((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.ushort(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleLayout(value uint16, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_layout(setter.CStructLvObjT, C.ushort(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) StyleBaseDir(obj *types.LvObjT, value types.LvBaseDirT, selector types.LvStyleSelectorT) Obj {
-	C.lv_obj_set_style_base_dir((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_base_dir_t(value), C.lv_style_selector_t(selector))
+func (setter Obj) StyleBaseDir(value types.LvBaseDirT, selector types.LvStyleSelectorT) Obj {
+	C.lv_obj_set_style_base_dir(setter.CStructLvObjT, C.lv_base_dir_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter Obj) Pos(obj *types.LvObjT, x types.LvCoordT, y types.LvCoordT) Obj {
-	C.lv_obj_set_pos((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(x), C.lv_coord_t(y))
+func (setter Obj) Pos(x types.LvCoordT, y types.LvCoordT) Obj {
+	C.lv_obj_set_pos(setter.CStructLvObjT, C.lv_coord_t(x), C.lv_coord_t(y))
 
 	return setter
 }
-func (setter Obj) X(obj *types.LvObjT, x types.LvCoordT) Obj {
-	C.lv_obj_set_x((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(x))
+func (setter Obj) X(x types.LvCoordT) Obj {
+	C.lv_obj_set_x(setter.CStructLvObjT, C.lv_coord_t(x))
 
 	return setter
 }
-func (setter Obj) Y(obj *types.LvObjT, y types.LvCoordT) Obj {
-	C.lv_obj_set_y((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(y))
+func (setter Obj) Y(y types.LvCoordT) Obj {
+	C.lv_obj_set_y(setter.CStructLvObjT, C.lv_coord_t(y))
 
 	return setter
 }
-func (setter Obj) Size(obj *types.LvObjT, w types.LvCoordT, h types.LvCoordT) Obj {
-	C.lv_obj_set_size((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(w), C.lv_coord_t(h))
+func (setter Obj) Size(w types.LvCoordT, h types.LvCoordT) Obj {
+	C.lv_obj_set_size(setter.CStructLvObjT, C.lv_coord_t(w), C.lv_coord_t(h))
 
 	return setter
 }
-func (setter Obj) Width(obj *types.LvObjT, w types.LvCoordT) Obj {
-	C.lv_obj_set_width((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(w))
+func (setter Obj) Width(w types.LvCoordT) Obj {
+	C.lv_obj_set_width(setter.CStructLvObjT, C.lv_coord_t(w))
 
 	return setter
 }
-func (setter Obj) Height(obj *types.LvObjT, h types.LvCoordT) Obj {
-	C.lv_obj_set_height((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(h))
+func (setter Obj) Height(h types.LvCoordT) Obj {
+	C.lv_obj_set_height(setter.CStructLvObjT, C.lv_coord_t(h))
 
 	return setter
 }
-func (setter Obj) ContentWidth(obj *types.LvObjT, w types.LvCoordT) Obj {
-	C.lv_obj_set_content_width((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(w))
+func (setter Obj) ContentWidth(w types.LvCoordT) Obj {
+	C.lv_obj_set_content_width(setter.CStructLvObjT, C.lv_coord_t(w))
 
 	return setter
 }
-func (setter Obj) ContentHeight(obj *types.LvObjT, h types.LvCoordT) Obj {
-	C.lv_obj_set_content_height((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(h))
+func (setter Obj) ContentHeight(h types.LvCoordT) Obj {
+	C.lv_obj_set_content_height(setter.CStructLvObjT, C.lv_coord_t(h))
 
 	return setter
 }
-func (setter Obj) Layout(obj *types.LvObjT, layout uint32) Obj {
-	C.lv_obj_set_layout((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.uint(layout))
+func (setter Obj) Layout(layout uint32) Obj {
+	C.lv_obj_set_layout(setter.CStructLvObjT, C.uint(layout))
 
 	return setter
 }
-func (setter Obj) Align(obj *types.LvObjT, align types.LvAlignT) Obj {
-	C.lv_obj_set_align((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_align_t(align))
+func (setter Obj) Align(align types.LvAlignT) Obj {
+	C.lv_obj_set_align(setter.CStructLvObjT, C.lv_align_t(align))
 
 	return setter
 }
-func (setter Obj) ExtClickArea(obj *types.LvObjT, size types.LvCoordT) Obj {
-	C.lv_obj_set_ext_click_area((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_coord_t(size))
+func (setter Obj) ExtClickArea(size types.LvCoordT) Obj {
+	C.lv_obj_set_ext_click_area(setter.CStructLvObjT, C.lv_coord_t(size))
 
 	return setter
 }
-func (setter Obj) ScrollbarMode(obj *types.LvObjT, mode types.LvScrollbarModeT) Obj {
-	C.lv_obj_set_scrollbar_mode((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_scrollbar_mode_t(mode))
+func (setter Obj) ScrollbarMode(mode types.LvScrollbarModeT) Obj {
+	C.lv_obj_set_scrollbar_mode(setter.CStructLvObjT, C.lv_scrollbar_mode_t(mode))
 
 	return setter
 }
-func (setter Obj) ScrollDir(obj *types.LvObjT, dir types.LvDirT) Obj {
-	C.lv_obj_set_scroll_dir((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_dir_t(dir))
+func (setter Obj) ScrollDir(dir types.LvDirT) Obj {
+	C.lv_obj_set_scroll_dir(setter.CStructLvObjT, C.lv_dir_t(dir))
 
 	return setter
 }
-func (setter Obj) ScrollSnapX(obj *types.LvObjT, align types.LvScrollSnapT) Obj {
-	C.lv_obj_set_scroll_snap_x((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_scroll_snap_t(align))
+func (setter Obj) ScrollSnapX(align types.LvScrollSnapT) Obj {
+	C.lv_obj_set_scroll_snap_x(setter.CStructLvObjT, C.lv_scroll_snap_t(align))
 
 	return setter
 }
-func (setter Obj) ScrollSnapY(obj *types.LvObjT, align types.LvScrollSnapT) Obj {
-	C.lv_obj_set_scroll_snap_y((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), C.lv_scroll_snap_t(align))
+func (setter Obj) ScrollSnapY(align types.LvScrollSnapT) Obj {
+	C.lv_obj_set_scroll_snap_y(setter.CStructLvObjT, C.lv_scroll_snap_t(align))
 
 	return setter
 }
-func (setter Obj) Parent(obj *types.LvObjT, parent *types.LvObjT) Obj {
-	C.lv_obj_set_parent((*C.struct__lv_obj_t)(unsafe.Pointer(obj)), (*C.struct__lv_obj_t)(unsafe.Pointer(parent)))
+func (setter Obj) Parent(parent *types.LvObjT) Obj {
+	C.lv_obj_set_parent(setter.CStructLvObjT, (*C.struct__lv_obj_t)(unsafe.Pointer(parent)))
 
 	return setter
 }
