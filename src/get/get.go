@@ -6,8 +6,21 @@ package get
 #include "lv_init.h"
 */
 import "C"
+import (
+	"lvgl-go/src/lib"
+	types "lvgl-go/src/types"
+	"unsafe"
+)
 
-type LvObjT *C.struct__lv_obj_t
+type _cs *C.struct__lv_obj_t
 type get struct {
-	CStructLvObjT LvObjT
+	CStructLvObjT *C.struct__lv_obj_t
+}
+
+func Go2CObj(o *types.LvObjT) *C.struct__lv_obj_t {
+	return (*C.struct__lv_obj_t)(unsafe.Pointer(lib.GetParent(o)))
+}
+
+func getObj(l any) _cs {
+	return (_cs)(l.(unsafe.Pointer))
 }

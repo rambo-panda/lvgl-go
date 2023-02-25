@@ -1,11 +1,5 @@
-package lvgl_go
+package create
 
-/*
-#cgo CFLAGS: -I./include/
-#cgo LDFLAGS: -L./lib -llvgl
-#include "lv_init.h"
-*/
-import "C"
 import (
 	"lvgl-go/src/get"
 	"lvgl-go/src/set"
@@ -16,38 +10,9 @@ import (
 type tCreate[
 	SetT set.Animimg | set.Area | set.Canvas | set.Checkbox | set.Label | set.Line | set.Spangroup | set.Table | set.Theme | set.Arc | set.Bar | set.Chart | set.Img | set.Led | set.Obj | set.Span | set.Style | set.Textarea,
 	GetT get.Label | get.Obj] struct {
-	// _setAnimimg  set.Animimg
-	// _setArea     set.Area
-	// _setCanvas   set.Canvas
-	// _setCheckbox set.Checkbox
-	// _setLabel    set.Label
-	// _setLine     set.Line
-	// _setSpangrou set.Spangroup
-	// _setTable    set.Table
-	// _setTheme    set.Theme
-	// _setArc      set.Arc
-	// _setBar      set.Bar
-	// _setChart    set.Chart
-	// _setImg      set.Img
-	// _setLed      set.Led
-	// _setObj      set.Obj
-	// _setSpan     set.Span
-	// _setStyle    set.Style
-	// _setTextarea set.Textarea
 	Set SetT
 	Get GetT
 }
-
-// func c2goObj[T *C.struct__lv_obj_t | set.TsetC](o T, t string) *lib.LvObjT {
-// 	switch t {
-// 	case "darwin":
-// 		fmt.Println("OS X.")
-// 	case "linux":
-// 		return (*lib.LvObjT)(unsafe.Pointer(o))
-// 	default:
-// 		return (*lib.LvObjT)(unsafe.Pointer(o))
-// 	}
-// }
 
 func getParent(o *types.LvObjT) *C.struct__lv_obj_t {
 	if o == nil {

@@ -1,6 +1,7 @@
 package get
 
 import (
+	"lvgl-go/src/lib"
 	types "lvgl-go/src/types"
 	"unsafe"
 )
@@ -15,8 +16,10 @@ import "C"
 type Label get
 
 func CreateLable(o *types.LvObjT) Label {
+	label := C.lv_label_create((*C.struct__lv_obj_t)(unsafe.Pointer(lib.GetParent(o))))
+
 	return Label{
-		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
+		CStructLvObjT: label,
 	}
 }
 
