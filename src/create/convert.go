@@ -22,6 +22,12 @@ func convertObj(t any) *types.LvObjT {
 
 		return lib.C2GoObj(_o)
 	}
+	if o, ok := t.(tCreate[set.Label, get.Label]); ok {
+		return o.getObj()
+	}
+	if o, ok := t.(tCreate[set.Obj, get.Obj]); ok {
+		return o.getObj()
+	}
 	if o, ok := t.(tCreate[set.Animimg, any]); ok {
 		return o.getObj()
 	}
@@ -32,9 +38,6 @@ func convertObj(t any) *types.LvObjT {
 		return o.getObj()
 	}
 	if o, ok := t.(tCreate[set.Checkbox, any]); ok {
-		return o.getObj()
-	}
-	if o, ok := t.(tCreate[set.Label, get.Label]); ok {
 		return o.getObj()
 	}
 	if o, ok := t.(tCreate[set.Line, any]); ok {
@@ -62,9 +65,6 @@ func convertObj(t any) *types.LvObjT {
 		return o.getObj()
 	}
 	if o, ok := t.(tCreate[set.Led, any]); ok {
-		return o.getObj()
-	}
-	if o, ok := t.(tCreate[set.Obj, get.Obj]); ok {
 		return o.getObj()
 	}
 	if o, ok := t.(tCreate[set.Span, any]); ok {
