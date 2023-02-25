@@ -1,5 +1,11 @@
 package create
 
+/*
+#cgo CFLAGS: -I../include/
+#cgo LDFLAGS: -L../lib -llvgl
+#include "lv_init.h"
+*/
+import "C"
 import (
 	"lvgl-go/src/get"
 	"lvgl-go/src/set"
