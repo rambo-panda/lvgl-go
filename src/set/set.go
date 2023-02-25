@@ -6,15 +6,9 @@ package set
 #include "lv_init.h"
 */
 import "C"
-import (
-	types "lvgl-go/src/types"
-	"unsafe"
-)
+
+type CObjT = *C.struct__lv_obj_t
 
 type set struct {
-	CStructLvObjT *C.struct__lv_obj_t
-}
-
-func Go2CObj(o *types.LvObjT) *C.struct__lv_obj_t {
-	return (*C.struct__lv_obj_t)(unsafe.Pointer(o))
+	CStructLvObjT CObjT
 }

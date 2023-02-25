@@ -1,7 +1,5 @@
 package set
 
-import types "lvgl-go/src/types"
-
 /*
 #cgo CFLAGS: -I../include/
 #cgo LDFLAGS: -L../lib -llvgl
@@ -14,7 +12,7 @@ import (
 
 type Checkbox set
 
-func CreateCheckbox(o *types.LvObjT) Checkbox {
+func CreateCheckbox(o CObjT) Checkbox {
 	return Checkbox{
 		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
 	}

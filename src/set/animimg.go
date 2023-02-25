@@ -1,7 +1,6 @@
 package set
 
 import (
-	types "lvgl-go/src/types"
 	"unsafe"
 )
 
@@ -14,7 +13,7 @@ import "C"
 
 type Animimg set
 
-func CreateAnimimg(o *types.LvObjT) Animimg {
+func CreateAnimimg(o CObjT) Animimg {
 	return Animimg{
 		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
 	}

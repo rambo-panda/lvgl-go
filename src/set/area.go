@@ -1,6 +1,9 @@
 package set
 
-import types "lvgl-go/src/types"
+import (
+	types "lvgl-go/src/types"
+	"unsafe"
+)
 
 /*
 #cgo CFLAGS: -I../include/
@@ -8,13 +11,10 @@ import types "lvgl-go/src/types"
 #include "lv_init.h"
 */
 import "C"
-import (
-	"unsafe"
-)
 
 type Area set
 
-func CreateArea(o *types.LvObjT) Area {
+func CreateArea(o CObjT) Area {
 	return Area{
 		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
 	}

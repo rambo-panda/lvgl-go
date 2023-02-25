@@ -14,9 +14,9 @@ import "C"
 
 type Label get
 
-func CreateLable(o *types.LvObjT) Label {
+func CreateLable(o CObjT) Label {
 	return Label{
-		CStructLvObjT: Go2CObj(o),
+		CStructLvObjT: o,
 	}
 }
 

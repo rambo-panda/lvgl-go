@@ -14,9 +14,9 @@ import "C"
 
 type Obj set
 
-func CreateObj(o *types.LvObjT) Obj {
+func CreateObj(o CObjT) Obj {
 	return Obj{
-		CStructLvObjT: Go2CObj(o),
+		CStructLvObjT: o,
 	}
 }
 
