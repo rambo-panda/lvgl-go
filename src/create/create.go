@@ -58,6 +58,15 @@ func CreateLabel(o *types.LvObjT) tCreate[set.Label, get.Label] {
 		// Get: get.CreateLable(j),
 	}
 }
+func CreateObj(o any) tCreate[set.Label, get.Label] {
+	_o := convert(o)
+
+	return tCreate[set.Label, get.Label]{
+		o:   _o,
+		Set: set.CreateLable(_o),
+		Get: get.CreateLable(_o),
+	}
+}
 
 // func CreateLed(o *types.LvObjT) set.SetLed {
 // 	return set.CreateLed(getParent(o))
