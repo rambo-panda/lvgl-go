@@ -20,7 +20,7 @@ type tCreate[
 	Get GetT
 }
 
-func (t tCreate[SetT, GetT]) getObj() *C.struct__lv_obj_t {
+func (t tCreate[SetT, GetT]) GetObj() *C.struct__lv_obj_t {
 	return t.o
 }
 
@@ -73,8 +73,8 @@ func CreateObj(o any) tCreate[set.Obj, get.Obj] {
 
 	return tCreate[set.Obj, get.Obj]{
 		o:   _o,
-		Set: set.CreateObj(_o),
-		Get: get.CreateObj(_o),
+		Set: set.CreateObj(toSetObj(_o)),
+		Get: get.CreateObj(toGetObj(_o)),
 	}
 }
 

@@ -26,6 +26,10 @@ func TaskHandlerAsync(ms uint) {
 func Noop(s ...any) {
 }
 
+func C2GoObj(o any) *types.LvObjT {
+	return (*types.LvObjT)(reflect.ValueOf(o).UnsafePointer())
+}
+
 func IsNil(o any) bool {
 	if o == nil {
 		return true
