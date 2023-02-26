@@ -28,6 +28,8 @@ func (setter Img) SrcOrigin(src unsafe.Pointer) Img {
 func (setter Img) Src(src string) Img {
 	cs := C.CString(src)
 
+	//TODO: 何时删除?? lvgl应该会自己删除 C.free(unsafe.Pointer(cs))
+
 	return setter.SrcOrigin(unsafe.Pointer(cs))
 }
 
