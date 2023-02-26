@@ -8,19 +8,30 @@ import (
 	"lvgl-go/src/get"
 	"lvgl-go/src/lib"
 	"lvgl-go/src/set"
-	"lvgl-go/src/types"
 	"unsafe"
 )
 
-func Go2CObj(o *types.LvObjT) *C.struct__lv_obj_t {
-	return (*C.struct__lv_obj_t)(unsafe.Pointer(o))
+type CObjT = *C.struct__lv_obj_t
+
+func getParent(o CObjT) CObjT {
+	if o == nil {
+		return C.lv_scr_act()
+	}
+
+	return o
 }
 
-func convertObj(t any) *types.LvObjT {
-	if lib.IsNil(t) {
-		_o := C.lv_obj_create(nil)
+func toSetObj(o CObjT) set.CObjT {
+	return (set.CObjT)(unsafe.Pointer(o))
+}
 
-		return lib.C2GoObj(_o)
+func toGetObj(o CObjT) get.CObjT {
+	return (get.CObjT)(unsafe.Pointer(o))
+}
+
+func convertObj(t any) CObjT {
+	if lib.IsNil(t) {
+		return C.lv_obj_create(nil)
 	}
 	if o, ok := t.(tCreate[set.Label, get.Label]); ok {
 		return o.getObj()
