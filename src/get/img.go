@@ -23,7 +23,7 @@ func (getter Img) SrcOrigin() unsafe.Pointer {
 }
 
 func (getter Img) Src() string {
-	return *(*string)(getter.SrcOrigin())
+	return C.GoString((*C.char)(getter.SrcOrigin()))
 }
 
 // const void * lv_img_get_src(lv_obj_t * obj);
