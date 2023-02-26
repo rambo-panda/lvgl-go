@@ -6,7 +6,10 @@ package get
 #include "lv_init.h"
 */
 import "C"
-import "unsafe"
+import (
+	"lvgl-go/src/lib"
+	"unsafe"
+)
 
 type Img get
 
@@ -23,7 +26,7 @@ func (getter Img) SrcOrigin() unsafe.Pointer {
 }
 
 func (getter Img) Src() string {
-	return C.GoString((*C.char)(getter.SrcOrigin()))
+	return lib.C2GoString(getter.SrcOrigin())
 }
 
 // const void * lv_img_get_src(lv_obj_t * obj);

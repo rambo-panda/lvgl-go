@@ -7,8 +7,8 @@ package lib
 */
 import "C"
 import (
-	"lvgl-go/src/types"
 	"reflect"
+	"unsafe"
 )
 
 func Ready() {
@@ -26,8 +26,16 @@ func TaskHandlerAsync(ms uint) {
 func Noop(s ...any) {
 }
 
-func C2GoObj(o any) *types.LvObjT {
-	return (*types.LvObjT)(reflect.ValueOf(o).UnsafePointer())
+func C2GoString(o unsafe.Pointer) string {
+	return C.GoString((*C.char)(o))
+}
+
+func Go2CString(o string) unsafe.Pointer {
+	cs := C.CString(o)
+
+	//TODO: 何时删除?? lvgl应该会自己删除 C.free(unsafe.Pointer(cs))
+
+	return unsafe.Pointer(cs)
 }
 
 func IsNil(o any) bool {
@@ -38,14 +46,6 @@ func IsNil(o any) bool {
 	l := reflect.ValueOf(o)
 
 	return l.Kind() == reflect.Pointer && l.IsNil()
-}
-
-func GetParent(o any) *types.LvObjT {
-	if IsNil(o) {
-		return C2GoObj(C.lv_scr_act())
-	}
-
-	return o.(*types.LvObjT)
 }
 
 func Ternary[T any](c bool, trueVal, falseVal T) T {

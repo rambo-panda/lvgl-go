@@ -1,6 +1,7 @@
 package set
 
 import (
+	"lvgl-go/src/lib"
 	types "lvgl-go/src/types"
 	"unsafe"
 )
@@ -26,11 +27,7 @@ func (setter Img) SrcOrigin(src unsafe.Pointer) Img {
 	return setter
 }
 func (setter Img) Src(src string) Img {
-	cs := C.CString(src)
-
-	//TODO: 何时删除?? lvgl应该会自己删除 C.free(unsafe.Pointer(cs))
-
-	return setter.SrcOrigin(unsafe.Pointer(cs))
+	return setter.SrcOrigin(lib.Go2CString(src))
 }
 
 func (setter Img) OffsetX(x types.LvCoordT) Img {
