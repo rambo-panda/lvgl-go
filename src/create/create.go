@@ -20,7 +20,7 @@ type tCreate[
 	Get GetT
 }
 
-func (t tCreate[SetT, GetT]) GetObj() *C.struct__lv_obj_t {
+func (t tCreate[SetT, GetT]) GetObj() CObjT {
 	return t.o
 }
 
@@ -68,8 +68,8 @@ func CreateLabel(o CObjT) tCreate[set.Label, get.Label] {
 	}
 }
 
-func CreateObj(o any) tCreate[set.Obj, get.Obj] {
-	_o := convertObj(o)
+func CreateObj(o CObjT) tCreate[set.Obj, get.Obj] {
+	_o := getParent(o, SCREEN)
 
 	return tCreate[set.Obj, get.Obj]{
 		o:   _o,
