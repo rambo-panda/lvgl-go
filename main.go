@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"lvgl-go/src/create"
 	"lvgl-go/src/lib"
 	"lvgl-go/src/types"
@@ -14,19 +13,19 @@ func main() {
 	label.Set.Text("jjjjj")
 	create.CreateObj(label.GetObj()).Set.Align(types.LV_ALIGN_CENTER)
 
+	src := "S:/Users/rambo/work_space/lvgl_tutorial/lvgl-go/build/bin/a.png"
 	{
 		img := create.CreateImg(nil)
 		obj := create.CreateObj(img.GetObj())
 		obj.Set.Width(types.LV_SIZE_CONTENT)
 		obj.Set.Height(types.LV_SIZE_CONTENT)
 
-		src := "S:lvgl/examples/libs/png/a.png"
 		// img.Set.Src(&src)
 		img.Set.Src(src)
 		obj.Set.Align(types.LV_ALIGN_CENTER)
 
-		j := img.Get.Src()
-		fmt.Println("img src -> ", j)
+		// j := img.Get.Src()
+		// fmt.Println("img src -> ", j)
 	}
 
 	// lv_obj_set_width(img, LV_SIZE_CONTENT);

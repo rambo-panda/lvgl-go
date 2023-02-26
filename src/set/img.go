@@ -26,7 +26,9 @@ func (setter Img) SrcOrigin(src unsafe.Pointer) Img {
 	return setter
 }
 func (setter Img) Src(src string) Img {
-	return setter.SrcOrigin(unsafe.Pointer(&src))
+	cs := C.CString(src)
+
+	return setter.SrcOrigin(unsafe.Pointer(cs))
 }
 
 func (setter Img) OffsetX(x types.LvCoordT) Img {
