@@ -16,7 +16,7 @@ type Theme set
 
 func CreateTheme(o CObjT) Theme {
 	return Theme{
-		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
+		CObj: o,
 	}
 }
 

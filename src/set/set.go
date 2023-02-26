@@ -10,5 +10,5 @@ import "C"
 type CObjT = *C.struct__lv_obj_t
 
 type set struct {
-	CStructLvObjT CObjT
+	CObj CObjT
 }

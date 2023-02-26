@@ -16,7 +16,7 @@ type Span set
 
 func CreateSpan(o CObjT) Span {
 	return Span{
-		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
+		CObj: o,
 	}
 }
 

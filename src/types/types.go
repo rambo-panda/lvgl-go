@@ -93,7 +93,7 @@ type LvObjClassT = C.struct__lv_obj_class_t
 // type LvRlottieCtrlT C.lv_rlottie_ctrl_t
 
 const (
-	LV_SIZE_CONTENT C.int = C._LV_SIZE_CONTENT
+	LV_SIZE_CONTENT C.short = C._LV_SIZE_CONTENT
 
 	LV_ALIGN_DEFAULT      LvAlignT = C.LV_ALIGN_DEFAULT
 	LV_ALIGN_TOP_LEFT     LvAlignT = C.LV_ALIGN_TOP_LEFT

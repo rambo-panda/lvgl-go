@@ -9,5 +9,5 @@ import "C"
 
 type CObjT = *C.struct__lv_obj_t
 type get struct {
-	CStructLvObjT CObjT
+	CObj CObjT
 }

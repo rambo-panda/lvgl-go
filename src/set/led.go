@@ -2,7 +2,6 @@ package set
 
 import (
 	types "lvgl-go/src/types"
-	"unsafe"
 )
 
 /*
@@ -16,17 +15,17 @@ type Led set
 
 func CreateLed(o CObjT) Led {
 	return Led{
-		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
+		CObj: o,
 	}
 }
 
 func (setter Led) Color(color types.LvColorT) Led {
-	C.lv_led_set_color(setter.CStructLvObjT, C.lv_color_t(color))
+	C.lv_led_set_color(setter.CObj, C.lv_color_t(color))
 
 	return setter
 }
 func (setter Led) Brightness(bright uint8) Led {
-	C.lv_led_set_brightness(setter.CStructLvObjT, C.uint8_t(bright))
+	C.lv_led_set_brightness(setter.CObj, C.uint8_t(bright))
 
 	return setter
 }

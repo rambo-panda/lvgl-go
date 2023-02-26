@@ -2,7 +2,6 @@ package set
 
 import (
 	types "lvgl-go/src/types"
-	"unsafe"
 )
 
 /*
@@ -16,32 +15,32 @@ type Spangroup set
 
 func CreateSpangroup(o CObjT) Spangroup {
 	return Spangroup{
-		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
+		CObj: o,
 	}
 }
 
 func (setter Spangroup) Align(align types.LvTextAlignT) Spangroup {
-	C.lv_spangroup_set_align(setter.CStructLvObjT, C.lv_text_align_t(align))
+	C.lv_spangroup_set_align(setter.CObj, C.lv_text_align_t(align))
 
 	return setter
 }
 func (setter Spangroup) Overflow(overflow types.LvSpanOverflowT) Spangroup {
-	C.lv_spangroup_set_overflow(setter.CStructLvObjT, C.lv_span_overflow_t(overflow))
+	C.lv_spangroup_set_overflow(setter.CObj, C.lv_span_overflow_t(overflow))
 
 	return setter
 }
 func (setter Spangroup) Indent(indent types.LvCoordT) Spangroup {
-	C.lv_spangroup_set_indent(setter.CStructLvObjT, C.lv_coord_t(indent))
+	C.lv_spangroup_set_indent(setter.CObj, C.lv_coord_t(indent))
 
 	return setter
 }
 func (setter Spangroup) Mode(mode types.LvSpanModeT) Spangroup {
-	C.lv_spangroup_set_mode(setter.CStructLvObjT, C.lv_span_mode_t(mode))
+	C.lv_spangroup_set_mode(setter.CObj, C.lv_span_mode_t(mode))
 
 	return setter
 }
 func (setter Spangroup) Lines(lines int32) Spangroup {
-	C.lv_spangroup_set_lines(setter.CStructLvObjT, C.int(lines))
+	C.lv_spangroup_set_lines(setter.CObj, C.int(lines))
 
 	return setter
 }

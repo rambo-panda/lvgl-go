@@ -16,7 +16,7 @@ type Style set
 
 func CreateStyle(o CObjT) Style {
 	return Style{
-		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
+		CObj: o,
 	}
 }
 

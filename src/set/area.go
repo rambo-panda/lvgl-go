@@ -16,7 +16,7 @@ type Area set
 
 func CreateArea(o CObjT) Area {
 	return Area{
-		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
+		CObj: o,
 	}
 }
 

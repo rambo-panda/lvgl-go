@@ -12,9 +12,8 @@ import (
 )
 
 type tCreate[
-	// TODO: any是因为有些set/get未实现
-	SetT any | set.Animimg | set.Area | set.Canvas | set.Checkbox | set.Label | set.Line | set.Spangroup | set.Table | set.Theme | set.Arc | set.Bar | set.Chart | set.Img | set.Led | set.Obj | set.Span | set.Style | set.Textarea,
-	GetT any | get.Label | get.Obj] struct {
+	SetT set.Animimg | set.Area | set.Canvas | set.Checkbox | set.Label | set.Line | set.Spangroup | set.Table | set.Theme | set.Arc | set.Bar | set.Chart | set.Img | set.Led | set.Obj | set.Span | set.Style | set.Textarea,
+	GetT get.Img | get.Label | get.Obj] struct {
 	o   CObjT
 	Set SetT
 	Get GetT
@@ -54,10 +53,14 @@ func (t tCreate[SetT, GetT]) GetObj() CObjT {
 //	func CreateCheckbox(o CObjT) set.SetCheckbox {
 //		return set.CreateCheckbox(getParent(o))
 //	}
-//
-//	func CreateImg(o CObjT) set.SetImg {
-//		return set.CreateImg(getParent(o))
-//	}
+func CreateImg(o CObjT) tCreate[set.Img, get.Img] {
+	goO := C.lv_img_create(getParent(o))
+	return tCreate[set.Img, get.Img]{
+		o:   goO,
+		Set: set.CreateImg(toSetObj(goO)),
+		Get: get.CreateImg(toGetObj(goO)),
+	}
+}
 func CreateLabel(o CObjT) tCreate[set.Label, get.Label] {
 	goO := C.lv_label_create(getParent(o))
 

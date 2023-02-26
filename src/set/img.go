@@ -16,47 +16,51 @@ type Img set
 
 func CreateImg(o CObjT) Img {
 	return Img{
-		CStructLvObjT: (*C.struct__lv_obj_t)(unsafe.Pointer(o)),
+		CObj: o,
 	}
 }
 
-func (setter Img) Src(src any) Img {
-	C.lv_img_set_src(setter.CStructLvObjT, unsafe.Pointer(&src))
+func (setter Img) SrcOrigin(src unsafe.Pointer) Img {
+	C.lv_img_set_src(setter.CObj, src)
 
 	return setter
 }
+func (setter Img) Src(src string) Img {
+	return setter.SrcOrigin(unsafe.Pointer(&src))
+}
+
 func (setter Img) OffsetX(x types.LvCoordT) Img {
-	C.lv_img_set_offset_x(setter.CStructLvObjT, C.lv_coord_t(x))
+	C.lv_img_set_offset_x(setter.CObj, C.lv_coord_t(x))
 
 	return setter
 }
 func (setter Img) OffsetY(y types.LvCoordT) Img {
-	C.lv_img_set_offset_y(setter.CStructLvObjT, C.lv_coord_t(y))
+	C.lv_img_set_offset_y(setter.CObj, C.lv_coord_t(y))
 
 	return setter
 }
 func (setter Img) Angle(angle int16) Img {
-	C.lv_img_set_angle(setter.CStructLvObjT, C.short(angle))
+	C.lv_img_set_angle(setter.CObj, C.short(angle))
 
 	return setter
 }
 func (setter Img) Pivot(x types.LvCoordT, y types.LvCoordT) Img {
-	C.lv_img_set_pivot(setter.CStructLvObjT, C.lv_coord_t(x), C.lv_coord_t(y))
+	C.lv_img_set_pivot(setter.CObj, C.lv_coord_t(x), C.lv_coord_t(y))
 
 	return setter
 }
 func (setter Img) Zoom(zoom uint16) Img {
-	C.lv_img_set_zoom(setter.CStructLvObjT, C.ushort(zoom))
+	C.lv_img_set_zoom(setter.CObj, C.ushort(zoom))
 
 	return setter
 }
 func (setter Img) Antialias(antialias bool) Img {
-	C.lv_img_set_antialias(setter.CStructLvObjT, C.bool(antialias))
+	C.lv_img_set_antialias(setter.CObj, C.bool(antialias))
 
 	return setter
 }
 func (setter Img) SizeMode(mode types.LvImgSizeModeT) Img {
-	C.lv_img_set_size_mode(setter.CStructLvObjT, C.lv_img_size_mode_t(mode))
+	C.lv_img_set_size_mode(setter.CObj, C.lv_img_size_mode_t(mode))
 
 	return setter
 }
