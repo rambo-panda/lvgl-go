@@ -12,19 +12,31 @@ import (
 
 type CObjT = *C.struct__lv_obj_t
 
-const SCREEN uint8 = 0
+type tagUint uint8
 
-func getParent(o CObjT, args ...uint8) CObjT {
+const (
+	screen tagUint = 0
+	normal tagUint = 1
+)
+
+func _getParent(o CObjT, tag tagUint) CObjT {
 	if o == nil {
-		if len(args) == 0 {
-			return C.lv_scr_act()
-		}
-		if args[0] == SCREEN {
+		switch tag {
+		case screen:
 			return C.lv_obj_create(nil)
+		default:
+			return C.lv_scr_act()
 		}
 	}
 
 	return o
+}
+
+func getParent(o CObjT) CObjT {
+	return _getParent(o, normal)
+}
+func getParent2(o CObjT) CObjT {
+	return _getParent(o, screen)
 }
 
 func toSetObj(o CObjT) set.CObjT {

@@ -69,7 +69,7 @@ func CreateLabel(o CObjT) tCreate[set.Label, get.Label] {
 }
 
 func CreateObj(o CObjT) tCreate[set.Obj, get.Obj] {
-	_o := getParent(o, SCREEN)
+	_o := getParent2(o)
 
 	return tCreate[set.Obj, get.Obj]{
 		o:   _o,
