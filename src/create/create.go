@@ -12,23 +12,21 @@ import (
 )
 
 func CreateLabel[T _createI](o T) _labelT {
-	// p := aaa(o)
-
-	goO := C.lv_label_create(getParent(o))
+	_o := C.lv_label_create(getParent(o))
 
 	return _labelT{
-		_m{o: goO},
-		set.CreateLabel(goO),
-		get.CreateLabel(goO),
+		_m{o: _o},
+		set.CreateLabel(toSetObj(_o)),
+		get.CreateLable(toGetObj(_o)),
 	}
 }
 
 func CreateImg[T _createI](o T) _imgT {
-	goO := C.lv_img_create(getParent(o))
+	_o := C.lv_img_create(getParent(o))
 	return _imgT{
-		_m{goO},
-		set.CreateImg(goO),
-		get.CreateImg(goO),
+		_m{_o},
+		set.CreateImg(toSetObj(_o)),
+		get.CreateImg(toGetObj(_o)),
 	}
 }
 
@@ -37,8 +35,8 @@ func CreateObj[T _createI](o T) _objT {
 
 	return _objT{
 		_m{_o},
-		set.CreateObj(_o),
-		get.CreateObj(_o),
+		set.CreateObj(toSetObj(_o)),
+		get.CreateObj(toGetObj(_o)),
 	}
 }
 
