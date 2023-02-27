@@ -2,7 +2,6 @@ package set
 
 import (
 	"lvgl-go/src/types"
-	"unsafe"
 )
 
 /*
@@ -14,9 +13,9 @@ import "C"
 
 type Label set
 
-func CreateLabel(o any) Label {
+func CreateLabel(o CObjT) Label {
 	return Label{
-		CObj: ((CObjT)(o.(unsafe.Pointer))),
+		CObj: o,
 	}
 }
 func (setter Label) Text(text string) Label {

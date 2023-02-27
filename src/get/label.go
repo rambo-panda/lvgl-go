@@ -14,9 +14,9 @@ import "C"
 
 type Label get
 
-func CreateLabel(o any) Label {
+func CreateLable(o CObjT) Label {
 	return Label{
-		CObj: ((CObjT)(o.(unsafe.Pointer))),
+		CObj: o,
 	}
 }
 

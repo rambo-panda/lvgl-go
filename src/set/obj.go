@@ -14,9 +14,9 @@ import "C"
 
 type Obj set
 
-func CreateObj(o any) Obj {
+func CreateObj(o CObjT) Obj {
 	return Obj{
-		CObj: ((CObjT)(o.(unsafe.Pointer))),
+		CObj: o,
 	}
 }
 
