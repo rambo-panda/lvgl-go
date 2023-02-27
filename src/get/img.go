@@ -13,9 +13,9 @@ import (
 
 type Img get
 
-func CreateImg(o CObjT) Img {
+func CreateImg(o any) Img {
 	return Img{
-		CObj: o,
+		CObj: ((CObjT)(o.(unsafe.Pointer))),
 	}
 }
 

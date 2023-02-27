@@ -11,16 +11,59 @@ import (
 	"lvgl-go/src/set"
 )
 
-type tCreate[
-	SetT set.Animimg | set.Area | set.Canvas | set.Checkbox | set.Label | set.Line | set.Spangroup | set.Table | set.Theme | set.Arc | set.Bar | set.Chart | set.Img | set.Led | set.Obj | set.Span | set.Style | set.Textarea,
-	GetT get.Img | get.Label | get.Obj] struct {
-	o   CObjT
-	Set SetT
-	Get GetT
+type _m struct {
+	o CObjT
 }
 
-func (t tCreate[SetT, GetT]) GetObj() CObjT {
-	return t.o
+func (m _m) GetObj() CObjT {
+	return m.o
+}
+
+type _labelT struct {
+	_m
+	Set set.Label
+	Get get.Label
+}
+
+func CreateLabel(o *_labelT) _labelT {
+	goO := C.lv_label_create(getParent(o))
+
+	return _labelT{
+		_m{o: goO},
+		set.CreateLabel(goO),
+		get.CreateLabel(goO),
+	}
+}
+
+type _imgT struct {
+	_m
+	Set set.Img
+	Get get.Img
+}
+
+func CreateImg(o *_imgT) _imgT {
+	goO := C.lv_img_create(getParent(o))
+	return _imgT{
+		_m{goO},
+		set.CreateImg(goO),
+		get.CreateImg(goO),
+	}
+}
+
+type _objT struct {
+	_m
+	Set set.Obj
+	Get get.Obj
+}
+
+func CreateObj(o *_objT) _objT {
+	_o := getParent2(o)
+
+	return _objT{
+		_m{_o},
+		set.CreateObj(_o),
+		get.CreateObj(_o),
+	}
 }
 
 //	func CreateAnimimg(o CObjT) tCreate {
@@ -53,33 +96,6 @@ func (t tCreate[SetT, GetT]) GetObj() CObjT {
 //	func CreateCheckbox(o CObjT) set.SetCheckbox {
 //		return set.CreateCheckbox(getParent(o))
 //	}
-func CreateImg(o CObjT) tCreate[set.Img, get.Img] {
-	goO := C.lv_img_create(getParent(o))
-	return tCreate[set.Img, get.Img]{
-		o:   goO,
-		Set: set.CreateImg(toSetObj(goO)),
-		Get: get.CreateImg(toGetObj(goO)),
-	}
-}
-func CreateLabel(o CObjT) tCreate[set.Label, get.Label] {
-	goO := C.lv_label_create(getParent(o))
-
-	return tCreate[set.Label, get.Label]{
-		o:   goO,
-		Set: set.CreateLabel(toSetObj(goO)),
-		Get: get.CreateLable(toGetObj(goO)),
-	}
-}
-
-func CreateObj(o CObjT) tCreate[set.Obj, get.Obj] {
-	_o := getParent2(o)
-
-	return tCreate[set.Obj, get.Obj]{
-		o:   _o,
-		Set: set.CreateObj(toSetObj(_o)),
-		Get: get.CreateObj(toGetObj(_o)),
-	}
-}
 
 // func CreateLed(o CObjT) set.SetLed {
 // 	return set.CreateLed(getParent(o))

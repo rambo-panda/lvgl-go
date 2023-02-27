@@ -12,7 +12,7 @@ func main() {
 
 	label := create.CreateLabel(nil)
 	label.Set.Text("jjjjj")
-	create.CreateObj(label.GetObj()).Set.Align(types.LV_ALIGN_CENTER)
+	create.CreateObj(&label).Set.Align(types.LV_ALIGN_CENTER)
 
 	src := "S:/Users/rambo/work_space/lvgl_tutorial/lvgl-go/build/bin/a.png"
 	{
