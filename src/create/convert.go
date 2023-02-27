@@ -7,7 +7,6 @@ import "C"
 import (
 	"lvgl-go/src/get"
 	"lvgl-go/src/set"
-	"reflect"
 	"unsafe"
 )
 
@@ -21,8 +20,10 @@ const (
 	STRUCT tagUint = 2
 )
 
-func _getParent(o any, tag tagUint) CObjT {
-	if o == nil {
+func _getParent[T _createI](o T, tag tagUint) CObjT {
+	r := o.GetObj()
+
+	if r == nil {
 		switch tag {
 		case screen:
 			return C.lv_obj_create(nil)
@@ -31,19 +32,13 @@ func _getParent(o any, tag tagUint) CObjT {
 		}
 	}
 
-	defer func() {
-		if err := recover(); err != nil {
-			panic("getParent3 no return")
-		}
-	}()
-
-	return (CObjT)(reflect.ValueOf(o).MethodByName("getObj").Call(nil)[0].UnsafePointer())
+	return r
 }
 
-func getParent(o any) CObjT {
+func getParent[T _createI](o T) CObjT {
 	return _getParent(o, normal)
 }
-func getParent2(o any) CObjT {
+func getParent2[T _createI](o T) CObjT {
 	return _getParent(o, screen)
 }
 

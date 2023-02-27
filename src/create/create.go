@@ -11,21 +11,9 @@ import (
 	"lvgl-go/src/set"
 )
 
-type _m struct {
-	o CObjT
-}
+func CreateLabel[T _createI](o T) _labelT {
+	// p := aaa(o)
 
-func (m _m) GetObj() CObjT {
-	return m.o
-}
-
-type _labelT struct {
-	_m
-	Set set.Label
-	Get get.Label
-}
-
-func CreateLabel(o *_labelT) _labelT {
 	goO := C.lv_label_create(getParent(o))
 
 	return _labelT{
@@ -35,13 +23,7 @@ func CreateLabel(o *_labelT) _labelT {
 	}
 }
 
-type _imgT struct {
-	_m
-	Set set.Img
-	Get get.Img
-}
-
-func CreateImg(o *_imgT) _imgT {
+func CreateImg[T _createI](o T) _imgT {
 	goO := C.lv_img_create(getParent(o))
 	return _imgT{
 		_m{goO},
@@ -50,13 +32,7 @@ func CreateImg(o *_imgT) _imgT {
 	}
 }
 
-type _objT struct {
-	_m
-	Set set.Obj
-	Get get.Obj
-}
-
-func CreateObj(o *_objT) _objT {
+func CreateObj[T _createI](o T) _objT {
 	_o := getParent2(o)
 
 	return _objT{

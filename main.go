@@ -10,14 +10,14 @@ import (
 func main() {
 	lib.Ready()
 
-	label := create.CreateLabel(nil)
+	label := create.CreateLabel(&create.CREATE_NIL)
 	label.Set.Text("jjjjj")
 	create.CreateObj(&label).Set.Align(types.LV_ALIGN_CENTER)
 
 	src := "S:/Users/rambo/work_space/lvgl_tutorial/lvgl-go/build/bin/a.png"
 	{
-		img := create.CreateImg(nil)
-		obj := create.CreateObj(img.GetObj())
+		img := create.CreateImg(&create.CREATE_NIL)
+		obj := create.CreateObj(&img)
 		obj.Set.Width(types.LV_SIZE_CONTENT)
 		obj.Set.Height(types.LV_SIZE_CONTENT)
 
