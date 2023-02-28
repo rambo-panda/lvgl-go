@@ -13,7 +13,7 @@ import (
 */
 import "C"
 
-type Img set
+type Img set[CObjT]
 
 func CreateImg(o CObjT) Img {
 	return Img{

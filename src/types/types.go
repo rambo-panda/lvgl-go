@@ -14,7 +14,9 @@ type LvColorT = C.lv_color_t
 type LvOpaT = C.lv_opa_t
 type LvTimerT = C.lv_timer_t
 type LvTimerCbT = C.lv_timer_cb_t
+
 type LvStyleT = C.lv_style_t
+type LvStyleT2 = C.struct__lv_style_t
 type LvAlignT = C.lv_align_t
 type LvGradDirT = C.lv_grad_dir_t
 type LvGradDscT = C.lv_grad_dsc_t

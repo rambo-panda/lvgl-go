@@ -12,7 +12,7 @@ import (
 */
 import "C"
 
-type Theme set
+type Theme set[CObjT]
 
 func CreateTheme(o CObjT) Theme {
 	return Theme{

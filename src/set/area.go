@@ -12,7 +12,7 @@ import (
 */
 import "C"
 
-type Area set
+type Area set[CObjT]
 
 func CreateArea(o CObjT) Area {
 	return Area{

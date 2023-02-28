@@ -11,7 +11,7 @@ import (
 */
 import "C"
 
-type Arc set
+type Arc set[CObjT]
 
 func CreateArc(o CObjT) Arc {
 	return Arc{

@@ -12,7 +12,7 @@ import (
 */
 import "C"
 
-type Canvas set
+type Canvas set[CObjT]
 
 func CreateCanvas(o CObjT) Canvas {
 	return Canvas{

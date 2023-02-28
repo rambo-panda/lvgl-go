@@ -10,8 +10,6 @@ import (
 	"unsafe"
 )
 
-type CObjT = *C.struct__lv_obj_t
-
 type tagUint uint8
 
 const (
@@ -45,7 +43,13 @@ func getParent2[T _createI](o T) CObjT {
 func toSetObj(o CObjT) set.CObjT {
 	return (set.CObjT)(unsafe.Pointer(o))
 }
+func toSetStyleT(o CStyleT) set.CStyleT {
+	return (set.CStyleT)(unsafe.Pointer(o))
+}
 
 func toGetObj(o CObjT) get.CObjT {
 	return (get.CObjT)(unsafe.Pointer(o))
+}
+func toGetStyleT(o CStyleT) get.CStyleT {
+	return (get.CStyleT)(unsafe.Pointer(o))
 }

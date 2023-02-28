@@ -7,7 +7,7 @@ package set
 */
 import "C"
 
-type Checkbox set
+type Checkbox set[CObjT]
 
 func CreateCheckbox(o CObjT) Checkbox {
 	return Checkbox{

@@ -8,7 +8,8 @@ package set
 import "C"
 
 type CObjT = *C.struct__lv_obj_t
+type CStyleT = *C.lv_style_t
 
-type set struct {
-	CObj CObjT
+type set[T CObjT | CStyleT] struct {
+	CObj T
 }

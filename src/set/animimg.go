@@ -7,7 +7,7 @@ package set
 */
 import "C"
 
-type Animimg set
+type Animimg set[CObjT]
 
 func CreateAnimimg(o CObjT) Animimg {
 	return Animimg{

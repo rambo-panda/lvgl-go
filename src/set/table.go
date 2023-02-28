@@ -11,7 +11,7 @@ import (
 */
 import "C"
 
-type Table set
+type Table set[CObjT]
 
 func CreateTable(o CObjT) Table {
 	return Table{

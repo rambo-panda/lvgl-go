@@ -11,7 +11,7 @@ import (
 */
 import "C"
 
-type Label set
+type Label set[CObjT]
 
 func CreateLabel(o CObjT) Label {
 	return Label{

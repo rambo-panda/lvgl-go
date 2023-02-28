@@ -12,7 +12,7 @@ import (
 */
 import "C"
 
-type Chart set
+type Chart set[CObjT]
 
 func CreateChart(o CObjT) Chart {
 	return Chart{

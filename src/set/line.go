@@ -7,7 +7,7 @@ package set
 */
 import "C"
 
-type Line set
+type Line set[CObjT]
 
 func CreateLine(o CObjT) Line {
 	return Line{

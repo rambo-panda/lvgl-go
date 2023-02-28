@@ -11,7 +11,7 @@ import (
 */
 import "C"
 
-type Bar set
+type Bar set[CObjT]
 
 func CreateBar(o CObjT) Bar {
 	return Bar{

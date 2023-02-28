@@ -12,7 +12,7 @@ import (
 */
 import "C"
 
-type Span set
+type Span set[CObjT]
 
 func CreateSpan(o CObjT) Span {
 	return Span{

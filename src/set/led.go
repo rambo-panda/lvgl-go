@@ -11,7 +11,7 @@ import (
 */
 import "C"
 
-type Led set
+type Led set[CObjT]
 
 func CreateLed(o CObjT) Led {
 	return Led{

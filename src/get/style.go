@@ -7,9 +7,10 @@ package get
 */
 import "C"
 
-type CObjT = *C.struct__lv_obj_t
-type CStyleT = *C.lv_style_t
+type Style get[CStyleT]
 
-type get[T CObjT | CStyleT] struct {
-	CObj T
+func CreateStyle(o CStyleT) Style {
+	return Style{
+		CObj: o,
+	}
 }

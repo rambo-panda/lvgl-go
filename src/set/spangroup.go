@@ -11,7 +11,7 @@ import (
 */
 import "C"
 
-type Spangroup set
+type Spangroup set[CObjT]
 
 func CreateSpangroup(o CObjT) Spangroup {
 	return Spangroup{

@@ -11,7 +11,7 @@ import (
 */
 import "C"
 
-type Textarea set
+type Textarea set[CObjT]
 
 func CreateTextarea(o CObjT) Textarea {
 	return Textarea{
