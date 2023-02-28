@@ -41,7 +41,9 @@ func CreateObj[T _createI](o T) _objT {
 }
 
 func CreateStyle() _styleT {
-	var so CStyleT
+	obj := _cStyleT{}
+	so := &obj
+
 	C.lv_style_init(so)
 
 	return _styleT{
@@ -51,6 +53,15 @@ func CreateStyle() _styleT {
 	}
 }
 
+func CreateBar[T _createI](o T) _barT {
+	_o := C.lv_bar_create(getParent(o))
+
+	return _barT{
+		_m[CObjT]{_o},
+		set.CreateBar(toSetObj(_o)),
+		get.CreateBar(toGetObj(_o)),
+	}
+}
 
 //	func CreateAnimimg(o CObjT) tCreate {
 //		var c tCreate[set.SetAnimimg, get.GetObj]

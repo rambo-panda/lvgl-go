@@ -12,7 +12,7 @@ import (
 */
 import "C"
 
-type Label get
+type Label get[CObjT]
 
 func CreateLable(o CObjT) Label {
 	return Label{

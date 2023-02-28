@@ -29,27 +29,45 @@ func main() {
 		fmt.Println("img src -> ", j)
 	}
 
+	a()
+
 	lib.TaskHandler(0)
 }
 
 func a() {
-	//   static lv_style_t style_bg;
-	// static lv_style_t style_indic;
 	styleBg := create.CreateStyle()
 	styleIndic := create.CreateStyle()
 
 	styleBg.Set.BorderColor(0xCC00FF).BorderWidth(2).Pad(6).Radius(6).AnimTime(1000)
 	styleIndic.Set.BgColor(0x0000FF).Opa(lib.LV_OPA_COVER).Radius(3)
 
-	bar := 
+	bar := create.CreateBar(&create.CREATE_NIL)
+	create.CreateObj(&bar).Set.Style(&styleBg, 0).Style(&styleIndic, int(lib.LV_PART_INDICATOR)).Size(200, 20).Center()
+	bar.Set.Value(100, types.LV_ANIM_ON)
+
+}
+
+func b() {
+	styleIndic := create.CreateStyle()
+	styleIndic.Set.BgOpa(lib.LV_OPA_COVER).BgColor(0xFFC0CB).BgGradColor(0x7B68EE).BgGradDir(lib.LV_PART_INDICATOR)
+
+	bar := create.CreateBar(&create.CREATE_NIL)
+	create.CreateObj(&bar).Set.Style(&styleIndic, lib.LV_PART_INDICATOR).Size(20, 200).Center()
+	bar.Set.Range(-20, 40)
 
 	// lv_obj_t * bar = lv_bar_create(lv_scr_act());
-	// lv_obj_remove_style_all(bar);  /*To have a clean start*/
-	// lv_obj_add_style(bar, &style_bg, 0);
 	// lv_obj_add_style(bar, &style_indic, LV_PART_INDICATOR);
-
-	// lv_obj_set_size(bar, 200, 20);
+	// lv_obj_set_size(bar, 20, 200);
 	// lv_obj_center(bar);
-	// lv_bar_set_value(bar, 100, LV_ANIM_ON);
+	// lv_bar_set_range(bar, -20, 40);
 
+	// lv_anim_t a;
+	// lv_anim_init(&a);
+	// lv_anim_set_exec_cb(&a, set_temp);
+	// lv_anim_set_time(&a, 3000);
+	// lv_anim_set_playback_time(&a, 3000);
+	// lv_anim_set_var(&a, bar);
+	// lv_anim_set_values(&a, -20, 40);
+	// lv_anim_set_repeat_count(&a, LV_ANIM_REPEAT_INFINITE);
+	// lv_anim_start(&a);
 }

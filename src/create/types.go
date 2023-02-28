@@ -11,8 +11,8 @@ import (
 import "C"
 
 type CObjT = *C.struct__lv_obj_t
-
-type CStyleT = *C.lv_style_t
+type _cStyleT = C.lv_style_t
+type CStyleT = *_cStyleT
 
 type _m[T CObjT | CStyleT] struct {
 	o T
@@ -25,7 +25,7 @@ func (m _m[T]) GetObj() T {
 var CREATE_NIL _m[CObjT] = _m[CObjT]{}
 
 type _createI interface {
-	*_labelT | *_imgT | *_objT | *_styleT | *_m[CObjT]
+	*_labelT | *_imgT | *_objT | *_styleT | *_barT | *_m[CObjT]
 
 	GetObj() CObjT
 }
@@ -52,4 +52,10 @@ type _styleT struct {
 	_m[CStyleT]
 	Set set.Style
 	Get get.Style
+}
+
+type _barT struct {
+	_m[CObjT]
+	Set set.Bar
+	Get get.Bar
 }

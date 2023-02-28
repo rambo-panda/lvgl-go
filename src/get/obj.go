@@ -12,7 +12,7 @@ import (
 */
 import "C"
 
-type Obj get
+type Obj get[CObjT]
 
 func CreateObj(o CObjT) Obj {
 	return Obj{

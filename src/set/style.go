@@ -147,17 +147,17 @@ func (setter Style) BgColor(color uint32) Style {
 
 	return setter
 }
-func (setter Style) BgOpa(value types.LvOpaT) Style {
+func (setter Style) BgOpa(value lib.LV_OPA_T) Style {
 	C.lv_style_set_bg_opa(setter.CObj, C.lv_opa_t(value))
 
 	return setter
 }
-func (setter Style) BgGradColor(value types.LvColorT) Style {
-	C.lv_style_set_bg_grad_color(setter.CObj, C.lv_color_t(value))
+func (setter Style) BgGradColor(color uint32) Style {
+	C.lv_style_set_bg_grad_color(setter.CObj, C.lv_color_t(lib.ToColor(lib.HEX, color)))
 
 	return setter
 }
-func (setter Style) BgGradDir(value types.LvGradDirT) Style {
+func (setter Style) BgGradDir(value lib.LV_GRAD_DIR_T) Style {
 	C.lv_style_set_bg_grad_dir(setter.CObj, C.lv_grad_dir_t(value))
 
 	return setter
@@ -187,7 +187,7 @@ func (setter Style) BgImgSrc(value any) Style {
 
 	return setter
 }
-func (setter Style) BgImgOpa(value types.LvOpaT) Style {
+func (setter Style) BgImgOpa(value lib.LV_OPA_T) Style {
 	C.lv_style_set_bg_img_opa(setter.CObj, C.lv_opa_t(value))
 
 	return setter
@@ -197,7 +197,7 @@ func (setter Style) BgImgRecolor(value types.LvColorT) Style {
 
 	return setter
 }
-func (setter Style) BgImgRecolorOpa(value types.LvOpaT) Style {
+func (setter Style) BgImgRecolorOpa(value lib.LV_OPA_T) Style {
 	C.lv_style_set_bg_img_recolor_opa(setter.CObj, C.lv_opa_t(value))
 
 	return setter
@@ -212,7 +212,7 @@ func (setter Style) BorderColor(color uint32) Style {
 
 	return setter
 }
-func (setter Style) BorderOpa(value types.LvOpaT) Style {
+func (setter Style) BorderOpa(value lib.LV_OPA_T) Style {
 	C.lv_style_set_border_opa(setter.CObj, C.lv_opa_t(value))
 
 	return setter
@@ -242,7 +242,7 @@ func (setter Style) OutlineColor(value types.LvColorT) Style {
 
 	return setter
 }
-func (setter Style) OutlineOpa(value types.LvOpaT) Style {
+func (setter Style) OutlineOpa(value lib.LV_OPA_T) Style {
 	C.lv_style_set_outline_opa(setter.CObj, C.lv_opa_t(value))
 
 	return setter
@@ -277,12 +277,12 @@ func (setter Style) ShadowColor(value types.LvColorT) Style {
 
 	return setter
 }
-func (setter Style) ShadowOpa(value types.LvOpaT) Style {
+func (setter Style) ShadowOpa(value lib.LV_OPA_T) Style {
 	C.lv_style_set_shadow_opa(setter.CObj, C.lv_opa_t(value))
 
 	return setter
 }
-func (setter Style) ImgOpa(value types.LvOpaT) Style {
+func (setter Style) ImgOpa(value lib.LV_OPA_T) Style {
 	C.lv_style_set_img_opa(setter.CObj, C.lv_opa_t(value))
 
 	return setter
@@ -292,7 +292,7 @@ func (setter Style) ImgRecolor(value types.LvColorT) Style {
 
 	return setter
 }
-func (setter Style) ImgRecolorOpa(value types.LvOpaT) Style {
+func (setter Style) ImgRecolorOpa(value lib.LV_OPA_T) Style {
 	C.lv_style_set_img_recolor_opa(setter.CObj, C.lv_opa_t(value))
 
 	return setter
@@ -322,7 +322,7 @@ func (setter Style) LineColor(value types.LvColorT) Style {
 
 	return setter
 }
-func (setter Style) LineOpa(value types.LvOpaT) Style {
+func (setter Style) LineOpa(value lib.LV_OPA_T) Style {
 	C.lv_style_set_line_opa(setter.CObj, C.lv_opa_t(value))
 
 	return setter
@@ -342,7 +342,7 @@ func (setter Style) ArcColor(value types.LvColorT) Style {
 
 	return setter
 }
-func (setter Style) ArcOpa(value types.LvOpaT) Style {
+func (setter Style) ArcOpa(value lib.LV_OPA_T) Style {
 	C.lv_style_set_arc_opa(setter.CObj, C.lv_opa_t(value))
 
 	return setter
@@ -357,7 +357,7 @@ func (setter Style) TextColor(value types.LvColorT) Style {
 
 	return setter
 }
-func (setter Style) TextOpa(value types.LvOpaT) Style {
+func (setter Style) TextOpa(value lib.LV_OPA_T) Style {
 	C.lv_style_set_text_opa(setter.CObj, C.lv_opa_t(value))
 
 	return setter
@@ -407,7 +407,7 @@ func (setter Style) ColorFilterDsc(value *types.LvColorFilterDscT) Style {
 
 	return setter
 }
-func (setter Style) ColorFilterOpa(value types.LvOpaT) Style {
+func (setter Style) ColorFilterOpa(value lib.LV_OPA_T) Style {
 	C.lv_style_set_color_filter_opa(setter.CObj, C.lv_opa_t(value))
 
 	return setter

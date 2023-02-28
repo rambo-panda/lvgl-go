@@ -11,7 +11,7 @@ import (
 	"unsafe"
 )
 
-type Img get
+type Img get[CObjT]
 
 func CreateImg(o CObjT) Img {
 	return Img{

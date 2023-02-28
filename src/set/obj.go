@@ -2,6 +2,7 @@ package set
 
 import (
 	types "lvgl-go/src/types"
+	"reflect"
 	"unsafe"
 )
 
@@ -500,6 +501,10 @@ func (setter Obj) Align(align types.LvAlignT) Obj {
 
 	return setter
 }
+func (setter Obj) Center() Obj {
+	setter.Align(types.LV_ALIGN_CENTER).Pos(0, 0)
+	return setter
+}
 func (setter Obj) ExtClickArea(size types.LvCoordT) Obj {
 	C.lv_obj_set_ext_click_area(setter.CObj, C.lv_coord_t(size))
 
@@ -627,6 +632,22 @@ func (setter Obj) Tile(anim_en types.LvAnimEnableT) Obj {
 }
 func (setter Obj) TileId(col_id uint32, row_id uint32, anim_en types.LvAnimEnableT) Obj {
 	C.lv_obj_set_tile_id(setter.CObj, C.uint(col_id), C.uint(row_id), C.lv_anim_enable_t(anim_en))
+
+	return setter
+}
+
+func (setter Obj) RemoveStyleAll() Obj {
+	C.lv_obj_remove_style_all(setter.CObj)
+
+	return setter
+}
+
+func (setter Obj) Style(style any, styleSelect lib.LV_STYLE_SELECTOR_T) Obj {
+	var oStyle *C.lv_style_t
+
+	oStyle = (*C.lv_style_t)(reflect.ValueOf(style).MethodByName("GetObj").Call(nil)[0].UnsafePointer())
+
+	C.lv_obj_add_style(setter.CObj, oStyle, C.lv_style_selector_t(styleSelect))
 
 	return setter
 }

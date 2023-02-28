@@ -32,11 +32,6 @@ const (
 	DARKEN  Color = 10
 )
 
-type LV_PALETTE_T = C.lv_palette_t
-type LV_COLOR_T = C.lv_color_t
-type LV_OPA_T = C.lv_opa_t
-type LV_COLOR_HSV_T = C.lv_color_hsv_t
-
 const (
 	LV_PALETTE_PINK        LV_PALETTE_T = C.LV_PALETTE_PINK
 	LV_PALETTE_PURPLE      LV_PALETTE_T = C.LV_PALETTE_PURPLE
