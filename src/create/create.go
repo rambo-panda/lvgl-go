@@ -75,3 +75,7 @@ func CreateAnim() _animT {
 		get.CreateAnim(toGetAnimT(anim)),
 	}
 }
+
+func Del[T _createI](o T) {
+	C.lv_obj_del(o.GetObj())
+}

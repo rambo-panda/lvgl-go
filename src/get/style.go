@@ -9,8 +9,9 @@ import "C"
 
 type Style get[CStyleT]
 
-func CreateStyle(o CStyleT) Style {
-	return Style{
+func CreateStyle(o CStyleT) *Style {
+	_o := Style{
 		CObj: o,
 	}
+	return &_o
 }

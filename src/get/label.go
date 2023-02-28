@@ -14,43 +14,46 @@ import "C"
 
 type Label get[CObjT]
 
-func CreateLable(o CObjT) Label {
-	return Label{
+func CreateLable(o CObjT) *Label {
+	_o := Label{
 		CObj: o,
 	}
+	return &_o
 }
 
-func (getter Label) Text() string {
+func (getter *Label) Text() string {
 	res := C.lv_label_get_text(getter.CObj)
 
 	return C.GoString(res)
 }
-func (getter Label) LongMode() uint8 {
+func (getter *Label) LongMode() uint8 {
 	res := C.lv_label_get_long_mode(getter.CObj)
 
 	return uint8(res)
 }
-func (getter Label) Recolor() bool {
+func (getter *Label) Recolor() bool {
 	res := C.lv_label_get_recolor(getter.CObj)
 
 	return bool(res)
 }
-func (getter Label) LetterPos(char_id uint32, pos *types.LvPointT) Label {
-	C.lv_label_get_letter_pos(getter.CObj, C.uint(char_id), (*C.lv_point_t)(unsafe.Pointer(pos)))
 
-	return getter
-}
-func (getter Label) LetterOn(pos_in *types.LvPointT) uint32 {
+// TODO: 这里填充的暂不支持
+// func (getter *Label) LetterPos(char_id uint32, pos *types.LvPointT) Label {
+// 	C.lv_label_get_letter_pos(getter.CObj, C.uint(char_id), (*C.lv_point_t)(unsafe.Pointer(pos)))
+
+//		return getter
+//	}
+func (getter *Label) LetterOn(pos_in *types.LvPointT) uint32 {
 	res := C.lv_label_get_letter_on(getter.CObj, (*C.lv_point_t)(unsafe.Pointer(pos_in)))
 
 	return uint32(res)
 }
-func (getter Label) TextSelectionStart() uint32 {
+func (getter *Label) TextSelectionStart() uint32 {
 	res := C.lv_label_get_text_selection_start(getter.CObj)
 
 	return uint32(res)
 }
-func (getter Label) TextSelectionEnd() uint32 {
+func (getter *Label) TextSelectionEnd() uint32 {
 	res := C.lv_label_get_text_selection_end(getter.CObj)
 
 	return uint32(res)

@@ -15,9 +15,9 @@ type LV_GRAD_DIR_T = C.lv_grad_dir_t
 type LV_ANIM_EXEC_XCB_T = C.lv_anim_exec_xcb_t
 type C_SHORT = C.uint16_t
 
-// typedef void (*lv_anim_exec_xcb_t)(void *, int32_t);
-
 const (
+	LV_ANIM_ON uint32 = C.LV_ANIM_ON
+
 	LV_PART_MAIN         int = C.LV_PART_MAIN
 	LV_PART_SCROLLBAR    int = C.LV_PART_SCROLLBAR
 	LV_PART_INDICATOR    int = C.LV_PART_INDICATOR

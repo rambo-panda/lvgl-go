@@ -14,3 +14,7 @@ type CAnimT = *C.lv_anim_t
 type get[T CAnimT | CObjT | CStyleT] struct {
 	CObj T
 }
+
+func (g get[T]) Destroy() {
+	g.CObj = nil
+}

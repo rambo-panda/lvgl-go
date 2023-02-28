@@ -9,8 +9,9 @@ import "C"
 
 type Bar get[CObjT]
 
-func CreateBar(o CObjT) Bar {
-	return Bar{
+func CreateBar(o CObjT) *Bar {
+	_o := Bar{
 		CObj: o,
 	}
+	return &_o
 }

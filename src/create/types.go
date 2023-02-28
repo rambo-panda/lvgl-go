@@ -35,36 +35,36 @@ type _createI interface {
 
 type _labelT struct {
 	_m[CObjT]
-	Set set.Label
-	Get get.Label
+	Set *set.Label
+	Get *get.Label
 }
 
 type _imgT struct {
 	_m[CObjT]
-	Set set.Img
-	Get get.Img
+	Set *set.Img
+	Get *get.Img
 }
 
 type _objT struct {
 	_m[CObjT]
-	Set set.Obj
-	Get get.Obj
+	Set *set.Obj
+	Get *get.Obj
 }
 
 type _styleT struct {
 	_m[CStyleT]
-	Set set.Style
-	Get get.Style
+	Set *set.Style
+	Get *get.Style
 }
 
 type _barT struct {
 	_m[CObjT]
-	Set set.Bar
-	Get get.Bar
+	Set *set.Bar
+	Get *get.Bar
 }
 
 type _animT struct {
 	_m[CAnimT]
-	Set set.Anim
-	Get get.Anim
+	Set *set.Anim
+	Get *get.Anim
 }

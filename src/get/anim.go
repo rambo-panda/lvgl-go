@@ -9,8 +9,9 @@ import "C"
 
 type Anim get[CAnimT]
 
-func CreateAnim(o CAnimT) Anim {
-	return Anim{
+func CreateAnim(o CAnimT) *Anim {
+	_o := Anim{
 		CObj: o,
 	}
+	return &_o
 }

@@ -13,10 +13,11 @@ import (
 
 type Img get[CObjT]
 
-func CreateImg(o CObjT) Img {
-	return Img{
+func CreateImg(o CObjT) *Img {
+	_o := Img{
 		CObj: o,
 	}
+	return &_o
 }
 
 func (getter Img) SrcOrigin() unsafe.Pointer {

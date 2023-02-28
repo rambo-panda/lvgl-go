@@ -5,6 +5,7 @@ import (
 	"lvgl-go/src/create"
 	"lvgl-go/src/lib"
 	"lvgl-go/src/types"
+	"unsafe"
 )
 
 func main() {
@@ -43,7 +44,7 @@ func a() {
 
 	bar := create.CreateBar(&create.CREATE_NIL)
 	create.CreateObj(&bar).Set.Style(&styleBg, 0).Style(&styleIndic, lib.LV_PART_INDICATOR).Size(200, 20).Center()
-	bar.Set.Value(100, types.LV_ANIM_ON)
+	bar.Set.Value(100, lib.LV_ANIM_ON)
 
 }
 
@@ -55,7 +56,9 @@ func b() {
 	create.CreateObj(&bar).Set.Style(&styleIndic, lib.LV_PART_INDICATOR).Size(20, 200).Center()
 	bar.Set.Range(-20, 40)
 
-	create.CreateAnim().Set.ExecCb().Time(3e3).PlaybackTime(3e3).Var(bar).Values(-20, 40).RepeatCount(lib.LV_ANIM_REPEAT_INFINITE).Start()
+	create.CreateAnim().Set.ExecCb(func(_ unsafe.Pointer, temp int32) {
+		bar.Set.Value(temp, lib.LV_ANIM_ON)
+	}).Time(3e3).PlaybackTime(3e3).Var(bar).Values(-20, 40).RepeatCount(lib.LV_ANIM_REPEAT_INFINITE).Start()
 
 	// 	static void set_temp(void * bar, int32_t temp)
 	// {
