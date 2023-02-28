@@ -55,12 +55,6 @@ func b() {
 	create.CreateObj(&bar).Set.Style(&styleIndic, lib.LV_PART_INDICATOR).Size(20, 200).Center()
 	bar.Set.Range(-20, 40)
 
-	// lv_obj_t * bar = lv_bar_create(lv_scr_act());
-	// lv_obj_add_style(bar, &style_indic, LV_PART_INDICATOR);
-	// lv_obj_set_size(bar, 20, 200);
-	// lv_obj_center(bar);
-	// lv_bar_set_range(bar, -20, 40);
-
 	// lv_anim_t a;
 	// lv_anim_init(&a);
 	// lv_anim_set_exec_cb(&a, set_temp);

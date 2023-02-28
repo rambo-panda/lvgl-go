@@ -14,7 +14,10 @@ type CObjT = *C.struct__lv_obj_t
 type _cStyleT = C.lv_style_t
 type CStyleT = *_cStyleT
 
-type _m[T CObjT | CStyleT] struct {
+type _cAnimT = C.lv_anim_t
+type CAnimT = *_cAnimT
+
+type _m[T CObjT | CStyleT | CAnimT] struct {
 	o T
 }
 
@@ -58,4 +61,10 @@ type _barT struct {
 	_m[CObjT]
 	Set set.Bar
 	Get get.Bar
+}
+
+type _animT struct {
+	_m[CAnimT]
+	Set set.Anim
+	Get get.Anim
 }

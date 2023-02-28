@@ -46,10 +46,16 @@ func toSetObj(o CObjT) set.CObjT {
 func toSetStyleT(o CStyleT) set.CStyleT {
 	return (set.CStyleT)(unsafe.Pointer(o))
 }
+func toSetAnim(o CAnimT) set.CAnimT {
+	return (set.CAnimT)(unsafe.Pointer(o))
+}
 
 func toGetObj(o CObjT) get.CObjT {
 	return (get.CObjT)(unsafe.Pointer(o))
 }
 func toGetStyleT(o CStyleT) get.CStyleT {
 	return (get.CStyleT)(unsafe.Pointer(o))
+}
+func toGetStyleT(o CStyleT) get.CAnimT {
+	return (get.CAnimT)(unsafe.Pointer(o))
 }
