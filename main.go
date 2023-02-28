@@ -29,7 +29,7 @@ func main() {
 		fmt.Println("img src -> ", j)
 	}
 
-	a()
+	b()
 
 	lib.TaskHandler(0)
 }
@@ -42,7 +42,7 @@ func a() {
 	styleIndic.Set.BgColor(0x0000FF).Opa(lib.LV_OPA_COVER).Radius(3)
 
 	bar := create.CreateBar(&create.CREATE_NIL)
-	create.CreateObj(&bar).Set.Style(&styleBg, 0).Style(&styleIndic, int(lib.LV_PART_INDICATOR)).Size(200, 20).Center()
+	create.CreateObj(&bar).Set.Style(&styleBg, 0).Style(&styleIndic, lib.LV_PART_INDICATOR).Size(200, 20).Center()
 	bar.Set.Value(100, types.LV_ANIM_ON)
 
 }
@@ -54,6 +54,13 @@ func b() {
 	bar := create.CreateBar(&create.CREATE_NIL)
 	create.CreateObj(&bar).Set.Style(&styleIndic, lib.LV_PART_INDICATOR).Size(20, 200).Center()
 	bar.Set.Range(-20, 40)
+
+	create.CreateAnim().Set.ExecCb().Time(3e3).PlaybackTime(3e3).Var(bar).Values(-20, 40).RepeatCount(lib.LV_ANIM_REPEAT_INFINITE).Start()
+
+	// 	static void set_temp(void * bar, int32_t temp)
+	// {
+	//     lv_bar_set_value(bar, temp, LV_ANIM_ON);
+	// }
 
 	// lv_anim_t a;
 	// lv_anim_init(&a);

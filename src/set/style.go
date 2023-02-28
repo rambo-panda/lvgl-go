@@ -157,7 +157,7 @@ func (setter Style) BgGradColor(color uint32) Style {
 
 	return setter
 }
-func (setter Style) BgGradDir(value lib.LV_GRAD_DIR_T) Style {
+func (setter Style) BgGradDir(value int) Style {
 	C.lv_style_set_bg_grad_dir(setter.CObj, C.lv_grad_dir_t(value))
 
 	return setter

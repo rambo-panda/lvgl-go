@@ -71,7 +71,7 @@ func CreateAnim() _animT {
 
 	return _animT{
 		_m[CAnimT]{anim},
-		set.CreateAnim(toSetAnim(so)),
-		set.CreateAnim(toGetAnim(so)),
+		set.CreateAnim(toSetAnimT(anim)),
+		get.CreateAnim(toGetAnimT(anim)),
 	}
 }

@@ -2,7 +2,6 @@ package set
 
 import (
 	types "lvgl-go/src/types"
-	"reflect"
 	"unsafe"
 )
 
@@ -642,10 +641,10 @@ func (setter Obj) RemoveStyleAll() Obj {
 	return setter
 }
 
-func (setter Obj) Style(style any, styleSelect lib.LV_STYLE_SELECTOR_T) Obj {
+func (setter Obj) Style(style any, styleSelect int) Obj {
 	var oStyle *C.lv_style_t
 
-	oStyle = (*C.lv_style_t)(reflect.ValueOf(style).MethodByName("GetObj").Call(nil)[0].UnsafePointer())
+	oStyle = (*C.lv_style_t)(getParentObj(style))
 
 	C.lv_obj_add_style(setter.CObj, oStyle, C.lv_style_selector_t(styleSelect))
 
