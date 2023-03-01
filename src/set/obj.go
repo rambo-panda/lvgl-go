@@ -521,18 +521,18 @@ func (setter *Obj) ScrollDir(dir types.LvDirT) *Obj {
 
 	return setter
 }
-func (setter *Obj) ScrollSnapX(align types.LvScrollSnapT) *Obj {
+func (setter *Obj) ScrollSnapX(align uint8) *Obj {
 	C.lv_obj_set_scroll_snap_x(setter.CObj, C.lv_scroll_snap_t(align))
 
 	return setter
 }
-func (setter *Obj) ScrollSnapY(align types.LvScrollSnapT) *Obj {
+func (setter *Obj) ScrollSnapY(align uint8) *Obj {
 	C.lv_obj_set_scroll_snap_y(setter.CObj, C.lv_scroll_snap_t(align))
 
 	return setter
 }
-func (setter *Obj) Parent(parent *types.LvObjT) *Obj {
-	C.lv_obj_set_parent(setter.CObj, (*C.struct__lv_obj_t)(unsafe.Pointer(parent)))
+func (setter *Obj) Parent(parent lib.CreateI) *Obj {
+	C.lv_obj_set_parent(setter.CObj, (CObjT)(getParentObj(parent)))
 
 	return setter
 }
