@@ -26,7 +26,7 @@ func (setter *Bar) Value(value int32, anim uint32) *Bar {
 
 	return setter
 }
-func (setter *Bar) StartValue(start_value int32, anim types.LvAnimEnableT) *Bar {
+func (setter *Bar) StartValue(start_value int32, anim uint8) *Bar {
 	C.lv_bar_set_start_value(setter.CObj, C.int(start_value), C.lv_anim_enable_t(anim))
 
 	return setter

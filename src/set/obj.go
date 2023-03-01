@@ -626,12 +626,12 @@ func (setter *Obj) StyleGridCellYAlign(value types.LvCoordT, selector uint32) *O
 
 	return setter
 }
-func (setter *Obj) Tile(anim_en types.LvAnimEnableT) *Obj {
+func (setter *Obj) Tile(anim_en uint8) *Obj {
 	C.lv_obj_set_tile(setter.CObj, setter.CObj, C.lv_anim_enable_t(anim_en))
 
 	return setter
 }
-func (setter *Obj) TileId(col_id uint32, row_id uint32, anim_en types.LvAnimEnableT) *Obj {
+func (setter *Obj) TileId(col_id uint32, row_id uint32, anim_en uint8) *Obj {
 	C.lv_obj_set_tile_id(setter.CObj, C.uint(col_id), C.uint(row_id), C.lv_anim_enable_t(anim_en))
 
 	return setter
