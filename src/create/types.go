@@ -2,7 +2,9 @@ package create
 
 import (
 	"lvgl-go/src/get"
+	"lvgl-go/src/lib"
 	"lvgl-go/src/set"
+	"unsafe"
 )
 
 /*
@@ -10,41 +12,39 @@ import (
 */
 import "C"
 
-type CObjT = *C.lv_obj_t
+type LV_OBJ_T = *C.lv_obj_t
 type _cStyleT = C.lv_style_t
 type CStyleT = *_cStyleT
 
 type _cAnimT = C.lv_anim_t
 type CAnimT = *_cAnimT
 
-type _m[T CObjT | CStyleT | CAnimT] struct {
+type _m[T LV_OBJ_T | CStyleT | CAnimT] struct {
 	o T
 }
 
-func (m _m[T]) GetObj() T {
-	return m.o
+func (m _m[T]) GetObj() unsafe.Pointer {
+	return unsafe.Pointer(m.o)
 }
 
-var CREATE_NIL _m[CObjT] = _m[CObjT]{}
+var CREATE_NIL _m[LV_OBJ_T] = _m[LV_OBJ_T]{}
 
-type _createI interface {
-	GetObj() CObjT
-}
+type _createI = lib.CreateI
 
 type _labelT struct {
-	_m[CObjT]
+	_m[LV_OBJ_T]
 	Set *set.Label
 	Get *get.Label
 }
 
 type _imgT struct {
-	_m[CObjT]
+	_m[LV_OBJ_T]
 	Set *set.Img
 	Get *get.Img
 }
 
 type _objT struct {
-	_m[CObjT]
+	_m[LV_OBJ_T]
 	Set *set.Obj
 	Get *get.Obj
 }
@@ -56,7 +56,7 @@ type _styleT struct {
 }
 
 type _barT struct {
-	_m[CObjT]
+	_m[LV_OBJ_T]
 	Set *set.Bar
 	Get *get.Bar
 }

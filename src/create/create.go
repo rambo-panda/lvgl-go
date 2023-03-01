@@ -15,7 +15,7 @@ func CreateLabel[T _createI](o T) _labelT {
 	_o := C.lv_label_create(getParent(o))
 
 	return _labelT{
-		_m[CObjT]{_o},
+		_m[LV_OBJ_T]{_o},
 		set.CreateLabel(toSetObj(_o)),
 		get.CreateLable(toGetObj(_o)),
 	}
@@ -24,7 +24,7 @@ func CreateLabel[T _createI](o T) _labelT {
 func CreateImg[T _createI](o T) _imgT {
 	_o := C.lv_img_create(getParent(o))
 	return _imgT{
-		_m[CObjT]{_o},
+		_m[LV_OBJ_T]{_o},
 		set.CreateImg(toSetObj(_o)),
 		get.CreateImg(toGetObj(_o)),
 	}
@@ -34,7 +34,7 @@ func CreateObj[T _createI](o T) _objT {
 	_o := getParent2(o)
 
 	return _objT{
-		_m[CObjT]{_o},
+		_m[LV_OBJ_T]{_o},
 		set.CreateObj(toSetObj(_o)),
 		get.CreateObj(toGetObj(_o)),
 	}
@@ -57,7 +57,7 @@ func CreateBar[T _createI](o T) _barT {
 	_o := C.lv_bar_create(getParent(o))
 
 	return _barT{
-		_m[CObjT]{_o},
+		_m[LV_OBJ_T]{_o},
 		set.CreateBar(toSetObj(_o)),
 		get.CreateBar(toGetObj(_o)),
 	}
@@ -77,5 +77,5 @@ func CreateAnim() _animT {
 }
 
 func Del[T _createI](o T) {
-	C.lv_obj_del(o.GetObj())
+	C.lv_obj_del(_2CObj(o.GetObj()))
 }

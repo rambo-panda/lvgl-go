@@ -62,7 +62,7 @@ func _execAnimCb(obj unsafe.Pointer, temp C.int) {
 	}
 }
 
-func (setter *Anim) Var(creater any) *Anim {
+func (setter *Anim) Var(creater lib.CreateI) *Anim {
 	_o := getParentObj(creater)
 	(*setter).agent = (CObjT)(_o)
 	C.lv_anim_set_var(setter.CObj, _o)

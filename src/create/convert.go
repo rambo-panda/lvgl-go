@@ -18,10 +18,14 @@ const (
 	STRUCT tagUint = 2
 )
 
-func _getParent[T _createI](o T, tag tagUint) CObjT {
+func _2CObj(o unsafe.Pointer) LV_OBJ_T {
+	return (LV_OBJ_T)(o)
+}
+
+func _getParent[T _createI](o T, tag tagUint) LV_OBJ_T {
 	r := o.GetObj()
 
-	if r == nil {
+	if r == nil { //FIXME: 这里检查一下
 		switch tag {
 		case screen:
 			return C.lv_obj_create(nil)
@@ -30,17 +34,17 @@ func _getParent[T _createI](o T, tag tagUint) CObjT {
 		}
 	}
 
-	return r
+	return _2CObj(r)
 }
 
-func getParent[T _createI](o T) CObjT {
+func getParent[T _createI](o T) LV_OBJ_T {
 	return _getParent(o, normal)
 }
-func getParent2[T _createI](o T) CObjT {
+func getParent2[T _createI](o T) LV_OBJ_T {
 	return _getParent(o, screen)
 }
 
-func toSetObj(o CObjT) set.CObjT {
+func toSetObj(o LV_OBJ_T) set.CObjT {
 	return (set.CObjT)(unsafe.Pointer(o))
 }
 func toSetStyleT(o CStyleT) set.CStyleT {
@@ -50,7 +54,7 @@ func toSetAnimT(o CAnimT) set.CAnimT {
 	return (set.CAnimT)(unsafe.Pointer(o))
 }
 
-func toGetObj(o CObjT) get.CObjT {
+func toGetObj(o LV_OBJ_T) get.CObjT {
 	return (get.CObjT)(unsafe.Pointer(o))
 }
 func toGetStyleT(o CStyleT) get.CStyleT {

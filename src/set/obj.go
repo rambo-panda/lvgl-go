@@ -1,6 +1,7 @@
 package set
 
 import (
+	lib "lvgl-go/src/lib"
 	types "lvgl-go/src/types"
 	"unsafe"
 )
@@ -642,7 +643,7 @@ func (setter *Obj) RemoveStyleAll() *Obj {
 	return setter
 }
 
-func (setter *Obj) Style(style any, styleSelect int) *Obj {
+func (setter *Obj) Style(style lib.CreateI, styleSelect int) *Obj {
 	var oStyle *C.lv_style_t
 
 	oStyle = (*C.lv_style_t)(getParentObj(style))

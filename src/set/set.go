@@ -7,7 +7,7 @@ package set
 */
 import "C"
 import (
-	"reflect"
+	"lvgl-go/src/lib"
 	"unsafe"
 )
 
@@ -23,7 +23,6 @@ func (s set[T]) Destroy() {
 	s.CObj = nil
 }
 
-// TODO: 看如何直接使用create _createI 现在怕的就是互相依赖
-func getParentObj(o any) unsafe.Pointer {
-	return (reflect.ValueOf(o).MethodByName("GetObj").Call(nil)[0].UnsafePointer())
+func getParentObj(o lib.CreateI) unsafe.Pointer {
+	return o.GetObj()
 }

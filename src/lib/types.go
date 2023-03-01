@@ -4,7 +4,9 @@ package lib
 #include "lv_init.h"
 */
 import "C"
+import "unsafe"
 
+// ================ C Types
 type LV_PALETTE_T = C.lv_palette_t
 type LV_COLOR_T = C.lv_color_t
 type LV_OPA_T = C.lv_opa_t
@@ -15,6 +17,14 @@ type LV_GRAD_DIR_T = C.lv_grad_dir_t
 type LV_ANIM_EXEC_XCB_T = C.lv_anim_exec_xcb_t
 type C_SHORT = C.uint16_t
 
+type LV_OBJ_T = *C.lv_obj_t // 该变量因经常以指针使用，因此直接定义为指针
+
+// ================ inferface
+type CreateI interface {
+	GetObj() unsafe.Pointer
+}
+
+// ================ constant
 const (
 	LV_ANIM_ON uint32 = C.LV_ANIM_ON
 
