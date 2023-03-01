@@ -24,6 +24,14 @@ type CreateI interface {
 	GetObj() unsafe.Pointer
 }
 
+type _empty struct{}
+
+func (s _empty) GetObj() unsafe.Pointer {
+	return unsafe.Pointer(nil)
+}
+
+var CREATE_NIL _empty = _empty{}
+
 // ================ constant
 const (
 	LV_ANIM_ON uint32 = C.LV_ANIM_ON

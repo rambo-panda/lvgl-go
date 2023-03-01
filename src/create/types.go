@@ -27,8 +27,6 @@ func (m _m[T]) GetObj() unsafe.Pointer {
 	return unsafe.Pointer(m.o)
 }
 
-var CREATE_NIL _m[LV_OBJ_T] = _m[LV_OBJ_T]{}
-
 type _createI = lib.CreateI
 
 type _labelT struct {

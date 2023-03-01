@@ -25,7 +25,7 @@ func _2CObj(o unsafe.Pointer) LV_OBJ_T {
 func _getParent[T _createI](o T, tag tagUint) LV_OBJ_T {
 	r := o.GetObj()
 
-	if r == nil { //FIXME: 这里检查一下
+	if r == nil {
 		switch tag {
 		case screen:
 			return C.lv_obj_create(nil)
