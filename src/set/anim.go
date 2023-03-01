@@ -55,8 +55,6 @@ func _execAnimCb(obj unsafe.Pointer, temp C.int) {
 	for _, o := range anims {
 		if o.agent == _o {
 			o.execCb(obj, int32(temp))
-
-			break
 		}
 	}
 }
