@@ -21,7 +21,6 @@ type Anim struct {
 }
 
 func (a Anim) Destroy() {
-	a.set.Destroy()
 	var ri int
 
 	for i, v := range anims {
@@ -30,7 +29,7 @@ func (a Anim) Destroy() {
 			break
 		}
 	}
-	// a.agent = nil TODO: 不能删，这是一个指针，外部还要用
+	a.agent = nil
 	anims = append(anims[:ri], anims[ri+1:]...)
 	// anims = anims[:copy(anims, anims[ri:])]
 }

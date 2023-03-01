@@ -19,7 +19,8 @@ type set[T CObjT | CStyleT | CAnimT] struct {
 	CObj T
 }
 
-func (s set[T]) Destroy() {
+func (s set[T]) Destroy(tag uint8) {
+	lib.Destroy(unsafe.Pointer(s.CObj), tag)
 	s.CObj = nil
 }
 
