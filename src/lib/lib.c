@@ -12,7 +12,6 @@ static char *joinStr(int a, ...) {
         return "";
     }
 
-lv_text_align_t
     ARGS(a, char *);
 
     char *str = (char *)malloc(1);

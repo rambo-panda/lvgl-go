@@ -1,7 +1,7 @@
 package get
 
 import (
-	types "lvgl-go/src/types"
+	"lvgl-go/src/lib"
 	"unsafe"
 )
 
@@ -21,33 +21,27 @@ func CreateObj(o CObjT) *Obj {
 	return &_o
 }
 
-func (getter *Obj) StyleProp(part types.LvPartT, prop types.LvStylePropT) types.LvStyleValueT {
+func (getter *Obj) StyleProp(part uint32, prop uint32) lib.LV_STYLE_VALUE_T {
 	res := C.lv_obj_get_style_prop(getter.CObj, C.lv_part_t(part), C.lv_style_prop_t(prop))
 
-	return types.LvStyleValueT(res)
+	return lib.LV_STYLE_VALUE_T(res)
 }
-func (getter *Obj) State() types.LvStateT {
+func (getter *Obj) State() uint16 {
 	res := C.lv_obj_get_state(getter.CObj)
 
-	return types.LvStateT(res)
+	return uint16(res)
 }
 func (getter *Obj) Group() unsafe.Pointer {
 	r := C.lv_obj_get_group(getter.CObj)
 
 	return r
 }
-func (getter *Obj) Class() *types.LvObjClassT {
+func (getter *Obj) Class() *lib.LV_OBJ_T {
 	res := C.lv_obj_get_class(getter.CObj)
 
-	return (*types.LvObjClassT)(unsafe.Pointer(res))
+	return (*lib.LV_OBJ_T)(unsafe.Pointer(res))
 }
 
-//TODO: 暂不支持
-// func (getter *Obj) Coords(coords *types.LvAreaT) {
-// 	C.lv_obj_get_coords(getter.CObj, (*C.lv_area_t)(unsafe.Pointer(coords)))
-
-//		return getter
-//	}
 func (getter *Obj) X() int16 {
 	res := C.lv_obj_get_x(getter.CObj)
 
@@ -108,25 +102,25 @@ func (getter *Obj) SelfHeight() int16 {
 
 	return int16(res)
 }
-func (getter *Obj) ScrollbarMode() types.LvScrollbarModeT {
+func (getter *Obj) ScrollbarMode() uint8 {
 	res := C.lv_obj_get_scrollbar_mode(getter.CObj)
 
-	return types.LvScrollbarModeT(res)
+	return uint8(res)
 }
-func (getter *Obj) ScrollDir() types.LvDirT {
+func (getter *Obj) ScrollDir() uint8 {
 	res := C.lv_obj_get_scroll_dir(getter.CObj)
 
-	return types.LvDirT(res)
+	return uint8(res)
 }
-func (getter *Obj) ScrollSnapX() types.LvScrollSnapT {
+func (getter *Obj) ScrollSnapX() uint8 {
 	res := C.lv_obj_get_scroll_snap_x(getter.CObj)
 
-	return types.LvScrollSnapT(res)
+	return uint8(res)
 }
-func (getter *Obj) ScrollSnapY() types.LvScrollSnapT {
+func (getter *Obj) ScrollSnapY() uint8 {
 	res := C.lv_obj_get_scroll_snap_y(getter.CObj)
 
-	return types.LvScrollSnapT(res)
+	return uint8(res)
 }
 func (getter *Obj) ScrollX() int16 {
 	res := C.lv_obj_get_scroll_x(getter.CObj)
@@ -158,10 +152,10 @@ func (getter *Obj) ScrollRight() int16 {
 
 	return int16(res)
 }
-func (getter *Obj) Disp() *types.LvDispT {
+func (getter *Obj) Disp() *lib.LV_DISP_TispT {
 	res := C.lv_obj_get_disp(getter.CObj)
 
-	return (*types.LvDispT)(unsafe.Pointer(res))
+	return (*lib.LV_DISP_TispT)(unsafe.Pointer(res))
 }
 func (getter *Obj) ChildCnt() uint32 {
 	res := C.lv_obj_get_child_cnt(getter.CObj)
@@ -206,3 +200,8 @@ func (getter *Obj) Index() uint32 {
 
 // 	return getter
 // }
+// func (getter *Obj) Coords(coords *types.LvAreaT) {
+// 	C.lv_obj_get_coords(getter.CObj, (*C.lv_area_t)(unsafe.Pointer(coords)))
+
+//		return getter
+//	}

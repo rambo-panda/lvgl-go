@@ -8,18 +8,22 @@ import "unsafe"
 
 // ================ C Types
 type LV_ANIM_EXEC_XCB_T = C.lv_anim_exec_xcb_t
-type LV_STYLE_TRANSITION_DSC_INIT = C.lv_style_transition_dsc_init
+
+// type LV_STYLE_TRANSITION_DSC_INIT = C.lv_style_transition_dsc_init
 type LV_COLOR_FILTER_DSC_T = C.lv_color_filter_dsc_t
 type LV_LABEL_LONG_MODE_T = C.lv_label_long_mode_t
 type C_SHORT = C.uint16_t
+type LV_PART_T = C.lv_part_t
 type LV_POINT_T = C.lv_point_t
 type LV_GRAD_DSC_T = C.lv_grad_dsc_t
 type LV_FONT_T = C.lv_font_t
 type LV_ANIM_T = C.lv_anim_t
+type LV_DISP_T = C.lv_disp_t
 type LV_STYLE_SELECTOR_T = C.lv_style_selector_t
 type LV_STYLE_VALUE_T = C.lv_style_value_t
 
 type LV_OBJ_T = *C.lv_obj_t // 该变量因经常以指针使用，因此直接定义为指针
+type LV_OBJ_CLASS_T = C.lv_obj_class_t
 
 // ================ inferface
 type CreateI interface {

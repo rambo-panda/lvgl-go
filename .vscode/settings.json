@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "lv_canvas.h": "c",
-        "sdl.h": "c",
-        "lvgl.h": "c",
-        "binding.h": "c",
-        "init.h": "c"
-    }
-}
