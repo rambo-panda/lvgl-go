@@ -463,17 +463,17 @@ func (setter *Style) FlexFlow(value types.LvFlexFlowT) *Style {
 
 	return setter
 }
-func (setter *Style) FlexMainPlace(value types.LvFlexAlignT) *Style {
+func (setter *Style) FlexMainPlace(value uint8) *Style {
 	C.lv_style_set_flex_main_place(setter.CObj, C.lv_flex_align_t(value))
 
 	return setter
 }
-func (setter *Style) FlexCrossPlace(value types.LvFlexAlignT) *Style {
+func (setter *Style) FlexCrossPlace(value uint8) *Style {
 	C.lv_style_set_flex_cross_place(setter.CObj, C.lv_flex_align_t(value))
 
 	return setter
 }
-func (setter *Style) FlexTrackPlace(value types.LvFlexAlignT) *Style {
+func (setter *Style) FlexTrackPlace(value uint8) *Style {
 	C.lv_style_set_flex_track_place(setter.CObj, C.lv_flex_align_t(value))
 
 	return setter

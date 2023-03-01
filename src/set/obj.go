@@ -541,7 +541,7 @@ func (setter *Obj) FlexFlow(flow types.LvFlexFlowT) *Obj {
 
 	return setter
 }
-func (setter *Obj) FlexAlign(main_place types.LvFlexAlignT, cross_place types.LvFlexAlignT, track_cross_place types.LvFlexAlignT) *Obj {
+func (setter *Obj) FlexAlign(main_place uint8, cross_place uint8, track_cross_place uint8) *Obj {
 	C.lv_obj_set_flex_align(setter.CObj, C.lv_flex_align_t(main_place), C.lv_flex_align_t(cross_place), C.lv_flex_align_t(track_cross_place))
 
 	return setter
@@ -556,17 +556,17 @@ func (setter *Obj) StyleFlexFlow(value types.LvFlexFlowT, selector uint32) *Obj 
 
 	return setter
 }
-func (setter *Obj) StyleFlexMainPlace(value types.LvFlexAlignT, selector uint32) *Obj {
+func (setter *Obj) StyleFlexMainPlace(value uint8, selector uint32) *Obj {
 	C.lv_obj_set_style_flex_main_place(setter.CObj, C.lv_flex_align_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) StyleFlexCrossPlace(value types.LvFlexAlignT, selector uint32) *Obj {
+func (setter *Obj) StyleFlexCrossPlace(value uint8, selector uint32) *Obj {
 	C.lv_obj_set_style_flex_cross_place(setter.CObj, C.lv_flex_align_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) StyleFlexTrackPlace(value types.LvFlexAlignT, selector uint32) *Obj {
+func (setter *Obj) StyleFlexTrackPlace(value uint8, selector uint32) *Obj {
 	C.lv_obj_set_style_flex_track_place(setter.CObj, C.lv_flex_align_t(value), C.lv_style_selector_t(selector))
 
 	return setter
