@@ -41,8 +41,8 @@ var CREATE_NIL _empty = _empty{}
 
 // ================ constant
 const (
-	LV_ANIM_ON              uint8   = C.LV_ANIM_ON
-	LV_ANIM_OFF             uint8   = C.LV_ANIM_OFF
+	LV_ANIM_ON              uint32  = C.LV_ANIM_ON
+	LV_ANIM_OFF             uint32  = C.LV_ANIM_OFF
 	LV_ANIM_REPEAT_INFINITE C_SHORT = C.LV_ANIM_REPEAT_INFINITE
 
 	LV_PART_MAIN         int = C.LV_PART_MAIN
@@ -82,7 +82,7 @@ const (
 	LV_ALIGN_OUT_RIGHT_MID    uint8 = C.LV_ALIGN_OUT_RIGHT_MID
 	LV_ALIGN_OUT_RIGHT_BOTTOM uint8 = C.LV_ALIGN_OUT_RIGHT_BOTTOM
 
-	LV_SIZE_CONTENT C.short = C.LV_SIZE_CONTENT
+	LV_SIZE_CONTENT int16 = C.LV_SIZE_CONTENT
 )
 
 const (

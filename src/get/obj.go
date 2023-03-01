@@ -152,10 +152,10 @@ func (getter *Obj) ScrollRight() int16 {
 
 	return int16(res)
 }
-func (getter *Obj) Disp() *lib.LV_DISP_TispT {
+func (getter *Obj) Disp() *lib.LV_DISP_T {
 	res := C.lv_obj_get_disp(getter.CObj)
 
-	return (*lib.LV_DISP_TispT)(unsafe.Pointer(res))
+	return (*lib.LV_DISP_T)(unsafe.Pointer(res))
 }
 func (getter *Obj) ChildCnt() uint32 {
 	res := C.lv_obj_get_child_cnt(getter.CObj)

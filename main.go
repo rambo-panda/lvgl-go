@@ -42,7 +42,7 @@ func a() {
 	styleIndic.Set.BgColor(0x0000FF).Opa(lib.LV_OPA_COVER).Radius(3)
 
 	bar := create.CreateBar(&lib.CREATE_NIL)
-	create.CreateObj(&bar).Set.Style(&styleBg, 0).Style(&styleIndic, lib.LV_PART_INDICATOR).Size(200, 20).Center()
+	create.CreateObj(&bar).Set.Style(&styleBg, 0).Style(&styleIndic, lib.LV_PART_INDICATOR).Size(200, 20).Center() // TODO: Size控制垂直还是水平
 	bar.Set.Value(100, lib.LV_ANIM_ON)
 
 }
