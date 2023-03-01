@@ -28,8 +28,6 @@ func (m _m[T]) GetObj() T {
 var CREATE_NIL _m[CObjT] = _m[CObjT]{}
 
 type _createI interface {
-	*_labelT | *_imgT | *_objT | *_styleT | *_barT | *_m[CObjT]
-
 	GetObj() CObjT
 }
 
