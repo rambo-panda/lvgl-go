@@ -34,7 +34,7 @@ func (setter Table) ColCnt(col_cnt uint16) Table {
 
 	return setter
 }
-func (setter Table) ColWidth(col_id uint16, w types.LvCoordT) Table {
+func (setter Table) ColWidth(col_id uint16, w lib.LV_COLOR_T) Table {
 	C.lv_table_set_col_width(setter.CObj, C.ushort(col_id), C.lv_coord_t(w))
 
 	return setter

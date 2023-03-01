@@ -30,7 +30,7 @@ func (setter Chart) PointCount(cnt uint16) Chart {
 
 	return setter
 }
-func (setter Chart) Range(axis types.LvChartAxisT, min types.LvCoordT, max types.LvCoordT) Chart {
+func (setter Chart) Range(axis types.LvChartAxisT, min lib.LV_COLOR_T, max lib.LV_COLOR_T) Chart {
 	C.lv_chart_set_range(setter.CObj, C.lv_chart_axis_t(axis), C.lv_coord_t(min), C.lv_coord_t(max))
 
 	return setter
@@ -55,7 +55,7 @@ func (setter Chart) ZoomY(zoom_y uint16) Chart {
 
 	return setter
 }
-func (setter Chart) AxisTick(axis types.LvChartAxisT, major_len types.LvCoordT, minor_len types.LvCoordT, major_cnt types.LvCoordT, minor_cnt types.LvCoordT, label_en bool, draw_size types.LvCoordT) Chart {
+func (setter Chart) AxisTick(axis types.LvChartAxisT, major_len lib.LV_COLOR_T, minor_len lib.LV_COLOR_T, major_cnt lib.LV_COLOR_T, minor_cnt lib.LV_COLOR_T, label_en bool, draw_size lib.LV_COLOR_T) Chart {
 	C.lv_chart_set_axis_tick(setter.CObj, C.lv_chart_axis_t(axis), C.lv_coord_t(major_len), C.lv_coord_t(minor_len), C.lv_coord_t(major_cnt), C.lv_coord_t(minor_cnt), C.bool(label_en), C.lv_coord_t(draw_size))
 
 	return setter
@@ -80,27 +80,27 @@ func (setter Chart) CursorPoint(cursor *types.LvChartCursorT, ser *types.LvChart
 
 	return setter
 }
-func (setter Chart) AllValue(ser *types.LvChartSeriesT, value types.LvCoordT) Chart {
+func (setter Chart) AllValue(ser *types.LvChartSeriesT, value lib.LV_COLOR_T) Chart {
 	C.lv_chart_set_all_value(setter.CObj, (*C.lv_chart_series_t)(unsafe.Pointer(ser)), C.lv_coord_t(value))
 
 	return setter
 }
-func (setter Chart) NextValue(ser *types.LvChartSeriesT, value types.LvCoordT) Chart {
+func (setter Chart) NextValue(ser *types.LvChartSeriesT, value lib.LV_COLOR_T) Chart {
 	C.lv_chart_set_next_value(setter.CObj, (*C.lv_chart_series_t)(unsafe.Pointer(ser)), C.lv_coord_t(value))
 
 	return setter
 }
-func (setter Chart) NextValue2(ser *types.LvChartSeriesT, x_value types.LvCoordT, y_value types.LvCoordT) Chart {
+func (setter Chart) NextValue2(ser *types.LvChartSeriesT, x_value lib.LV_COLOR_T, y_value lib.LV_COLOR_T) Chart {
 	C.lv_chart_set_next_value2(setter.CObj, (*C.lv_chart_series_t)(unsafe.Pointer(ser)), C.lv_coord_t(x_value), C.lv_coord_t(y_value))
 
 	return setter
 }
-func (setter Chart) ValueById(ser *types.LvChartSeriesT, id uint16, value types.LvCoordT) Chart {
+func (setter Chart) ValueById(ser *types.LvChartSeriesT, id uint16, value lib.LV_COLOR_T) Chart {
 	C.lv_chart_set_value_by_id(setter.CObj, (*C.lv_chart_series_t)(unsafe.Pointer(ser)), C.ushort(id), C.lv_coord_t(value))
 
 	return setter
 }
-func (setter Chart) ValueById2(ser *types.LvChartSeriesT, id uint16, x_value types.LvCoordT, y_value types.LvCoordT) Chart {
+func (setter Chart) ValueById2(ser *types.LvChartSeriesT, id uint16, x_value lib.LV_COLOR_T, y_value lib.LV_COLOR_T) Chart {
 	C.lv_chart_set_value_by_id2(setter.CObj, (*C.lv_chart_series_t)(unsafe.Pointer(ser)), C.ushort(id), C.lv_coord_t(x_value), C.lv_coord_t(y_value))
 
 	return setter

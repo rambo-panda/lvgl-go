@@ -20,12 +20,12 @@ func CreateArea(o CObjT) Area {
 	}
 }
 
-func (setter Area) Width(area_p *types.LvAreaT, w types.LvCoordT) Area {
+func (setter Area) Width(area_p *types.LvAreaT, w lib.LV_COLOR_T) Area {
 	C.lv_area_set_width((*C.lv_area_t)(unsafe.Pointer(area_p)), C.lv_coord_t(w))
 
 	return setter
 }
-func (setter Area) Height(area_p *types.LvAreaT, h types.LvCoordT) Area {
+func (setter Area) Height(area_p *types.LvAreaT, h lib.LV_COLOR_T) Area {
 	C.lv_area_set_height((*C.lv_area_t)(unsafe.Pointer(area_p)), C.lv_coord_t(h))
 
 	return setter

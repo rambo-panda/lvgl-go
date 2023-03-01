@@ -32,12 +32,12 @@ func (setter *Img) Src(src string) *Img {
 	return setter.SrcOrigin(lib.Go2CString(src))
 }
 
-func (setter *Img) OffsetX(x types.LvCoordT) *Img {
+func (setter *Img) OffsetX(x lib.LV_COLOR_T) *Img {
 	C.lv_img_set_offset_x(setter.CObj, C.lv_coord_t(x))
 
 	return setter
 }
-func (setter *Img) OffsetY(y types.LvCoordT) *Img {
+func (setter *Img) OffsetY(y lib.LV_COLOR_T) *Img {
 	C.lv_img_set_offset_y(setter.CObj, C.lv_coord_t(y))
 
 	return setter
@@ -47,7 +47,7 @@ func (setter *Img) Angle(angle int16) *Img {
 
 	return setter
 }
-func (setter *Img) Pivot(x types.LvCoordT, y types.LvCoordT) *Img {
+func (setter *Img) Pivot(x lib.LV_COLOR_T, y lib.LV_COLOR_T) *Img {
 	C.lv_img_set_pivot(setter.CObj, C.lv_coord_t(x), C.lv_coord_t(y))
 
 	return setter
@@ -74,12 +74,12 @@ func (setter *Img) CacheSize(new_slot_num uint16) *Img {
 	return setter
 }
 
-func (setter *Img) BufPxColor(dsc *types.LvImgDscT, x types.LvCoordT, y types.LvCoordT, c types.LvColorT) *Img {
+func (setter *Img) BufPxColor(dsc *types.LvImgDscT, x lib.LV_COLOR_T, y lib.LV_COLOR_T, c types.LvColorT) *Img {
 	C.lv_img_buf_set_px_color((*C.lv_img_dsc_t)(unsafe.Pointer(dsc)), C.lv_coord_t(x), C.lv_coord_t(y), C.lv_color_t(c))
 
 	return setter
 }
-func (setter *Img) BufPxAlpha(dsc *types.LvImgDscT, x types.LvCoordT, y types.LvCoordT, opa types.LvOpaT) *Img {
+func (setter *Img) BufPxAlpha(dsc *types.LvImgDscT, x lib.LV_COLOR_T, y lib.LV_COLOR_T, opa types.LvOpaT) *Img {
 	C.lv_img_buf_set_px_alpha((*C.lv_img_dsc_t)(unsafe.Pointer(dsc)), C.lv_coord_t(x), C.lv_coord_t(y), C.lv_opa_t(opa))
 
 	return setter

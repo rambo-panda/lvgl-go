@@ -29,7 +29,7 @@ func (setter Spangroup) Overflow(overflow types.LvSpanOverflowT) Spangroup {
 
 	return setter
 }
-func (setter Spangroup) Indent(indent types.LvCoordT) Spangroup {
+func (setter Spangroup) Indent(indent lib.LV_COLOR_T) Spangroup {
 	C.lv_spangroup_set_indent(setter.CObj, C.lv_coord_t(indent))
 
 	return setter
