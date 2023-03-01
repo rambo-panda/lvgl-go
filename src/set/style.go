@@ -458,7 +458,7 @@ func (setter *Style) PropMeta(prop types.LvStylePropT, meta uint16) *Style {
 
 	return setter
 }
-func (setter *Style) FlexFlow(value types.LvFlexFlowT) *Style {
+func (setter *Style) FlexFlow(value uint8) *Style {
 	C.lv_style_set_flex_flow(setter.CObj, C.lv_flex_flow_t(value))
 
 	return setter

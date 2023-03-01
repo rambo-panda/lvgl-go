@@ -536,7 +536,7 @@ func (setter *Obj) Parent(parent *types.LvObjT) *Obj {
 
 	return setter
 }
-func (setter *Obj) FlexFlow(flow types.LvFlexFlowT) *Obj {
+func (setter *Obj) FlexFlow(flow uint8) *Obj {
 	C.lv_obj_set_flex_flow(setter.CObj, C.lv_flex_flow_t(flow))
 
 	return setter
@@ -551,7 +551,7 @@ func (setter *Obj) FlexGrow(grow uint8) *Obj {
 
 	return setter
 }
-func (setter *Obj) StyleFlexFlow(value types.LvFlexFlowT, selector uint32) *Obj {
+func (setter *Obj) StyleFlexFlow(value uint8, selector uint32) *Obj {
 	C.lv_obj_set_style_flex_flow(setter.CObj, C.lv_flex_flow_t(value), C.lv_style_selector_t(selector))
 
 	return setter
