@@ -1,9 +1,5 @@
 package set
 
-import (
-	lib.LV_FONT_T"lvgl-go/src/lib.LV_FONT_T
-)
-
 /*
 #cgo CFLAGS: -I../include/
 #cgo LDFLAGS: -L../lib -llvgl

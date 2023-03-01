@@ -2,7 +2,6 @@ package set
 
 import (
 	"lvgl-go/src/lib"
-	lib.LV_FONT_T"lvgl-go/src/lib.LV_FONT_T
 	"unsafe"
 )
 
@@ -32,12 +31,12 @@ func (setter *Img) Src(src string) *Img {
 	return setter.SrcOrigin(lib.Go2CString(src))
 }
 
-func (setter *Img) OffsetX(x lib.LV_COLOR_T) *Img {
+func (setter *Img) OffsetX(x int16) *Img {
 	C.lv_img_set_offset_x(setter.CObj, C.lv_coord_t(x))
 
 	return setter
 }
-func (setter *Img) OffsetY(y lib.LV_COLOR_T) *Img {
+func (setter *Img) OffsetY(y int16) *Img {
 	C.lv_img_set_offset_y(setter.CObj, C.lv_coord_t(y))
 
 	return setter
@@ -47,7 +46,7 @@ func (setter *Img) Angle(angle int16) *Img {
 
 	return setter
 }
-func (setter *Img) Pivot(x lib.LV_COLOR_T, y lib.LV_COLOR_T) *Img {
+func (setter *Img) Pivot(x int16, y int16) *Img {
 	C.lv_img_set_pivot(setter.CObj, C.lv_coord_t(x), C.lv_coord_t(y))
 
 	return setter
@@ -62,7 +61,7 @@ func (setter *Img) Antialias(antialias bool) *Img {
 
 	return setter
 }
-func (setter *Img) SizeMode(mode lib.LV_FONT_TLvImgSizeModeT) *Img {
+func (setter *Img) SizeMode(mode uint8) *Img {
 	C.lv_img_set_size_mode(setter.CObj, C.lv_img_size_mode_t(mode))
 
 	return setter
@@ -74,39 +73,39 @@ func (setter *Img) CacheSize(new_slot_num uint16) *Img {
 	return setter
 }
 
-func (setter *Img) BufPxColor(dsc *lib.LV_FONT_TLvImgDscT, x lib.LV_COLOR_T, y lib.LV_COLOR_T, c lib.LV_COLOR_T) *Img {
-	C.lv_img_buf_set_px_color((*C.lv_img_dsc_t)(unsafe.Pointer(dsc)), C.lv_coord_t(x), C.lv_coord_t(y), C.lv_color_t(c))
+// func (setter *Img) BufPxColor(dsc *lib.LV_IMG_DSC_T, x int16, y int16, c lib.LV_COLOR_T) *Img {
+// 	C.lv_img_buf_set_px_color((*C.lv_img_dsc_t)(unsafe.Pointer(dsc)), C.lv_coord_t(dsc), C.lv_coord_t(x), C.lv_coord_t(y), C.lv_color_t(c))
 
-	return setter
-}
-func (setter *Img) BufPxAlpha(dsc *lib.LV_FONT_TLvImgDscT, x lib.LV_COLOR_T, y lib.LV_COLOR_T, opa lib.LV_OPA_T) *Img {
-	C.lv_img_buf_set_px_alpha((*C.lv_img_dsc_t)(unsafe.Pointer(dsc)), C.lv_coord_t(x), C.lv_coord_t(y), C.lv_opa_t(opa))
+//		return setter
+//	}
+// func (setter *Img) BufPxAlpha(dsc uint16, x int16, y int16, opa lib.LV_OPA_T) *Img {
+// 	C.lv_img_buf_set_px_alpha((*C.lv_img_dsc_t)(unsafe.Pointer(dsc)), C.lv_coord_t(x), C.lv_coord_t(y), C.lv_opa_t(opa))
 
-	return setter
-}
-func (setter *Img) BufPalette(dsc *lib.LV_FONT_TLvImgDscT, id uint8, c lib.LV_COLOR_T) *Img {
-	C.lv_img_buf_set_palette((*C.lv_img_dsc_t)(unsafe.Pointer(dsc)), C.uint8_t(id), C.lv_color_t(c))
+// 	return setter
+// }
+// func (setter *Img) BufPalette(dsc uint16, id uint8, c int16) *Img {
+// 	C.lv_img_buf_set_palette((*C.lv_img_dsc_t)(unsafe.Pointer(dsc)), C.uint8_t(id), C.lv_color_t(c))
 
-	return setter
-}
+// 	return setter
+// }
 
-func (setter *Img) DecoderInfoCb(decoder *lib.LV_FONT_TLvImgDecoderT, info_cb lib.LV_FONT_TLvImgDecoderInfoFT) *Img {
-	C.lv_img_decoder_set_info_cb((*C.lv_img_decoder_t)(unsafe.Pointer(decoder)), C.lv_img_decoder_info_f_t(info_cb))
+// func (setter *Img) DecoderInfoCb(decoder *lib.LV_FONT_TLvImgDecoderT, info_cb lib.LV_FONT_TLvImgDecoderInfoFT) *Img {
+// 	C.lv_img_decoder_set_info_cb((*C.lv_img_decoder_t)(unsafe.Pointer(decoder)), C.lv_img_decoder_info_f_t(info_cb))
 
-	return setter
-}
-func (setter *Img) DecoderOpenCb(decoder *lib.LV_FONT_TLvImgDecoderT, open_cb lib.LV_FONT_TLvImgDecoderOpenFT) *Img {
-	C.lv_img_decoder_set_open_cb((*C.lv_img_decoder_t)(unsafe.Pointer(decoder)), C.lv_img_decoder_open_f_t(open_cb))
+// 	return setter
+// }
+// func (setter *Img) DecoderOpenCb(decoder *lib.LV_FONT_TLvImgDecoderT, open_cb lib.LV_FONT_TLvImgDecoderOpenFT) *Img {
+// 	C.lv_img_decoder_set_open_cb((*C.lv_img_decoder_t)(unsafe.Pointer(decoder)), C.lv_img_decoder_open_f_t(open_cb))
 
-	return setter
-}
-func (setter *Img) DecoderReadLineCb(decoder *lib.LV_FONT_TLvImgDecoderT, read_line_cb lib.LV_FONT_TLvImgDecoderReadLineFT) *Img {
-	C.lv_img_decoder_set_read_line_cb((*C.lv_img_decoder_t)(unsafe.Pointer(decoder)), C.lv_img_decoder_read_line_f_t(read_line_cb))
+// 	return setter
+// }
+// func (setter *Img) DecoderReadLineCb(decoder *lib.LV_FONT_TLvImgDecoderT, read_line_cb lib.LV_FONT_TLvImgDecoderReadLineFT) *Img {
+// 	C.lv_img_decoder_set_read_line_cb((*C.lv_img_decoder_t)(unsafe.Pointer(decoder)), C.lv_img_decoder_read_line_f_t(read_line_cb))
 
-	return setter
-}
-func (setter *Img) DecoderCloseCb(decoder *lib.LV_FONT_TLvImgDecoderT, close_cb lib.LV_FONT_TLvImgDecoderCloseFT) *Img {
-	C.lv_img_decoder_set_close_cb((*C.lv_img_decoder_t)(unsafe.Pointer(decoder)), C.lv_img_decoder_close_f_t(close_cb))
+// 	return setter
+// }
+// func (setter *Img) DecoderCloseCb(decoder *lib.LV_FONT_TLvImgDecoderT, close_cb lib.LV_FONT_TLvImgDecoderCloseFT) *Img {
+// 	C.lv_img_decoder_set_close_cb((*C.lv_img_decoder_t)(unsafe.Pointer(decoder)), C.lv_img_decoder_close_f_t(close_cb))
 
-	return setter
-}
+// 	return setter
+// }

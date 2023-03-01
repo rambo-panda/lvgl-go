@@ -1,7 +1,7 @@
 package set
 
 import (
-	lib.LV_FONT_T"lvgl-go/src/lib.LV_FONT_T
+	"lvgl-go/src/lib"
 )
 
 /*

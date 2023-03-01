@@ -1,9 +1,5 @@
 package set
 
-import (
-	lib.LV_FONT_T"lvgl-go/src/lib.LV_FONT_T
-)
-
 /*
 #cgo CFLAGS: -I../include/
 #cgo LDFLAGS: -L../lib -llvgl
@@ -36,7 +32,7 @@ func (setter *Bar) Range(min int32, max int32) *Bar {
 
 	return setter
 }
-func (setter *Bar) Mode(mode lib.LV_FONT_TLvBarModeT) *Bar {
+func (setter *Bar) Mode(mode uint8) *Bar {
 	C.lv_bar_set_mode(setter.CObj, C.lv_bar_mode_t(mode))
 
 	return setter

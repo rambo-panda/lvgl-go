@@ -2,7 +2,6 @@ package set
 
 import (
 	"lvgl-go/src/lib"
-	lib.LV_FONT_T"lvgl-go/src/lib.LV_FONT_T
 	"unsafe"
 )
 
@@ -363,7 +362,7 @@ func (setter *Style) TextOpa(value lib.LV_OPA_T) *Style {
 
 	return setter
 }
-func (setter *Style) TextFont(value *lib.LV_FONT_TLvFontT) *Style {
+func (setter *Style) TextFont(value *lib.LV_FONT_T) *Style {
 	C.lv_style_set_text_font(setter.CObj, (*C.lv_font_t)(unsafe.Pointer(value)))
 
 	return setter
@@ -378,7 +377,7 @@ func (setter *Style) TextLineSpace(value lvCoordT) *Style {
 
 	return setter
 }
-func (setter *Style) TextDecor(value lib.LV_FONT_TLvTextDecorT) *Style {
+func (setter *Style) TextDecor(value uint8) *Style {
 	C.lv_style_set_text_decor(setter.CObj, C.lv_text_decor_t(value))
 
 	return setter
@@ -403,7 +402,7 @@ func (setter *Style) Opa(value lib.LV_OPA_T) *Style {
 
 	return setter
 }
-func (setter *Style) ColorFilterDsc(value *lib.LV_FONT_TLvColorFilterDscT) *Style {
+func (setter *Style) ColorFilterDsc(value *lib.LV_COLOR_FILTER_DSC_T) *Style {
 	C.lv_style_set_color_filter_dsc(setter.CObj, (*C.lv_color_filter_dsc_t)(unsafe.Pointer(value)))
 
 	return setter
@@ -428,7 +427,7 @@ func (setter *Style) AnimSpeed(value uint32) *Style {
 
 	return setter
 }
-func (setter *Style) Transition(value *lib.LV_FONT_TLvStyleTransitionDscT) *Style {
+func (setter *Style) Transition(value *lib.LV_STYLE_TRANSITION_DSC_T) *Style {
 	C.lv_style_set_transition(setter.CObj, (*C.lv_style_transition_dsc_t)(unsafe.Pointer(value)))
 
 	return setter

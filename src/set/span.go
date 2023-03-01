@@ -1,7 +1,7 @@
 package set
 
 import (
-	lib.LV_FONT_T"lvgl-go/src/lib.LV_FONT_T
+	"lvgl-go/src/lib"
 	"unsafe"
 )
 
@@ -20,12 +20,12 @@ func CreateSpan(o CObjT) Span {
 	}
 }
 
-func (setter Span) Text(span *lib.LV_FONT_TLvSpanT, text string) Span {
+func (setter Span) Text(span *lib.LV_SPAN_T, text string) Span {
 	C.lv_span_set_text((*C.lv_span_t)(unsafe.Pointer(span)), C.CString(text))
 
 	return setter
 }
-func (setter Span) TextStatic(span *lib.LV_FONT_TLvSpanT, text string) Span {
+func (setter Span) TextStatic(span *lib.LV_SPAN_T, text string) Span {
 	C.lv_span_set_text_static((*C.lv_span_t)(unsafe.Pointer(span)), C.CString(text))
 
 	return setter
