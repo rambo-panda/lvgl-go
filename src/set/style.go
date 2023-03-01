@@ -483,12 +483,12 @@ func (setter *Style) FlexGrow(value uint8) *Style {
 
 	return setter
 }
-func (setter *Style) GridRowAlign(value types.LvGridAlignT) *Style {
+func (setter *Style) GridRowAlign(value uint8) *Style {
 	C.lv_style_set_grid_row_align(setter.CObj, C.lv_grid_align_t(value))
 
 	return setter
 }
-func (setter *Style) GridColumnAlign(value types.LvGridAlignT) *Style {
+func (setter *Style) GridColumnAlign(value uint8) *Style {
 	C.lv_style_set_grid_column_align(setter.CObj, C.lv_grid_align_t(value))
 
 	return setter

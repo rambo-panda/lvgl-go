@@ -576,22 +576,22 @@ func (setter *Obj) StyleFlexGrow(value uint8, selector uint32) *Obj {
 
 	return setter
 }
-func (setter *Obj) GridAlign(column_align types.LvGridAlignT, row_align types.LvGridAlignT) *Obj {
+func (setter *Obj) GridAlign(column_align uint8, row_align uint8) *Obj {
 	C.lv_obj_set_grid_align(setter.CObj, C.lv_grid_align_t(column_align), C.lv_grid_align_t(row_align))
 
 	return setter
 }
-func (setter *Obj) GridCell(column_align types.LvGridAlignT, col_pos uint8, col_span uint8, row_align types.LvGridAlignT, row_pos uint8, row_span uint8) *Obj {
+func (setter *Obj) GridCell(column_align uint8, col_pos uint8, col_span uint8, row_align uint8, row_pos uint8, row_span uint8) *Obj {
 	C.lv_obj_set_grid_cell(setter.CObj, C.lv_grid_align_t(column_align), C.uint8_t(col_pos), C.uint8_t(col_span), C.lv_grid_align_t(row_align), C.uint8_t(row_pos), C.uint8_t(row_span))
 
 	return setter
 }
-func (setter *Obj) StyleGridRowAlign(value types.LvGridAlignT, selector uint32) *Obj {
+func (setter *Obj) StyleGridRowAlign(value uint8, selector uint32) *Obj {
 	C.lv_obj_set_style_grid_row_align(setter.CObj, C.lv_grid_align_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) StyleGridColumnAlign(value types.LvGridAlignT, selector uint32) *Obj {
+func (setter *Obj) StyleGridColumnAlign(value uint8, selector uint32) *Obj {
 	C.lv_obj_set_style_grid_column_align(setter.CObj, C.lv_grid_align_t(value), C.lv_style_selector_t(selector))
 
 	return setter
