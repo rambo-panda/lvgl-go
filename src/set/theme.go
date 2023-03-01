@@ -1,7 +1,7 @@
 package set
 
 import (
-	types "lvgl-go/src/types"
+	lib.LV_FONT_T"lvgl-go/src/lib.LV_FONT_T
 	"unsafe"
 )
 
@@ -20,12 +20,12 @@ func CreateTheme(o CObjT) Theme {
 	}
 }
 
-func (setter Theme) Parent(new_theme *types.LvThemeT, parent *types.LvThemeT) Theme {
+func (setter Theme) Parent(new_theme *lib.LV_FONT_TLvThemeT, parent *lib.LV_FONT_TLvThemeT) Theme {
 	C.lv_theme_set_parent((*C.lv_theme_t)(unsafe.Pointer(new_theme)), (*C.lv_theme_t)(unsafe.Pointer(parent)))
 
 	return setter
 }
-func (setter Theme) ApplyCb(theme *types.LvThemeT, apply_cb types.LvThemeApplyCbT) Theme {
+func (setter Theme) ApplyCb(theme *lib.LV_FONT_TLvThemeT, apply_cb lib.LV_FONT_TLvThemeApplyCbT) Theme {
 	C.lv_theme_set_apply_cb((*C.lv_theme_t)(unsafe.Pointer(theme)), C.lv_theme_apply_cb_t(apply_cb))
 
 	return setter

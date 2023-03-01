@@ -12,8 +12,7 @@ static char *joinStr(int a, ...) {
         return "";
     }
 
-    lv_palette_t j = LV_PALETTE_LIGHT_BLUE;
-
+lv_text_align_t
     ARGS(a, char *);
 
     char *str = (char *)malloc(1);

@@ -11,8 +11,6 @@ type LV_PALETTE_T = C.lv_palette_t
 type LV_COLOR_T = C.lv_color_t
 type LV_OPA_T = C.lv_opa_t
 type LV_COLOR_HSV_T = C.lv_color_hsv_t
-type LV_STYLE_SELECTOR_T = C.lv_style_selector_t
-type LV_GRAD_DIR_T = C.lv_grad_dir_t
 
 type Color uint8
 

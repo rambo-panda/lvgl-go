@@ -1,7 +1,7 @@
 package set
 
 import (
-	types "lvgl-go/src/types"
+	lib.LV_FONT_T"lvgl-go/src/lib.LV_FONT_T
 )
 
 /*
@@ -19,12 +19,12 @@ func CreateSpangroup(o CObjT) Spangroup {
 	}
 }
 
-func (setter Spangroup) Align(align types.LvTextAlignT) Spangroup {
+func (setter Spangroup) Align(align uint8) Spangroup {
 	C.lv_spangroup_set_align(setter.CObj, C.lv_text_align_t(align))
 
 	return setter
 }
-func (setter Spangroup) Overflow(overflow types.LvSpanOverflowT) Spangroup {
+func (setter Spangroup) Overflow(overflow lib.LV_FONT_TLvSpanOverflowT) Spangroup {
 	C.lv_spangroup_set_overflow(setter.CObj, C.lv_span_overflow_t(overflow))
 
 	return setter
@@ -34,7 +34,7 @@ func (setter Spangroup) Indent(indent lib.LV_COLOR_T) Spangroup {
 
 	return setter
 }
-func (setter Spangroup) Mode(mode types.LvSpanModeT) Spangroup {
+func (setter Spangroup) Mode(mode lib.LV_FONT_TLvSpanModeT) Spangroup {
 	C.lv_spangroup_set_mode(setter.CObj, C.lv_span_mode_t(mode))
 
 	return setter

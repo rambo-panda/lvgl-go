@@ -2,7 +2,7 @@ package set
 
 import (
 	"lvgl-go/src/lib"
-	types "lvgl-go/src/types"
+	lib.LV_FONT_T"lvgl-go/src/lib.LV_FONT_T
 	"unsafe"
 )
 
@@ -63,7 +63,7 @@ func (setter *Style) Y(value lvCoordT) *Style {
 
 	return setter
 }
-func (setter *Style) Align(value types.LvAlignT) *Style {
+func (setter *Style) Align(value uint8) *Style {
 	C.lv_style_set_align(setter.CObj, C.lv_align_t(value))
 
 	return setter
@@ -173,12 +173,12 @@ func (setter *Style) BgGradStop(value lvCoordT) *Style {
 
 	return setter
 }
-func (setter *Style) BgGrad(value *types.LvGradDscT) *Style {
+func (setter *Style) BgGrad(value *lib.LV_GRAD_DSC_T) *Style {
 	C.lv_style_set_bg_grad(setter.CObj, (*C.lv_grad_dsc_t)(unsafe.Pointer(value)))
 
 	return setter
 }
-func (setter *Style) BgDitherMode(value types.LvDitherModeT) *Style {
+func (setter *Style) BgDitherMode(value uint8) *Style {
 	C.lv_style_set_bg_dither_mode(setter.CObj, C.lv_dither_mode_t(value))
 
 	return setter
@@ -193,7 +193,7 @@ func (setter *Style) BgImgOpa(value lib.LV_OPA_T) *Style {
 
 	return setter
 }
-func (setter *Style) BgImgRecolor(value types.LvColorT) *Style {
+func (setter *Style) BgImgRecolor(value lib.LV_COLOR_T) *Style {
 	C.lv_style_set_bg_img_recolor(setter.CObj, C.lv_color_t(value))
 
 	return setter
@@ -223,7 +223,7 @@ func (setter *Style) BorderWidth(value lvCoordT) *Style {
 
 	return setter
 }
-func (setter *Style) BorderSide(value types.LvBorderSideT) *Style {
+func (setter *Style) BorderSide(value uint8) *Style {
 	C.lv_style_set_border_side(setter.CObj, C.lv_border_side_t(value))
 
 	return setter
@@ -238,7 +238,7 @@ func (setter *Style) OutlineWidth(value lvCoordT) *Style {
 
 	return setter
 }
-func (setter *Style) OutlineColor(value types.LvColorT) *Style {
+func (setter *Style) OutlineColor(value lib.LV_COLOR_T) *Style {
 	C.lv_style_set_outline_color(setter.CObj, C.lv_color_t(value))
 
 	return setter
@@ -273,7 +273,7 @@ func (setter *Style) ShadowSpread(value lvCoordT) *Style {
 
 	return setter
 }
-func (setter *Style) ShadowColor(value types.LvColorT) *Style {
+func (setter *Style) ShadowColor(value lib.LV_COLOR_T) *Style {
 	C.lv_style_set_shadow_color(setter.CObj, C.lv_color_t(value))
 
 	return setter
@@ -288,7 +288,7 @@ func (setter *Style) ImgOpa(value lib.LV_OPA_T) *Style {
 
 	return setter
 }
-func (setter *Style) ImgRecolor(value types.LvColorT) *Style {
+func (setter *Style) ImgRecolor(value lib.LV_COLOR_T) *Style {
 	C.lv_style_set_img_recolor(setter.CObj, C.lv_color_t(value))
 
 	return setter
@@ -318,7 +318,7 @@ func (setter *Style) LineRounded(value bool) *Style {
 
 	return setter
 }
-func (setter *Style) LineColor(value types.LvColorT) *Style {
+func (setter *Style) LineColor(value lib.LV_COLOR_T) *Style {
 	C.lv_style_set_line_color(setter.CObj, C.lv_color_t(value))
 
 	return setter
@@ -338,7 +338,7 @@ func (setter *Style) ArcRounded(value bool) *Style {
 
 	return setter
 }
-func (setter *Style) ArcColor(value types.LvColorT) *Style {
+func (setter *Style) ArcColor(value lib.LV_COLOR_T) *Style {
 	C.lv_style_set_arc_color(setter.CObj, C.lv_color_t(value))
 
 	return setter
@@ -353,7 +353,7 @@ func (setter *Style) ArcImgSrc(value any) *Style {
 
 	return setter
 }
-func (setter *Style) TextColor(value types.LvColorT) *Style {
+func (setter *Style) TextColor(value lib.LV_COLOR_T) *Style {
 	C.lv_style_set_text_color(setter.CObj, C.lv_color_t(value))
 
 	return setter
@@ -363,7 +363,7 @@ func (setter *Style) TextOpa(value lib.LV_OPA_T) *Style {
 
 	return setter
 }
-func (setter *Style) TextFont(value *types.LvFontT) *Style {
+func (setter *Style) TextFont(value *lib.LV_FONT_TLvFontT) *Style {
 	C.lv_style_set_text_font(setter.CObj, (*C.lv_font_t)(unsafe.Pointer(value)))
 
 	return setter
@@ -378,12 +378,12 @@ func (setter *Style) TextLineSpace(value lvCoordT) *Style {
 
 	return setter
 }
-func (setter *Style) TextDecor(value types.LvTextDecorT) *Style {
+func (setter *Style) TextDecor(value lib.LV_FONT_TLvTextDecorT) *Style {
 	C.lv_style_set_text_decor(setter.CObj, C.lv_text_decor_t(value))
 
 	return setter
 }
-func (setter *Style) TextAlign(value types.LvTextAlignT) *Style {
+func (setter *Style) TextAlign(value uint8) *Style {
 	C.lv_style_set_text_align(setter.CObj, C.lv_text_align_t(value))
 
 	return setter
@@ -403,7 +403,7 @@ func (setter *Style) Opa(value lib.LV_OPA_T) *Style {
 
 	return setter
 }
-func (setter *Style) ColorFilterDsc(value *types.LvColorFilterDscT) *Style {
+func (setter *Style) ColorFilterDsc(value *lib.LV_FONT_TLvColorFilterDscT) *Style {
 	C.lv_style_set_color_filter_dsc(setter.CObj, (*C.lv_color_filter_dsc_t)(unsafe.Pointer(value)))
 
 	return setter
@@ -413,7 +413,7 @@ func (setter *Style) ColorFilterOpa(value lib.LV_OPA_T) *Style {
 
 	return setter
 }
-func (setter *Style) Anim(value *types.LvAnimT) *Style {
+func (setter *Style) Anim(value *lib.LV_ANIM_T) *Style {
 	C.lv_style_set_anim(setter.CObj, (*C.lv_anim_t)(unsafe.Pointer(value)))
 
 	return setter
@@ -428,12 +428,12 @@ func (setter *Style) AnimSpeed(value uint32) *Style {
 
 	return setter
 }
-func (setter *Style) Transition(value *types.LvStyleTransitionDscT) *Style {
+func (setter *Style) Transition(value *lib.LV_FONT_TLvStyleTransitionDscT) *Style {
 	C.lv_style_set_transition(setter.CObj, (*C.lv_style_transition_dsc_t)(unsafe.Pointer(value)))
 
 	return setter
 }
-func (setter *Style) BlendMode(value types.LvBlendModeT) *Style {
+func (setter *Style) BlendMode(value uint8) *Style {
 	C.lv_style_set_blend_mode(setter.CObj, C.lv_blend_mode_t(value))
 
 	return setter
@@ -443,17 +443,17 @@ func (setter *Style) Layout(value uint16) *Style {
 
 	return setter
 }
-func (setter *Style) BaseDir(value types.LvBaseDirT) *Style {
+func (setter *Style) BaseDir(value uint8) *Style {
 	C.lv_style_set_base_dir(setter.CObj, C.lv_base_dir_t(value))
 
 	return setter
 }
-func (setter *Style) Prop(prop types.LvStylePropT, value types.LvStyleValueT) *Style {
+func (setter *Style) Prop(prop uint32, value lib.LV_STYLE_VALUE_T) *Style {
 	C.lv_style_set_prop(setter.CObj, C.lv_style_prop_t(prop), C.lv_style_value_t(value))
 
 	return setter
 }
-func (setter *Style) PropMeta(prop types.LvStylePropT, meta uint16) *Style {
+func (setter *Style) PropMeta(prop uint32, meta uint16) *Style {
 	C.lv_style_set_prop_meta(setter.CObj, C.lv_style_prop_t(prop), C.ushort(meta))
 
 	return setter

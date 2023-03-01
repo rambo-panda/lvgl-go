@@ -1,7 +1,7 @@
 package set
 
 import (
-	types "lvgl-go/src/types"
+	lib.LV_FONT_T"lvgl-go/src/lib.LV_FONT_T
 )
 
 /*
@@ -19,7 +19,7 @@ func CreateLed(o CObjT) Led {
 	}
 }
 
-func (setter Led) Color(color types.LvColorT) Led {
+func (setter Led) Color(color lib.LV_COLOR_T) Led {
 	C.lv_led_set_color(setter.CObj, C.lv_color_t(color))
 
 	return setter

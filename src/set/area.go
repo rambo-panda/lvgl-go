@@ -1,7 +1,7 @@
 package set
 
 import (
-	types "lvgl-go/src/types"
+	lib.LV_FONT_T"lvgl-go/src/lib.LV_FONT_T
 	"unsafe"
 )
 
@@ -20,12 +20,12 @@ func CreateArea(o CObjT) Area {
 	}
 }
 
-func (setter Area) Width(area_p *types.LvAreaT, w lib.LV_COLOR_T) Area {
+func (setter Area) Width(area_p *lib.LV_FONT_TLvAreaT, w lib.LV_COLOR_T) Area {
 	C.lv_area_set_width((*C.lv_area_t)(unsafe.Pointer(area_p)), C.lv_coord_t(w))
 
 	return setter
 }
-func (setter Area) Height(area_p *types.LvAreaT, h lib.LV_COLOR_T) Area {
+func (setter Area) Height(area_p *lib.LV_FONT_TLvAreaT, h lib.LV_COLOR_T) Area {
 	C.lv_area_set_height((*C.lv_area_t)(unsafe.Pointer(area_p)), C.lv_coord_t(h))
 
 	return setter

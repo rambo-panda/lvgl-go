@@ -2,7 +2,6 @@ package set
 
 import (
 	lib "lvgl-go/src/lib"
-	types "lvgl-go/src/types"
 	"unsafe"
 )
 
@@ -22,12 +21,12 @@ func CreateObj(o CObjT) *Obj {
 	return &_o
 }
 
-func (setter *Obj) LocalStyleProp(prop types.LvStylePropT, value types.LvStyleValueT, selector uint32) *Obj {
+func (setter *Obj) LocalStyleProp(prop uint32, value lib.LV_STYLE_VALUE_T, selector uint32) *Obj {
 	C.lv_obj_set_local_style_prop(setter.CObj, C.lv_style_prop_t(prop), C.lv_style_value_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) LocalStylePropMeta(prop types.LvStylePropT, meta uint16, selector uint32) *Obj {
+func (setter *Obj) LocalStylePropMeta(prop uint32, meta uint16, selector uint32) *Obj {
 	C.lv_obj_set_local_style_prop_meta(setter.CObj, C.lv_style_prop_t(prop), C.ushort(meta), C.lv_style_selector_t(selector))
 
 	return setter
@@ -72,7 +71,7 @@ func (setter *Obj) StyleY(value lib.LV_COLOR_T, selector uint32) *Obj {
 
 	return setter
 }
-func (setter *Obj) StyleAlign(value types.LvAlignT, selector uint32) *Obj {
+func (setter *Obj) StyleAlign(value uint8, selector uint32) *Obj {
 	C.lv_obj_set_style_align(setter.CObj, C.lv_align_t(value), C.lv_style_selector_t(selector))
 
 	return setter
@@ -147,22 +146,22 @@ func (setter *Obj) StylePadColumn(value lib.LV_COLOR_T, selector uint32) *Obj {
 
 	return setter
 }
-func (setter *Obj) StyleBgColor(value types.LvColorT, selector uint32) *Obj {
+func (setter *Obj) StyleBgColor(value lib.LV_COLOR_T, selector uint32) *Obj {
 	C.lv_obj_set_style_bg_color(setter.CObj, C.lv_color_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) StyleBgOpa(value types.LvOpaT, selector uint32) *Obj {
+func (setter *Obj) StyleBgOpa(value lib.LV_OPA_T, selector uint32) *Obj {
 	C.lv_obj_set_style_bg_opa(setter.CObj, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) StyleBgGradColor(value types.LvColorT, selector uint32) *Obj {
+func (setter *Obj) StyleBgGradColor(value lib.LV_COLOR_T, selector uint32) *Obj {
 	C.lv_obj_set_style_bg_grad_color(setter.CObj, C.lv_color_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) StyleBgGradDir(value types.LvGradDirT, selector uint32) *Obj {
+func (setter *Obj) StyleBgGradDir(value uint8, selector uint32) *Obj {
 	C.lv_obj_set_style_bg_grad_dir(setter.CObj, C.lv_grad_dir_t(value), C.lv_style_selector_t(selector))
 
 	return setter
@@ -177,12 +176,12 @@ func (setter *Obj) StyleBgGradStop(value lib.LV_COLOR_T, selector uint32) *Obj {
 
 	return setter
 }
-func (setter *Obj) StyleBgGrad(value *types.LvGradDscT, selector uint32) *Obj {
+func (setter *Obj) StyleBgGrad(value *lib.LV_GRAD_DSC_T, selector uint32) *Obj {
 	C.lv_obj_set_style_bg_grad(setter.CObj, (*C.lv_grad_dsc_t)(unsafe.Pointer(value)), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) StyleBgDitherMode(value types.LvDitherModeT, selector uint32) *Obj {
+func (setter *Obj) StyleBgDitherMode(value uint8, selector uint32) *Obj {
 	C.lv_obj_set_style_bg_dither_mode(setter.CObj, C.lv_dither_mode_t(value), C.lv_style_selector_t(selector))
 
 	return setter
@@ -192,17 +191,17 @@ func (setter *Obj) StyleBgImgSrc(value any, selector uint32) *Obj {
 
 	return setter
 }
-func (setter *Obj) StyleBgImgOpa(value types.LvOpaT, selector uint32) *Obj {
+func (setter *Obj) StyleBgImgOpa(value lib.LV_OPA_T, selector uint32) *Obj {
 	C.lv_obj_set_style_bg_img_opa(setter.CObj, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) StyleBgImgRecolor(value types.LvColorT, selector uint32) *Obj {
+func (setter *Obj) StyleBgImgRecolor(value lib.LV_COLOR_T, selector uint32) *Obj {
 	C.lv_obj_set_style_bg_img_recolor(setter.CObj, C.lv_color_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) StyleBgImgRecolorOpa(value types.LvOpaT, selector uint32) *Obj {
+func (setter *Obj) StyleBgImgRecolorOpa(value lib.LV_OPA_T, selector uint32) *Obj {
 	C.lv_obj_set_style_bg_img_recolor_opa(setter.CObj, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
@@ -212,12 +211,12 @@ func (setter *Obj) StyleBgImgTiled(value bool, selector uint32) *Obj {
 
 	return setter
 }
-func (setter *Obj) StyleBorderColor(value types.LvColorT, selector uint32) *Obj {
+func (setter *Obj) StyleBorderColor(value lib.LV_COLOR_T, selector uint32) *Obj {
 	C.lv_obj_set_style_border_color(setter.CObj, C.lv_color_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) StyleBorderOpa(value types.LvOpaT, selector uint32) *Obj {
+func (setter *Obj) StyleBorderOpa(value lib.LV_OPA_T, selector uint32) *Obj {
 	C.lv_obj_set_style_border_opa(setter.CObj, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
@@ -227,7 +226,7 @@ func (setter *Obj) StyleBorderWidth(value lib.LV_COLOR_T, selector uint32) *Obj 
 
 	return setter
 }
-func (setter *Obj) StyleBorderSide(value types.LvBorderSideT, selector uint32) *Obj {
+func (setter *Obj) StyleBorderSide(value uint8, selector uint32) *Obj {
 	C.lv_obj_set_style_border_side(setter.CObj, C.lv_border_side_t(value), C.lv_style_selector_t(selector))
 
 	return setter
@@ -242,12 +241,12 @@ func (setter *Obj) StyleOutlineWidth(value lib.LV_COLOR_T, selector uint32) *Obj
 
 	return setter
 }
-func (setter *Obj) StyleOutlineColor(value types.LvColorT, selector uint32) *Obj {
+func (setter *Obj) StyleOutlineColor(value lib.LV_COLOR_T, selector uint32) *Obj {
 	C.lv_obj_set_style_outline_color(setter.CObj, C.lv_color_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) StyleOutlineOpa(value types.LvOpaT, selector uint32) *Obj {
+func (setter *Obj) StyleOutlineOpa(value lib.LV_OPA_T, selector uint32) *Obj {
 	C.lv_obj_set_style_outline_opa(setter.CObj, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
@@ -277,27 +276,27 @@ func (setter *Obj) StyleShadowSpread(value lib.LV_COLOR_T, selector uint32) *Obj
 
 	return setter
 }
-func (setter *Obj) StyleShadowColor(value types.LvColorT, selector uint32) *Obj {
+func (setter *Obj) StyleShadowColor(value lib.LV_COLOR_T, selector uint32) *Obj {
 	C.lv_obj_set_style_shadow_color(setter.CObj, C.lv_color_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) StyleShadowOpa(value types.LvOpaT, selector uint32) *Obj {
+func (setter *Obj) StyleShadowOpa(value lib.LV_OPA_T, selector uint32) *Obj {
 	C.lv_obj_set_style_shadow_opa(setter.CObj, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) StyleImgOpa(value types.LvOpaT, selector uint32) *Obj {
+func (setter *Obj) StyleImgOpa(value lib.LV_OPA_T, selector uint32) *Obj {
 	C.lv_obj_set_style_img_opa(setter.CObj, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) StyleImgRecolor(value types.LvColorT, selector uint32) *Obj {
+func (setter *Obj) StyleImgRecolor(value lib.LV_COLOR_T, selector uint32) *Obj {
 	C.lv_obj_set_style_img_recolor(setter.CObj, C.lv_color_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) StyleImgRecolorOpa(value types.LvOpaT, selector uint32) *Obj {
+func (setter *Obj) StyleImgRecolorOpa(value lib.LV_OPA_T, selector uint32) *Obj {
 	C.lv_obj_set_style_img_recolor_opa(setter.CObj, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
@@ -322,12 +321,12 @@ func (setter *Obj) StyleLineRounded(value bool, selector uint32) *Obj {
 
 	return setter
 }
-func (setter *Obj) StyleLineColor(value types.LvColorT, selector uint32) *Obj {
+func (setter *Obj) StyleLineColor(value lib.LV_COLOR_T, selector uint32) *Obj {
 	C.lv_obj_set_style_line_color(setter.CObj, C.lv_color_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) StyleLineOpa(value types.LvOpaT, selector uint32) *Obj {
+func (setter *Obj) StyleLineOpa(value lib.LV_OPA_T, selector uint32) *Obj {
 	C.lv_obj_set_style_line_opa(setter.CObj, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
@@ -342,12 +341,12 @@ func (setter *Obj) StyleArcRounded(value bool, selector uint32) *Obj {
 
 	return setter
 }
-func (setter *Obj) StyleArcColor(value types.LvColorT, selector uint32) *Obj {
+func (setter *Obj) StyleArcColor(value lib.LV_COLOR_T, selector uint32) *Obj {
 	C.lv_obj_set_style_arc_color(setter.CObj, C.lv_color_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) StyleArcOpa(value types.LvOpaT, selector uint32) *Obj {
+func (setter *Obj) StyleArcOpa(value lib.LV_OPA_T, selector uint32) *Obj {
 	C.lv_obj_set_style_arc_opa(setter.CObj, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
@@ -357,17 +356,17 @@ func (setter *Obj) StyleArcImgSrc(value any, selector uint32) *Obj {
 
 	return setter
 }
-func (setter *Obj) StyleTextColor(value types.LvColorT, selector uint32) *Obj {
+func (setter *Obj) StyleTextColor(value lib.LV_COLOR_T, selector uint32) *Obj {
 	C.lv_obj_set_style_text_color(setter.CObj, C.lv_color_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) StyleTextOpa(value types.LvOpaT, selector uint32) *Obj {
+func (setter *Obj) StyleTextOpa(value lib.LV_OPA_T, selector uint32) *Obj {
 	C.lv_obj_set_style_text_opa(setter.CObj, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) StyleTextFont(value *types.LvFontT, selector uint32) *Obj {
+func (setter *Obj) StyleTextFont(value *lib.LV_FONT_T, selector uint32) *Obj {
 	C.lv_obj_set_style_text_font(setter.CObj, (*C.lv_font_t)(unsafe.Pointer(value)), C.lv_style_selector_t(selector))
 
 	return setter
@@ -382,12 +381,12 @@ func (setter *Obj) StyleTextLineSpace(value lib.LV_COLOR_T, selector uint32) *Ob
 
 	return setter
 }
-func (setter *Obj) StyleTextDecor(value types.LvTextDecorT, selector uint32) *Obj {
+func (setter *Obj) StyleTextDecor(value uint8, selector uint32) *Obj {
 	C.lv_obj_set_style_text_decor(setter.CObj, C.lv_text_decor_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) StyleTextAlign(value types.LvTextAlignT, selector uint32) *Obj {
+func (setter *Obj) StyleTextAlign(value uint8, selector uint32) *Obj {
 	C.lv_obj_set_style_text_align(setter.CObj, C.lv_text_align_t(value), C.lv_style_selector_t(selector))
 
 	return setter
@@ -402,22 +401,22 @@ func (setter *Obj) StyleClipCorner(value bool, selector uint32) *Obj {
 
 	return setter
 }
-func (setter *Obj) StyleOpa(value types.LvOpaT, selector uint32) *Obj {
+func (setter *Obj) StyleOpa(value lib.LV_OPA_T, selector uint32) *Obj {
 	C.lv_obj_set_style_opa(setter.CObj, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) StyleColorFilterDsc(value *types.LvColorFilterDscT, selector uint32) *Obj {
+func (setter *Obj) StyleColorFilterDsc(value *lib.LV_COLOR_FILTER_DSC_TLvColorFilterDscT, selector uint32) *Obj {
 	C.lv_obj_set_style_color_filter_dsc(setter.CObj, (*C.lv_color_filter_dsc_t)(unsafe.Pointer(value)), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) StyleColorFilterOpa(value types.LvOpaT, selector uint32) *Obj {
+func (setter *Obj) StyleColorFilterOpa(value lib.LV_OPA_T, selector uint32) *Obj {
 	C.lv_obj_set_style_color_filter_opa(setter.CObj, C.lv_opa_t(value), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) StyleAnim(value *types.LvAnimT, selector uint32) *Obj {
+func (setter *Obj) StyleAnim(value *lib.LV_ANIM_T, selector uint32) *Obj {
 	C.lv_obj_set_style_anim(setter.CObj, (*C.lv_anim_t)(unsafe.Pointer(value)), C.lv_style_selector_t(selector))
 
 	return setter
@@ -432,12 +431,12 @@ func (setter *Obj) StyleAnimSpeed(value uint32, selector uint32) *Obj {
 
 	return setter
 }
-func (setter *Obj) StyleTransition(value *types.LvStyleTransitionDscT, selector uint32) *Obj {
+func (setter *Obj) StyleTransition(value *lib.LV_STYLE_TRANSITION_DSC_INIT, selector uint32) *Obj {
 	C.lv_obj_set_style_transition(setter.CObj, (*C.lv_style_transition_dsc_t)(unsafe.Pointer(value)), C.lv_style_selector_t(selector))
 
 	return setter
 }
-func (setter *Obj) StyleBlendMode(value types.LvBlendModeT, selector uint32) *Obj {
+func (setter *Obj) StyleBlendMode(value uint8, selector uint32) *Obj {
 	C.lv_obj_set_style_blend_mode(setter.CObj, C.lv_blend_mode_t(value), C.lv_style_selector_t(selector))
 
 	return setter
@@ -447,7 +446,7 @@ func (setter *Obj) StyleLayout(value uint16, selector uint32) *Obj {
 
 	return setter
 }
-func (setter *Obj) StyleBaseDir(value types.LvBaseDirT, selector uint32) *Obj {
+func (setter *Obj) StyleBaseDir(value uint8, selector uint32) *Obj {
 	C.lv_obj_set_style_base_dir(setter.CObj, C.lv_base_dir_t(value), C.lv_style_selector_t(selector))
 
 	return setter
@@ -497,13 +496,13 @@ func (setter *Obj) Layout(layout uint32) *Obj {
 
 	return setter
 }
-func (setter *Obj) Align(align types.LvAlignT) *Obj {
+func (setter *Obj) Align(align uint8) *Obj {
 	C.lv_obj_set_align(setter.CObj, C.lv_align_t(align))
 
 	return setter
 }
 func (setter *Obj) Center() *Obj {
-	setter.Align(types.LV_ALIGN_CENTER).Pos(0, 0)
+	setter.Align(lib.LV_ALIGN_CENTER).Pos(0, 0)
 	return setter
 }
 func (setter *Obj) ExtClickArea(size lib.LV_COLOR_T) *Obj {
@@ -511,7 +510,7 @@ func (setter *Obj) ExtClickArea(size lib.LV_COLOR_T) *Obj {
 
 	return setter
 }
-func (setter *Obj) ScrollbarMode(mode types.LvScrollbarModeT) *Obj {
+func (setter *Obj) ScrollbarMode(mode uint8) *Obj {
 	C.lv_obj_set_scrollbar_mode(setter.CObj, C.lv_scrollbar_mode_t(mode))
 
 	return setter

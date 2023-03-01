@@ -8,10 +8,16 @@ import "unsafe"
 
 // ================ C Types
 type LV_ANIM_EXEC_XCB_T = C.lv_anim_exec_xcb_t
+type LV_STYLE_TRANSITION_DSC_INIT = C.lv_style_transition_dsc_init
+type LV_COLOR_FILTER_DSC_T = C.lv_color_filter_dsc_t
 type LV_LABEL_LONG_MODE_T = C.lv_label_long_mode_t
 type C_SHORT = C.uint16_t
 type LV_POINT_T = C.lv_point_t
-type LV_GRAD_DSCT = C.lv_grad_dsc_t
+type LV_GRAD_DSC_T = C.lv_grad_dsc_t
+type LV_FONT_T = C.lv_font_t
+type LV_ANIM_T = C.lv_anim_t
+type LV_STYLE_SELECTOR_T = C.lv_style_selector_t
+type LV_STYLE_VALUE_T = C.lv_style_value_t
 
 type LV_OBJ_T = *C.lv_obj_t // 该变量因经常以指针使用，因此直接定义为指针
 
@@ -30,7 +36,9 @@ var CREATE_NIL _empty = _empty{}
 
 // ================ constant
 const (
-	LV_ANIM_ON uint32 = C.LV_ANIM_ON
+	LV_ANIM_ON              uint8   = C.LV_ANIM_ON
+	LV_ANIM_OFF             uint8   = C.LV_ANIM_OFF
+	LV_ANIM_REPEAT_INFINITE C_SHORT = C.LV_ANIM_REPEAT_INFINITE
 
 	LV_PART_MAIN         int = C.LV_PART_MAIN
 	LV_PART_SCROLLBAR    int = C.LV_PART_SCROLLBAR
@@ -93,5 +101,3 @@ const (
 	LV_FLEX_FLOW_COLUMN_REVERSE      uint8 = C.LV_FLEX_FLOW_COLUMN_REVERSE
 	LV_FLEX_FLOW_COLUMN_WRAP_REVERSE uint8 = C.LV_FLEX_FLOW_COLUMN_WRAP_REVERSE
 )
-
-const LV_ANIM_REPEAT_INFINITE C_SHORT = C.LV_ANIM_REPEAT_INFINITE

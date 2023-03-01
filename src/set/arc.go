@@ -1,7 +1,7 @@
 package set
 
 import (
-	types "lvgl-go/src/types"
+	lib.LV_FONT_T"lvgl-go/src/lib.LV_FONT_T
 )
 
 /*
@@ -54,7 +54,7 @@ func (setter Arc) Rotation(rotation uint16) Arc {
 
 	return setter
 }
-func (setter Arc) Mode(_type types.LvArcModeT) Arc {
+func (setter Arc) Mode(_type lib.LV_FONT_TLvArcModeT) Arc {
 	C.lv_arc_set_mode(setter.CObj, C.lv_arc_mode_t(_type))
 
 	return setter

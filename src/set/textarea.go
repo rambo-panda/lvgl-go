@@ -1,7 +1,7 @@
 package set
 
 import (
-	types "lvgl-go/src/types"
+	lib.LV_FONT_T"lvgl-go/src/lib.LV_FONT_T
 )
 
 /*
@@ -79,7 +79,7 @@ func (setter Textarea) PasswordShowTime(time uint16) Textarea {
 
 	return setter
 }
-func (setter Textarea) Align(align types.LvTextAlignT) Textarea {
+func (setter Textarea) Align(align uint8) Textarea {
 	C.lv_textarea_set_align(setter.CObj, C.lv_text_align_t(align))
 
 	return setter
