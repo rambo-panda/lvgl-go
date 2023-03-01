@@ -1,7 +1,7 @@
 package set
 
 import (
-	"lvgl-go/src/types"
+	"lvgl-go/src/lib"
 )
 
 /*
@@ -30,7 +30,7 @@ func (setter *Label) TextStatic(text string) *Label {
 
 	return setter
 }
-func (setter *Label) LongMode(long_mode types.LvLabelLongModeT) *Label {
+func (setter *Label) LongMode(long_mode lib.LV_LABEL_LONG_MODE_T) *Label {
 	C.lv_label_set_long_mode(setter.CObj, C.lv_label_long_mode_t(long_mode))
 
 	return setter

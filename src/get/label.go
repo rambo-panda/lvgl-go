@@ -1,7 +1,7 @@
 package get
 
 import (
-	types "lvgl-go/src/types"
+	"lvgl-go/src/lib"
 	"unsafe"
 )
 
@@ -38,12 +38,12 @@ func (getter *Label) Recolor() bool {
 }
 
 // TODO: 这里填充的暂不支持
-// func (getter *Label) LetterPos(char_id uint32, pos *types.LvPointT) Label {
+// func (getter *Label) LetterPos(char_id uint32, pos_in *lib.LV_POINT_T) Label {
 // 	C.lv_label_get_letter_pos(getter.CObj, C.uint(char_id), (*C.lv_point_t)(unsafe.Pointer(pos)))
 
 //		return getter
 //	}
-func (getter *Label) LetterOn(pos_in *types.LvPointT) uint32 {
+func (getter *Label) LetterOn(pos_in *lib.LV_POINT_T) uint32 {
 	res := C.lv_label_get_letter_on(getter.CObj, (*C.lv_point_t)(unsafe.Pointer(pos_in)))
 
 	return uint32(res)
