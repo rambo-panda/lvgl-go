@@ -10,7 +10,7 @@ import (
 */
 import "C"
 
-type CObjT = *C.struct__lv_obj_t
+type CObjT = *C.lv_obj_t
 type _cStyleT = C.lv_style_t
 type CStyleT = *_cStyleT
 
