@@ -10,6 +10,7 @@ import "unsafe"
 type LV_ANIM_EXEC_XCB_T = C.lv_anim_exec_xcb_t
 
 // type LV_STYLE_TRANSITION_DSC_INIT = C.lv_style_transition_dsc_init
+type LV_STYLE_TRANSITION_DSC_T = C.lv_style_transition_dsc_t
 type LV_COLOR_FILTER_DSC_T = C.lv_color_filter_dsc_t
 type LV_LABEL_LONG_MODE_T = C.lv_label_long_mode_t
 type C_SHORT = C.uint16_t
@@ -85,9 +86,9 @@ const (
 )
 
 const (
-	LV_GRAD_DIR_NONE LV_GRAD_DIR_T = C.LV_GRAD_DIR_NONE
-	LV_GRAD_DIR_VER  LV_GRAD_DIR_T = C.LV_GRAD_DIR_VER
-	LV_GRAD_DIR_HOR  LV_GRAD_DIR_T = C.LV_GRAD_DIR_HOR
+	LV_GRAD_DIR_NONE uint8 = C.LV_GRAD_DIR_NONE
+	LV_GRAD_DIR_VER  uint8 = C.LV_GRAD_DIR_VER
+	LV_GRAD_DIR_HOR  uint8 = C.LV_GRAD_DIR_HOR
 
 	LV_FLEX_ALIGN_START         uint8 = C.LV_FLEX_ALIGN_START
 	LV_FLEX_ALIGN_END           uint8 = C.LV_FLEX_ALIGN_END

@@ -9,6 +9,7 @@ import "C"
 // ================ C Types
 type LV_PALETTE_T = C.lv_palette_t
 type LV_COLOR_T = C.lv_color_t
+type LV_COLOR16_T = C.lv_color16_t
 type LV_OPA_T = C.lv_opa_t
 type LV_COLOR_HSV_T = C.lv_color_hsv_t
 
