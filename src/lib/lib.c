@@ -1,29 +1,33 @@
 #include "lv_init.h"
 
-
 const unsigned lv_size_content = LV_SIZE_CONTENT;
 
 // const int lv_disp_def_refr_period  = LV_DISP_DEF_REFR_PERIOD;
 
 static char *METHOD_NAME_SUF = "_create";
 
-static char *joinStr(int a, ...) {
-    if (a <= 1) {
+static char *joinStr(int a, ...)
+{
+    if (a <= 1)
+    {
         return "";
     }
 
     ARGS(a, char *);
 
     char *str = (char *)malloc(1);
-    
-    if (str == NULL) {
+
+    if (str == NULL)
+    {
         printf("Not enough space to allocate string");
         return NULL;
     }
 
-    for(int i = 0; i < a; i++) {
-        str = (char *) realloc(str, strlen(str) + strlen(args[i]));
-        if (str == NULL) {
+    for (int i = 0; i < a; i++)
+    {
+        str = (char *)realloc(str, strlen(str) + strlen(args[i]));
+        if (str == NULL)
+        {
             printf("Not enough space to allocate string");
             return NULL;
         }
@@ -31,6 +35,9 @@ static char *joinStr(int a, ...) {
     }
 
     return str;
+}
+
+static void tslib_read(lv_indev_drv_t * drv, lv_indev_data_t * data) {
 }
 
 // TODO: 因为下面static原因，且目前对于多屏(屋里显示器)支持有些多余，暂时不考虑
@@ -55,6 +62,16 @@ static lv_disp_t *createDisplay()
     disp_drv.hor_res = LV_17_HOR_RES;
     disp_drv.ver_res = LV_17_VER_RES;
     disp_drv.antialiasing = 1;
+    disp_drv.direct_mode = 1;
+    // disp_drv.rotated = LV_DISP_ROT_NONE;
+    // disp_drv.sw_rotate = 0;
+
+    // XXX: 我也不清楚，在我们设备上必须加这个设置
+    static lv_indev_drv_t indev_drv;
+	lv_indev_drv_init(&indev_drv);
+	indev_drv.type =LV_INDEV_TYPE_POINTER;
+	indev_drv.read_cb = tslib_read;
+	lv_indev_drv_register(&indev_drv);
 
     lv_disp_t *disp = lv_disp_drv_register(&disp_drv);
 
@@ -84,11 +101,13 @@ void lv_ready()
     createDisplay();
 }
 
-void lv_task_handler2(uint32_t ms) {
+void lv_task_handler2(uint32_t ms)
+{
     ms = ms == 0 ? LV_DISP_DEF_REFR_PERIOD : ms;
 
-    while(1){
-		lv_timer_handler_run_in_period(ms);
+    while (1)
+    {
+        lv_timer_handler_run_in_period(ms);
         usleep(ms * 1e3);
     }
 }
