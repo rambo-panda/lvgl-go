@@ -5,8 +5,8 @@ package create
 */
 import "C"
 import (
-	"lvgl-go/src/get"
-	"lvgl-go/src/set"
+	"gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/get"
+	"gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/set"
 	"unsafe"
 )
 

@@ -1,7 +1,7 @@
 package set
 
 import (
-	lib "lvgl-go/src/lib"
+	lib "gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/lib"
 	"unsafe"
 )
 

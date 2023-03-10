@@ -7,7 +7,7 @@ package set
 */
 import "C"
 import (
-	"lvgl-go/src/lib"
+	"gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/lib"
 	"unsafe"
 )
 
