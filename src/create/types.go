@@ -8,6 +8,7 @@ import (
 )
 
 /*
+#cgo LDFLAGS: -llvgl -llv_driver -L../bin/g
 #include "lv_init.h"
 */
 import "C"
