@@ -41,7 +41,7 @@ static void tslib_read(lv_indev_drv_t * drv, lv_indev_data_t * data) {
 }
 
 // TODO: 因为下面static原因，且目前对于多屏(屋里显示器)支持有些多余，暂时不考虑
-static lv_disp_t *createDisplay()
+static void createDisplay()
 {
     // lv_disp_set_default // 指定默认display
     // lv_obj_get_disp
@@ -61,10 +61,12 @@ static lv_disp_t *createDisplay()
     disp_drv.flush_cb = LV_17_FLUSH_CB;
     disp_drv.hor_res = LV_17_HOR_RES;
     disp_drv.ver_res = LV_17_VER_RES;
-    disp_drv.antialiasing = 1;
+    // disp_drv.antialiasing = 1;
     disp_drv.direct_mode = 1;
-    // disp_drv.rotated = LV_DISP_ROT_NONE;
-    // disp_drv.sw_rotate = 0;
+    disp_drv.rotated = LV_DISP_ROT_NONE;
+    disp_drv.sw_rotate = 0;
+
+    lv_disp_drv_register(&disp_drv);
 
     // XXX: 我也不清楚，在我们设备上必须加这个设置
     static lv_indev_drv_t indev_drv;
@@ -72,15 +74,6 @@ static lv_disp_t *createDisplay()
 	indev_drv.type =LV_INDEV_TYPE_POINTER;
 	indev_drv.read_cb = tslib_read;
 	lv_indev_drv_register(&indev_drv);
-
-    lv_disp_t *disp = lv_disp_drv_register(&disp_drv);
-
-    lv_theme_t *th = lv_theme_default_init(
-        disp, lv_palette_main(LV_PALETTE_BLUE), lv_palette_main(LV_PALETTE_RED),
-        LV_THEME_DEFAULT_DARK, LV_FONT_DEFAULT);
-    lv_disp_set_theme(disp, th);
-
-    return disp;
 }
 
 void lv_ready()
@@ -99,6 +92,11 @@ void lv_ready()
     LV_17_DISP_INIT;
 
     createDisplay();
+
+    lv_fs_stdio_init(); // 盘符目前写死为A: LV_USE_FS_STDIO
+    lv_png_init();      // 默认开启png LV_USE_PNG
+
+    lv_freetype_init(64, 1, 0); // 开启freetype 需要使用我们自己的字体 LV_USE_FREETYPE
 }
 
 void lv_task_handler2(uint32_t ms)
