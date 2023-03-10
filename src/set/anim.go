@@ -2,7 +2,6 @@ package set
 
 /*
 #cgo CFLAGS: -I../include/
-#cgo LDFLAGS: -L../lib -llvgl
 #include "lv_init.h"
 extern void _execAnimCb(void * obj, int temp);
 */
