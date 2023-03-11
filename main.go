@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"gitlab.17zuoye.net/saas-platform/lvgl-go/src/create"
-	"gitlab.17zuoye.net/saas-platform/lvgl-go/src/lib"
+	"gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/create"
+	"gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/lib"
 	"unsafe"
 )
 
