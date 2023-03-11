@@ -1,7 +1,6 @@
 #ifndef LVGL_GO
 #define LVGL_GO
 
-#define _DEFAULT_SOURCE /* needed for usleep() */
 #include "lvgl.h"
 #include <stdio.h>
 #include <stdlib.h>

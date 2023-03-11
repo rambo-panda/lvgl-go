@@ -37,7 +37,7 @@ static char *joinStr(int a, ...)
     return str;
 }
 
-static void tslib_read(lv_indev_drv_t * drv, lv_indev_data_t * data) {
+void tslib_read(lv_indev_drv_t * drv, lv_indev_data_t * data) {
 }
 
 // TODO: 因为下面static原因，且目前对于多屏(屋里显示器)支持有些多余，暂时不考虑
