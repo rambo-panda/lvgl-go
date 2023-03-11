@@ -3,7 +3,7 @@ package set
 /*
 #cgo CFLAGS: -I../include/
 #cgo LDFLAGS: -llvgl -llv_driver -L../bin
-#include "lv_init.h"
+#include "lv_17zy.h"
 */
 import "C"
 

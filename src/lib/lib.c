@@ -1,4 +1,4 @@
-#include "lv_init.h"
+#include "lv_17zy.h"
 
 const unsigned lv_size_content = LV_SIZE_CONTENT;
 
@@ -58,7 +58,7 @@ static void createDisplay()
     static lv_disp_drv_t disp_drv;
     lv_disp_drv_init(&disp_drv);
     disp_drv.draw_buf = &disp_buf;
-    disp_drv.flush_cb = LV_17_FLUSH_CB;
+    disp_drv.flush_cb = lvdrv_flush;
     disp_drv.hor_res = LV_17_HOR_RES;
     disp_drv.ver_res = LV_17_VER_RES;
     // disp_drv.antialiasing = 1;
@@ -89,7 +89,7 @@ void lv_ready()
                 LVGL_VERSION_MAJOR, LVGL_VERSION_MINOR, LVGL_VERSION_PATCH);
 
     lv_init();
-    LV_17_DISP_INIT;
+    lvdrv_init();
 
     createDisplay();
 

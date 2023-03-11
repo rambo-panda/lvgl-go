@@ -12,7 +12,7 @@
  */
 
 //TODO: 测试
-#define USE_SDL 1
+#define USE_SDL 0
 
 /* clang-format off */
 #if 1 /*Set it to "1" to enable content*/
