@@ -2,7 +2,7 @@
 package lib
 
 /*
-#cgo LDFLAGS: -llvgl -llv_driver -L../bin/g
+#cgo LDFLAGS: -llvgl -llv_driver -L../bin
 #include "lv_init.h"
 */
 import "C"
