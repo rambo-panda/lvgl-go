@@ -42,8 +42,6 @@ void lvdrv_flush(lv_disp_drv_t * drv, const lv_area_t * area, lv_color_t * color
 
 void lvdrv_deinit();
 
-void tslib_read();
-
 #define LV_17_HOR_RES 128
 #define LV_17_VER_RES 32
 #define LV_17_FLUSH_CB lvdrv_flush

@@ -37,7 +37,7 @@ static char *joinStr(int a, ...)
     return str;
 }
 
-void tslib_read(lv_indev_drv_t *drv, lv_indev_data_t *data)
+static void tslib_read(lv_indev_drv_t *drv, lv_indev_data_t *data)
 {
 }
 
