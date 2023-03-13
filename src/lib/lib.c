@@ -1,42 +1,5 @@
 #include "lv_17zy.h"
 
-const unsigned lv_size_content = LV_SIZE_CONTENT;
-
-// const int lv_disp_def_refr_period  = LV_DISP_DEF_REFR_PERIOD;
-
-static char *METHOD_NAME_SUF = "_create";
-
-static char *joinStr(int a, ...)
-{
-    if (a <= 1)
-    {
-        return "";
-    }
-
-    ARGS(a, char *);
-
-    char *str = (char *)malloc(1);
-
-    if (str == NULL)
-    {
-        printf("Not enough space to allocate string");
-        return NULL;
-    }
-
-    for (int i = 0; i < a; i++)
-    {
-        str = (char *)realloc(str, strlen(str) + strlen(args[i]));
-        if (str == NULL)
-        {
-            printf("Not enough space to allocate string");
-            return NULL;
-        }
-        strcat(str, args[i]);
-    }
-
-    return str;
-}
-
 static void tslib_read(lv_indev_drv_t *drv, lv_indev_data_t *data)
 {
 }
