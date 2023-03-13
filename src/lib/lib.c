@@ -37,7 +37,8 @@ static char *joinStr(int a, ...)
     return str;
 }
 
-void tslib_read(lv_indev_drv_t * drv, lv_indev_data_t * data) {
+void tslib_read(lv_indev_drv_t *drv, lv_indev_data_t *data)
+{
 }
 
 // TODO: 因为下面static原因，且目前对于多屏(屋里显示器)支持有些多余，暂时不考虑
@@ -50,30 +51,28 @@ static void createDisplay()
     // XXX: 以下几个static全局作用域的变量，必须设置static属性，因为display不能被回收
     static lv_disp_draw_buf_t disp_buf;
 
-    static lv_color_t buf_1[10 * LV_17_HOR_RES];
-    static lv_color_t buf_2[10 * LV_17_HOR_RES];
-
-    lv_disp_draw_buf_init(&disp_buf, buf_1, buf_2, 10 * LV_17_HOR_RES);
+    static lv_color_t buf1[LV_17_HOR_RES * LV_17_VER_RES];
+    lv_disp_draw_buf_init(&disp_buf, buf1, NULL, LV_17_HOR_RES * LV_17_VER_RES);
 
     static lv_disp_drv_t disp_drv;
     lv_disp_drv_init(&disp_drv);
     disp_drv.draw_buf = &disp_buf;
-    disp_drv.flush_cb = lvdrv_flush;
+    disp_drv.flush_cb = LV_17_FLUSH_CB;
     disp_drv.hor_res = LV_17_HOR_RES;
     disp_drv.ver_res = LV_17_VER_RES;
-    // disp_drv.antialiasing = 1;
     disp_drv.direct_mode = 1;
+    // disp_drv.antialiasing = 1;
     disp_drv.rotated = LV_DISP_ROT_NONE;
     disp_drv.sw_rotate = 0;
-
+    disp_drv.full_refresh = 1;
     lv_disp_drv_register(&disp_drv);
 
     // XXX: 我也不清楚，在我们设备上必须加这个设置
     static lv_indev_drv_t indev_drv;
-	lv_indev_drv_init(&indev_drv);
-	indev_drv.type =LV_INDEV_TYPE_POINTER;
-	indev_drv.read_cb = tslib_read;
-	lv_indev_drv_register(&indev_drv);
+    lv_indev_drv_init(&indev_drv);
+    indev_drv.type = LV_INDEV_TYPE_POINTER;
+    indev_drv.read_cb = tslib_read;
+    lv_indev_drv_register(&indev_drv);
 }
 
 void lv_ready()
