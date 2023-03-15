@@ -1,6 +1,7 @@
 package set
 
 import (
+	"strings"
 	"unsafe"
 
 	"gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/lib"
@@ -29,7 +30,9 @@ func (setter *Img) SrcOrigin(src unsafe.Pointer) *Img {
 	return setter
 }
 func (setter *Img) Src(src string) *Img {
-	return setter.SrcOrigin(lib.Go2CString("A:" + src))
+	tag := string(C.LV_FS_STDIO_LETTER) + ":"
+
+	return setter.SrcOrigin(lib.Go2CString(lib.Ternary[string](strings.HasPrefix(src, tag), src, tag+src)))
 }
 
 func (setter *Img) OffsetX(x int16) *Img {
