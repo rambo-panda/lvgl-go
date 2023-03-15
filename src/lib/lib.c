@@ -37,6 +37,15 @@ static void createDisplay()
     indev_drv.read_cb = tslib_read;
     lv_indev_drv_register(&indev_drv);
 
+
+    // // 目前WARN ： lv_draw_sw_letter: lv_draw_letter: glyph dsc. not found for U+4F60/U+597D     (in lv_draw_sw_letter.c line #106)
+    // static lv_ft_info_t font_device;
+    // font_device.name = "/gb18030_b12.bdf";
+    // font_device.weight = 12;
+    // font_device.style = FT_FONT_STYLE_NORMAL;
+    // lv_ft_font_init(&font_device);
+    // lv_theme_t *th = lv_theme_default_init(disp, lv_color_black(), lv_color_white(), 1, font_device.font);
+
     lv_theme_t *th = lv_theme_default_init(disp, lv_color_black(), lv_color_white(), 1, LV_FONT_DEFAULT);
     lv_disp_set_theme(disp, th);
 }
