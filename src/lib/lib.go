@@ -18,10 +18,6 @@ func TaskHandler(ms uint) {
 	C.lv_task_handler2(C.uint(ms))
 }
 
-func TaskHandlerAsync(ms uint) {
-	go TaskHandler(ms)
-}
-
 func Noop(s ...any) {
 }
 
