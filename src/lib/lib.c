@@ -28,7 +28,7 @@ static void createDisplay()
     disp_drv.rotated = LV_DISP_ROT_NONE;
     disp_drv.sw_rotate = 0;
     disp_drv.full_refresh = 1;
-    lv_disp_drv_register(&disp_drv);
+    lv_disp_t *disp = lv_disp_drv_register(&disp_drv);
 
     // XXX: 我也不清楚，在我们设备上必须加这个设置
     static lv_indev_drv_t indev_drv;
@@ -36,6 +36,9 @@ static void createDisplay()
     indev_drv.type = LV_INDEV_TYPE_POINTER;
     indev_drv.read_cb = tslib_read;
     lv_indev_drv_register(&indev_drv);
+
+    lv_theme_t *th = lv_theme_default_init(disp, lv_color_black(), lv_color_white(), 1, LV_FONT_DEFAULT);
+    lv_disp_set_theme(disp, th);
 }
 
 void lv_ready()
