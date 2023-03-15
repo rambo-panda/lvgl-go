@@ -117,9 +117,9 @@ func ToColor(action Color, args ...any) LV_COLOR_T {
 		})
 
 		res = C.lv_color_make(C.uchar(argsCopy[0]), C.uchar(argsCopy[1]), C.uchar(argsCopy[2]))
-	case HEX3:
-		res = C.lv_color_hex(C.uint(args[0].(uint32)))
 	case HEX:
+		res = C.lv_color_hex(C.uint(args[0].(uint32)))
+	case HEX3:
 		res = C.lv_color_hex3(C.uint(args[0].(uint32)))
 	case PALETTE:
 		res = C.lv_palette_main(args[0].(LV_PALETTE_T))

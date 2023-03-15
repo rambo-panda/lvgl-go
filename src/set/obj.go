@@ -1,8 +1,9 @@
 package set
 
 import (
-	lib "gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/lib"
 	"unsafe"
+
+	lib "gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/lib"
 )
 
 /*
@@ -636,6 +637,7 @@ func (setter *Obj) TileId(col_id uint32, row_id uint32, anim_en uint8) *Obj {
 	return setter
 }
 
+// @todo 这玩意会连你之前设置的size都给清楚掉
 func (setter *Obj) RemoveStyleAll() *Obj {
 	C.lv_obj_remove_style_all(setter.CObj)
 
