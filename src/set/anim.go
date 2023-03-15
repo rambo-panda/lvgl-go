@@ -8,8 +8,9 @@ extern void _execAnimCb(void * obj, int temp);
 */
 import "C"
 import (
-	"gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/lib"
 	"unsafe"
+
+	"gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/lib"
 )
 
 // type Anim set[CAnimT]
@@ -29,7 +30,6 @@ func (a Anim) Destroy() {
 			break
 		}
 	}
-	a.agent = nil
 	anims = append(anims[:ri], anims[ri+1:]...)
 	// anims = anims[:copy(anims, anims[ri:])]
 }

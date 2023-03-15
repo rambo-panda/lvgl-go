@@ -40,14 +40,3 @@ func Ternary[T any](c bool, trueVal, falseVal T) T {
 
 	return falseVal
 }
-
-func Destroy(o unsafe.Pointer, tag uint8) {
-	_o := (LV_OBJ_T)(o)
-
-	switch tag {
-	case 1:
-		C.lv_obj_del_async(_o)
-	default:
-		C.lv_obj_del(_o)
-	}
-}
