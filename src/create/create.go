@@ -10,12 +10,13 @@ import (
 	"runtime"
 
 	"gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/get"
+	"gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/lib"
 	"gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/set"
 )
 
 func create[T Label | Img | Obj | Bar](o *T) *T {
 	runtime.SetFinalizer(o, func(z _createI) {
-		z.Destroy(DEL)
+		lib.Destroy(z, lib.DEL)
 	})
 
 	return o
