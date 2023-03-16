@@ -13,73 +13,74 @@ import (
 	"gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/set"
 )
 
-func create[T Label | Img | Obj | Bar](o T) T {
-	runtime.SetFinalizer(&o, func(z *Label) {
+func create[T Label | Img | Obj | Bar](o *T) *T {
+	runtime.SetFinalizer(o, func(z *Label) {
 		z.Destroy(DEL)
 	})
+
 	return o
 }
 
-func CreateLabel[T _createI](o T) Label {
+func CreateLabel[T _createI](o T) *Label {
 	_o := C.lv_label_create(getParent(o))
 
-	return create(Label{
+	return create(&Label{
 		_m[_lvObjT]{_o},
 		set.CreateLabel(toSetObj(_o)),
 		get.CreateLable(toGetObj(_o)),
 	})
 }
 
-func CreateImg[T _createI](o T) Img {
+func CreateImg[T _createI](o T) *Img {
 	_o := C.lv_img_create(getParent(o))
 
-	return create(Img{
+	return create(&Img{
 		_m[_lvObjT]{_o},
 		set.CreateImg(toSetObj(_o)),
 		get.CreateImg(toGetObj(_o)),
 	})
 }
 
-func CreateObj[T _createI](o T) Obj {
+func CreateObj[T _createI](o T) *Obj {
 	_o := getParent2(o)
 
-	return create(Obj{
+	return create(&Obj{
 		_m[_lvObjT]{_o},
 		set.CreateObj(toSetObj(_o)),
 		get.CreateObj(toGetObj(_o)),
 	})
 }
 
-func CreateBar[T _createI](o T) Bar {
+func CreateBar[T _createI](o T) *Bar {
 	_o := C.lv_bar_create(getParent(o))
 
-	return create(Bar{
+	return create(&Bar{
 		_m[_lvObjT]{_o},
 		set.CreateBar(toSetObj(_o)),
 		get.CreateBar(toGetObj(_o)),
 	})
 }
 
-func CreateAnim() AnimT {
+func CreateAnim() *AnimT {
 	obj := _cAnimT{}
 	anim := &obj
 
 	C.lv_anim_init(anim)
 
-	return AnimT{
+	return &AnimT{
 		_m[CAnimT]{anim},
 		set.CreateAnim(toSetAnimT(anim)),
 		get.CreateAnim(toGetAnimT(anim)),
 	}
 }
 
-func CreateStyle() StyleT {
+func CreateStyle() *StyleT {
 	obj := _cStyleT{}
 	so := &obj
 
 	C.lv_style_init(so)
 
-	return StyleT{
+	return &StyleT{
 		_m[_PcStyleT]{so},
 		set.CreateStyle(toSetStyleT(so)),
 		get.CreateStyle(toGetStyleT(so)),
