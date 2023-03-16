@@ -57,37 +57,37 @@ func (m *_m[T]) Destroy(tag uint8) {
 
 type _createI = lib.CreateI
 
-type _labelT struct {
+type Label struct {
 	_m[LV_OBJ_T]
 	Set *set.Label
 	Get *get.Label
 }
 
-type _imgT struct {
+type Img struct {
 	_m[LV_OBJ_T]
 	Set *set.Img
 	Get *get.Img
 }
 
-type _objT struct {
+type Obj struct {
 	_m[LV_OBJ_T]
 	Set *set.Obj
 	Get *get.Obj
 }
 
-type _styleT struct {
+type StyleT struct {
 	_m[CStyleT]
 	Set *set.Style
 	Get *get.Style
 }
 
-type _barT struct {
+type Bar struct {
 	_m[LV_OBJ_T]
 	Set *set.Bar
 	Get *get.Bar
 }
 
-type _animT struct {
+type AnimT struct {
 	_m[CAnimT]
 	Set *set.Anim
 	Get *get.Anim
