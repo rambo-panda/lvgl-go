@@ -30,6 +30,7 @@ type LV_OBJ_CLASS_T = C.lv_obj_class_t
 // ================ inferface
 type CreateI interface {
 	GetObj() unsafe.Pointer
+	Destroy(uint8)
 }
 
 type _empty struct{}

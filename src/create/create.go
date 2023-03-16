@@ -14,7 +14,7 @@ import (
 )
 
 func create[T Label | Img | Obj | Bar](o *T) *T {
-	runtime.SetFinalizer(o, func(z *Label) {
+	runtime.SetFinalizer(o, func(z _createI) {
 		z.Destroy(DEL)
 	})
 
