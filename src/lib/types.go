@@ -36,8 +36,9 @@ type CreateI interface {
 type _empty struct{}
 
 func (s _empty) GetObj() unsafe.Pointer {
-	return unsafe.Pointer(nil)
+	return nil
 }
+func (s _empty) Destroy(_ uint8) {}
 
 var CREATE_NIL _empty = _empty{}
 
