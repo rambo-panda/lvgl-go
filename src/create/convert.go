@@ -6,9 +6,10 @@ package create
 */
 import "C"
 import (
+	"unsafe"
+
 	"gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/get"
 	"gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/set"
-	"unsafe"
 )
 
 type tagUint uint8
@@ -19,11 +20,11 @@ const (
 	STRUCT tagUint = 2
 )
 
-func _2CObj(o unsafe.Pointer) LV_OBJ_T {
-	return (LV_OBJ_T)(o)
+func _2CObj(o unsafe.Pointer) _lvObjT {
+	return (_lvObjT)(o)
 }
 
-func _getParent[T _createI](o T, tag tagUint) LV_OBJ_T {
+func _getParent[T _createI](o T, tag tagUint) _lvObjT {
 	r := o.GetObj()
 
 	if r == nil {
@@ -38,27 +39,27 @@ func _getParent[T _createI](o T, tag tagUint) LV_OBJ_T {
 	return _2CObj(r)
 }
 
-func getParent[T _createI](o T) LV_OBJ_T {
+func getParent[T _createI](o T) _lvObjT {
 	return _getParent(o, normal)
 }
-func getParent2[T _createI](o T) LV_OBJ_T {
+func getParent2[T _createI](o T) _lvObjT {
 	return _getParent(o, screen)
 }
 
-func toSetObj(o LV_OBJ_T) set.CObjT {
+func toSetObj(o _lvObjT) set.CObjT {
 	return (set.CObjT)(unsafe.Pointer(o))
 }
-func toSetStyleT(o CStyleT) set.CStyleT {
+func toSetStyleT(o _PcStyleT) set.CStyleT {
 	return (set.CStyleT)(unsafe.Pointer(o))
 }
 func toSetAnimT(o CAnimT) set.CAnimT {
 	return (set.CAnimT)(unsafe.Pointer(o))
 }
 
-func toGetObj(o LV_OBJ_T) get.CObjT {
+func toGetObj(o _lvObjT) get.CObjT {
 	return (get.CObjT)(unsafe.Pointer(o))
 }
-func toGetStyleT(o CStyleT) get.CStyleT {
+func toGetStyleT(o _PcStyleT) get.CStyleT {
 	return (get.CStyleT)(unsafe.Pointer(o))
 }
 func toGetAnimT(o CAnimT) get.CAnimT {

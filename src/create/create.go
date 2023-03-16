@@ -24,7 +24,7 @@ func CreateLabel[T _createI](o T) Label {
 	_o := C.lv_label_create(getParent(o))
 
 	return create(Label{
-		_m[LV_OBJ_T]{_o},
+		_m[_lvObjT]{_o},
 		set.CreateLabel(toSetObj(_o)),
 		get.CreateLable(toGetObj(_o)),
 	})
@@ -34,7 +34,7 @@ func CreateImg[T _createI](o T) Img {
 	_o := C.lv_img_create(getParent(o))
 
 	return create(Img{
-		_m[LV_OBJ_T]{_o},
+		_m[_lvObjT]{_o},
 		set.CreateImg(toSetObj(_o)),
 		get.CreateImg(toGetObj(_o)),
 	})
@@ -44,7 +44,7 @@ func CreateObj[T _createI](o T) Obj {
 	_o := getParent2(o)
 
 	return create(Obj{
-		_m[LV_OBJ_T]{_o},
+		_m[_lvObjT]{_o},
 		set.CreateObj(toSetObj(_o)),
 		get.CreateObj(toGetObj(_o)),
 	})
@@ -54,7 +54,7 @@ func CreateBar[T _createI](o T) Bar {
 	_o := C.lv_bar_create(getParent(o))
 
 	return create(Bar{
-		_m[LV_OBJ_T]{_o},
+		_m[_lvObjT]{_o},
 		set.CreateBar(toSetObj(_o)),
 		get.CreateBar(toGetObj(_o)),
 	})
@@ -80,7 +80,7 @@ func CreateStyle() StyleT {
 	C.lv_style_init(so)
 
 	return StyleT{
-		_m[CStyleT]{so},
+		_m[_PcStyleT]{so},
 		set.CreateStyle(toSetStyleT(so)),
 		get.CreateStyle(toGetStyleT(so)),
 	}

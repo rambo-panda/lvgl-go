@@ -15,14 +15,14 @@ import (
 */
 import "C"
 
-type LV_OBJ_T = *C.lv_obj_t
+type _lvObjT = *C.lv_obj_t
 type _cStyleT = C.lv_style_t
-type CStyleT = *_cStyleT
+type _PcStyleT = *_cStyleT
 
 type _cAnimT = C.lv_anim_t
 type CAnimT = *_cAnimT
 
-type _m[T LV_OBJ_T | CStyleT | CAnimT] struct {
+type _m[T _lvObjT | _PcStyleT | CAnimT] struct {
 	o T
 }
 
@@ -43,7 +43,7 @@ func (m *_m[T]) Destroy(tag uint8) {
 		}
 	}()
 
-	_o := (LV_OBJ_T)(m.GetObj())
+	_o := (_lvObjT)(m.GetObj())
 
 	switch tag {
 	case DEL_ASYNC:
@@ -58,31 +58,31 @@ func (m *_m[T]) Destroy(tag uint8) {
 type _createI = lib.CreateI
 
 type Label struct {
-	_m[LV_OBJ_T]
+	_m[_lvObjT]
 	Set *set.Label
 	Get *get.Label
 }
 
 type Img struct {
-	_m[LV_OBJ_T]
+	_m[_lvObjT]
 	Set *set.Img
 	Get *get.Img
 }
 
 type Obj struct {
-	_m[LV_OBJ_T]
+	_m[_lvObjT]
 	Set *set.Obj
 	Get *get.Obj
 }
 
 type StyleT struct {
-	_m[CStyleT]
+	_m[_PcStyleT]
 	Set *set.Style
 	Get *get.Style
 }
 
 type Bar struct {
-	_m[LV_OBJ_T]
+	_m[_lvObjT]
 	Set *set.Bar
 	Get *get.Bar
 }
