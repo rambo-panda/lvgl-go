@@ -26,7 +26,7 @@ type _m[T LV_OBJ_T | CStyleT | CAnimT] struct {
 	o T
 }
 
-func (m _m[T]) GetObj() unsafe.Pointer {
+func (m *_m[T]) GetObj() unsafe.Pointer {
 	return unsafe.Pointer(m.o)
 }
 
@@ -35,7 +35,7 @@ const (
 	DEL       uint8 = 2
 )
 
-func (m _m[T]) Destroy(tag uint8) {
+func (m *_m[T]) Destroy(tag uint8) {
 	defer func() {
 		// NOTE: 这里偷懒了，再用reflect去判断是否是LV_OBJ_T 这个代价还不如直接recover呢
 		if err := recover(); err != nil {
