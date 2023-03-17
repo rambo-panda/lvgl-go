@@ -8,6 +8,7 @@ package create
 import "C"
 import (
 	"runtime"
+	"unsafe"
 
 	"gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/get"
 	"gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/lib"
@@ -62,9 +63,13 @@ func CreateBar[T _createI](o T) *Bar {
 	})
 }
 
-func CreateAnim() *AnimT {
-	obj := _cAnimT{}
-	anim := &obj
+func CreateAnim(a unsafe.Pointer) *AnimT {
+	var anim *_cAnimT
+	if a == nil {
+		anim = &_cAnimT{}
+	} else {
+		anim = (*_cAnimT)(a)
+	}
 
 	C.lv_anim_init(anim)
 
@@ -75,9 +80,14 @@ func CreateAnim() *AnimT {
 	}
 }
 
-func CreateStyle() *StyleT {
-	obj := _cStyleT{}
-	so := &obj
+func CreateStyle(a unsafe.Pointer) *StyleT {
+	var so *_cStyleT
+
+	if a == nil {
+		so = &_cStyleT{}
+	} else {
+		so = (*_cStyleT)(a)
+	}
 
 	C.lv_style_init(so)
 
