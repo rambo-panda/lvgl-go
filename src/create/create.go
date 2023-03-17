@@ -64,36 +64,49 @@ func CreateBar[T _createI](o T) *Bar {
 }
 
 func CreateAnim(a unsafe.Pointer) *AnimT {
-	var anim *_cAnimT
+	var anim _pAnimT
 	if a == nil {
 		anim = &_cAnimT{}
 	} else {
-		anim = (*_cAnimT)(a)
+		anim = (_pAnimT)(a)
 	}
 
 	C.lv_anim_init(anim)
 
-	return &AnimT{
-		_m[CAnimT]{anim},
+	ret := &AnimT{
+		_m[_pAnimT]{anim},
 		set.CreateAnim(toSetAnimT(anim)),
 		get.CreateAnim(toGetAnimT(anim)),
 	}
+
+	// TODO: 这一块的remove需要remove cb
+	// runtime.SetFinalizer(ret, func(z _createI) {
+	// 	C.lv_anim_del((_PcStyleT)(z.GetObj()), anim_cb)
+	// })
+
+	return ret
 }
 
 func CreateStyle(a unsafe.Pointer) *StyleT {
-	var so *_cStyleT
+	var so _PcStyleT
 
 	if a == nil {
 		so = &_cStyleT{}
 	} else {
-		so = (*_cStyleT)(a)
+		so = (_PcStyleT)(a)
 	}
 
 	C.lv_style_init(so)
 
-	return &StyleT{
+	ret := &StyleT{
 		_m[_PcStyleT]{so},
 		set.CreateStyle(toSetStyleT(so)),
 		get.CreateStyle(toGetStyleT(so)),
 	}
+
+	runtime.SetFinalizer(ret, func(z _createI) {
+		C.lv_style_reset((_PcStyleT)(z.GetObj()))
+	})
+
+	return ret
 }

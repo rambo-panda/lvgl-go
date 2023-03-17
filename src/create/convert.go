@@ -52,7 +52,7 @@ func toSetObj(o _lvObjT) set.CObjT {
 func toSetStyleT(o _PcStyleT) set.CStyleT {
 	return (set.CStyleT)(unsafe.Pointer(o))
 }
-func toSetAnimT(o CAnimT) set.CAnimT {
+func toSetAnimT(o _pAnimT) set.CAnimT {
 	return (set.CAnimT)(unsafe.Pointer(o))
 }
 
@@ -62,6 +62,6 @@ func toGetObj(o _lvObjT) get.CObjT {
 func toGetStyleT(o _PcStyleT) get.CStyleT {
 	return (get.CStyleT)(unsafe.Pointer(o))
 }
-func toGetAnimT(o CAnimT) get.CAnimT {
+func toGetAnimT(o _pAnimT) get.CAnimT {
 	return (get.CAnimT)(unsafe.Pointer(o))
 }

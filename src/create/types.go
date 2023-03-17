@@ -19,9 +19,9 @@ type _cStyleT = C.lv_style_t
 type _PcStyleT = *_cStyleT
 
 type _cAnimT = C.lv_anim_t
-type CAnimT = *_cAnimT
+type _pAnimT = *_cAnimT
 
-type _m[T _lvObjT | _PcStyleT | CAnimT] struct {
+type _m[T _lvObjT | _PcStyleT | _pAnimT] struct {
 	o T
 }
 
@@ -62,7 +62,7 @@ type Bar struct {
 }
 
 type AnimT struct {
-	_m[CAnimT]
+	_m[_pAnimT]
 	Set *set.Anim
 	Get *get.Anim
 }
