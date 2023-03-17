@@ -1,5 +1,19 @@
 #include "lv_17zy.h"
 
+lv_style_t styleChinese;
+
+static lv_ft_info_t fontDevice;
+static void initChineseStyle() {
+    fontDevice.name = "/gb18030_b12.bdf";
+    fontDevice.weight = 12;
+    fontDevice.style = FT_FONT_STYLE_NORMAL;
+    lv_ft_font_init(&fontDevice);
+
+    lv_style_init(&styleChinese);
+    lv_style_set_text_font(&styleChinese, fontDevice.font);
+    lv_style_set_text_color(&styleChinese, lv_color_hex(0));
+}
+
 static void tslib_read(lv_indev_drv_t *drv, lv_indev_data_t *data)
 {
 }
@@ -71,6 +85,7 @@ void lv_ready()
     lv_png_init();      // 默认开启png LV_USE_PNG
 
     lv_freetype_init(64, 1, 0); // 开启freetype 需要使用我们自己的字体 LV_USE_FREETYPE
+    initChineseStyle();
 }
 
 void lv_task_handler2(uint32_t ms)

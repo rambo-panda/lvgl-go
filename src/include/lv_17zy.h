@@ -22,6 +22,7 @@
 
 void lv_ready();
 void lv_task_handler2(uint32_t ms);
+extern lv_style_t styleChinese;
 
 #include "display/fbdev.h"
 /*
