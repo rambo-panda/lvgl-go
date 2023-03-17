@@ -502,6 +502,17 @@ func (setter *Obj) Align(align uint8) *Obj {
 
 	return setter
 }
+func (setter *Obj) ToAlign(align uint8, x int16, y int16) *Obj {
+	setter.Align(align)
+	setter.Pos(x, y)
+
+	return setter
+}
+func (setter *Obj) AlignTo(o lib.CreateI, align uint8, x int16, y int16) *Obj {
+	C.lv_obj_align_to(setter.CObj, (CObjT)(o.GetObj()), C.lv_align_t(align), C.lv_coord_t(x), C.lv_coord_t(y))
+
+	return setter
+}
 func (setter *Obj) Center() *Obj {
 	setter.Align(lib.LV_ALIGN_CENTER).Pos(0, 0)
 	return setter
