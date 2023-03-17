@@ -56,6 +56,9 @@ const (
 	LV_PART_CURSOR       int = C.LV_PART_CURSOR
 	LV_PART_CUSTOM_FIRST int = C.LV_PART_CUSTOM_FIRST
 	LV_PART_ANY          int = C.LV_PART_ANY
+
+	LV_17_HOR_RES int = C.LV_17_HOR_RES
+	LV_17_VER_RES int = C.LV_17_VER_RES
 )
 
 const (
