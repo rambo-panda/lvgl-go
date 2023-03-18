@@ -4,7 +4,7 @@ lv_style_t styleChinese;
 
 static lv_ft_info_t fontDevice;
 static void initChineseStyle() {
-    fontDevice.name = "/gb18030_b12.bdf";
+    fontDevice.name = "/lvgl_static/font/gb18030_b12.bdf";
     fontDevice.weight = 12;
     fontDevice.style = FT_FONT_STYLE_NORMAL;
     lv_ft_font_init(&fontDevice);
