@@ -517,7 +517,7 @@ func (setter *Obj) ToAlign(align uint8, x int16, y int16) *Obj {
 	return setter
 }
 func (setter *Obj) AlignTo(o lib.CreateI, align uint8, x int16, y int16) *Obj {
-	C.lv_obj_align_to(setter.CObj, (CObjT)(o.GetObj()), C.lv_align_t(align), C.lv_coord_t(x), C.lv_coord_t(y))
+	C.lv_obj_align_to((CObjT)(o.GetObj()), setter.CObj, C.lv_align_t(align), C.lv_coord_t(x), C.lv_coord_t(y))
 
 	return setter
 }
