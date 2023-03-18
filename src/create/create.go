@@ -92,11 +92,10 @@ func CreateStyle(a unsafe.Pointer) *StyleT {
 
 	if a == nil {
 		so = &_cStyleT{}
+		C.lv_style_init(so)
 	} else {
 		so = (_PcStyleT)(a)
 	}
-
-	C.lv_style_init(so)
 
 	ret := &StyleT{
 		_m[_PcStyleT]{so},
