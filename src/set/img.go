@@ -76,6 +76,11 @@ func (setter *Img) CacheSize(new_slot_num uint16) *Img {
 
 	return setter
 }
+func (setter *Img) Center() *Img {
+	C.lv_obj_center(setter.CObj)
+
+	return setter
+}
 
 // func (setter *Img) BufPxColor(dsc *lib.LV_IMG_DSC_T, x int16, y int16, c lib.LV_COLOR_T) *Img {
 // 	C.lv_img_buf_set_px_color((*C.lv_img_dsc_t)(unsafe.Pointer(dsc)), C.lv_coord_t(dsc), C.lv_coord_t(x), C.lv_coord_t(y), C.lv_color_t(c))

@@ -37,3 +37,8 @@ func (setter *Bar) Mode(mode uint8) *Bar {
 
 	return setter
 }
+func (setter *Bar) Center() *Bar {
+	C.lv_obj_center(setter.CObj)
+
+	return setter
+}

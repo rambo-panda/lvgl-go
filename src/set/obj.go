@@ -468,6 +468,14 @@ func (setter *Obj) Y(y int16) *Obj {
 	return setter
 }
 func (setter *Obj) Size(w int16, h int16) *Obj {
+	if w == -1 {
+		w = int16(lib.LV_17_HOR_RES)
+	}
+
+	if h == -1 {
+		h = int16(lib.LV_17_VER_RES)
+	}
+
 	C.lv_obj_set_size(setter.CObj, C.lv_coord_t(w), C.lv_coord_t(h))
 
 	return setter
@@ -514,7 +522,7 @@ func (setter *Obj) AlignTo(o lib.CreateI, align uint8, x int16, y int16) *Obj {
 	return setter
 }
 func (setter *Obj) Center() *Obj {
-	setter.Align(lib.LV_ALIGN_CENTER).Pos(0, 0)
+	C.lv_obj_center(setter.CObj)
 	return setter
 }
 func (setter *Obj) ExtClickArea(size int16) *Obj {
@@ -656,9 +664,7 @@ func (setter *Obj) RemoveStyleAll() *Obj {
 }
 
 func (setter *Obj) Style(style lib.CreateI, styleSelect int) *Obj {
-	var oStyle *C.lv_style_t
-
-	oStyle = (*C.lv_style_t)(getParentObj(style))
+	oStyle := (*C.lv_style_t)(getParentObj(style))
 
 	C.lv_obj_add_style(setter.CObj, oStyle, C.lv_style_selector_t(styleSelect))
 

@@ -50,3 +50,8 @@ func (setter *Label) TextSelEnd(index uint32) *Label {
 
 	return setter
 }
+func (setter *Label) Center() *Label {
+	C.lv_obj_center(setter.CObj)
+
+	return setter
+}
