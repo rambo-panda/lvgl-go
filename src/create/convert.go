@@ -15,9 +15,9 @@ import (
 type tagUint uint8
 
 const (
-	screen tagUint = 0
-	normal tagUint = 1
-	STRUCT tagUint = 2
+	screen    tagUint = 0
+	normal    tagUint = 1
+	container tagUint = 2
 )
 
 func _2CObj(o unsafe.Pointer) _lvObjT {
@@ -31,6 +31,8 @@ func _getParent[T _createI](o T, tag tagUint) _lvObjT {
 		switch tag {
 		case screen:
 			return C.lv_obj_create(nil)
+		case container:
+			return C.lv_obj_create(C.lv_scr_act())
 		default:
 			return C.lv_scr_act()
 		}
@@ -39,11 +41,8 @@ func _getParent[T _createI](o T, tag tagUint) _lvObjT {
 	return _2CObj(r)
 }
 
-func getParent[T _createI](o T) _lvObjT {
-	return _getParent(o, normal)
-}
-func getParent2[T _createI](o T) _lvObjT {
-	return _getParent(o, screen)
+func getParent[T _createI](o T, tag tagUint) _lvObjT {
+	return _getParent(o, tag)
 }
 
 func toSetObj(o _lvObjT) set.CObjT {

@@ -24,7 +24,7 @@ func create[T Label | Img | Obj | Bar](o *T) *T {
 }
 
 func CreateLabel[T _createI](o T) *Label {
-	_o := C.lv_label_create(getParent(o))
+	_o := C.lv_label_create(getParent(o, normal))
 
 	return create(&Label{
 		_m[_lvObjT]{_o},
@@ -34,7 +34,7 @@ func CreateLabel[T _createI](o T) *Label {
 }
 
 func CreateImg[T _createI](o T) *Img {
-	_o := C.lv_img_create(getParent(o))
+	_o := C.lv_img_create(getParent(o, normal))
 
 	return create(&Img{
 		_m[_lvObjT]{_o},
@@ -43,8 +43,8 @@ func CreateImg[T _createI](o T) *Img {
 	})
 }
 
-func CreateObj[T _createI](o T) *Obj {
-	_o := getParent2(o)
+func _createObj[T _createI](o T, tag tagUint) *Obj {
+	_o := getParent(o, tag)
 
 	return create(&Obj{
 		_m[_lvObjT]{_o},
@@ -53,8 +53,19 @@ func CreateObj[T _createI](o T) *Obj {
 	})
 }
 
+func CreateObj[T _createI](o T) *Obj {
+	return _createObj(o, container)
+}
+
+func CreateScreen() *Obj {
+	screen := _createObj(&lib.CREATE_NIL, screen)
+	C.lv_scr_load((_lvObjT)(screen.GetObj()))
+
+	return screen
+}
+
 func CreateBar[T _createI](o T) *Bar {
-	_o := C.lv_bar_create(getParent(o))
+	_o := C.lv_bar_create(getParent(o, normal))
 
 	return create(&Bar{
 		_m[_lvObjT]{_o},
