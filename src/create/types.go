@@ -28,6 +28,10 @@ type _m[T _lvObjT | _PcStyleT | _pAnimT] struct {
 func (m *_m[T]) GetObj() unsafe.Pointer {
 	return unsafe.Pointer(m.o)
 }
+func (m *_m[T]) Destroy(tag lib.DelT) {
+	lib.Destroy(m, tag)
+	m.o = nil
+}
 
 type _createI = lib.CreateI
 

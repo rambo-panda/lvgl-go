@@ -42,11 +42,14 @@ func Ternary[T any](c bool, trueVal, falseVal T) T {
 	return falseVal
 }
 
+type DelT uint8
+
 const (
-	DEL_ASYNC uint8 = 1
-	DEL       uint8 = 2
+	DEL_ASYNC DelT = 1
+	DEL       DelT = 2
 )
-func Destroy(m CreateI, tag uint8) {
+
+func Destroy(m CreateI, tag DelT) {
 	defer func() {
 		// NOTE: 这里偷懒了，再用reflect去判断是否是LV_OBJ_T 这个代价还不如直接recover呢
 		if err := recover(); err != nil {
@@ -56,12 +59,14 @@ func Destroy(m CreateI, tag uint8) {
 
 	_o := (LV_OBJ_T)(m.GetObj())
 
+	if _o == nil {
+		return
+	}
+
 	switch tag {
 	case DEL_ASYNC:
 		C.lv_obj_del_async(_o)
 	case DEL:
-		C.lv_obj_del(_o)
-	default:
 		C.lv_obj_del(_o)
 	}
 }
