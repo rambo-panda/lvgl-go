@@ -93,11 +93,14 @@ void lv_ready()
 
 void lv_task_handler2(uint32_t ms)
 {
-    ms = ms == 0 ? LV_DISP_DEF_REFR_PERIOD : ms;
-
-    while (1)
-    {
+    if (ms == 0) {
+        while (1) {
+            usleep(lv_timer_handler() * 1e3);
+        }
+    }
+    while (1) {
         lv_timer_handler_run_in_period(ms);
         usleep(ms * 1e3);
     }
+
 }
