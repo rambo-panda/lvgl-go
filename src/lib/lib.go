@@ -70,3 +70,7 @@ func Destroy(m CreateI, tag DelT) {
 		C.lv_obj_del(_o)
 	}
 }
+
+func GetChineseStyle() unsafe.Pointer {
+	return unsafe.Pointer(C.getChineseStyle())
+}

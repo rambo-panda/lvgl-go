@@ -1,9 +1,8 @@
 #include "lv_17zy.h"
 
-lv_style_t styleChinese;
-
-static lv_ft_info_t fontDevice;
+static lv_style_t styleChinese;
 static void initChineseStyle() {
+    static lv_ft_info_t fontDevice;
     fontDevice.name = "/lvgl_static/font/gb18030_b12.bdf";
     fontDevice.weight = 12;
     fontDevice.style = FT_FONT_STYLE_NORMAL;
@@ -11,7 +10,11 @@ static void initChineseStyle() {
 
     lv_style_init(&styleChinese);
     lv_style_set_text_font(&styleChinese, fontDevice.font);
-    lv_style_set_text_color(&styleChinese, lv_color_hex(0));
+    lv_style_set_text_color(&styleChinese, lv_color_white());
+}
+
+lv_style_t * getChineseStyle() {
+    return &styleChinese;
 }
 
 static void tslib_read(lv_indev_drv_t *drv, lv_indev_data_t *data)
