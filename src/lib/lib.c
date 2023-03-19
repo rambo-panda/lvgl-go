@@ -3,7 +3,7 @@
 lv_style_t styleChinese;
 
 static lv_ft_info_t fontDevice;
-void __attribute__((constructor)) initChineseStyle() {
+static void initChineseStyle() {
     fontDevice.name = "/lvgl_static/font/gb18030_b12.bdf";
     fontDevice.weight = 12;
     fontDevice.style = FT_FONT_STYLE_NORMAL;
@@ -85,6 +85,7 @@ void lv_ready()
     lv_png_init();      // 默认开启png LV_USE_PNG
 
     lv_freetype_init(64, 1, 0); // 开启freetype 需要使用我们自己的字体 LV_USE_FREETYPE
+    initChineseStyle();
 }
 
 void lv_task_handler2(uint32_t ms)
