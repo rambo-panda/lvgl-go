@@ -91,6 +91,7 @@ void lv_ready()
     initChineseStyle();
 }
 
+// 因为lv_task_handler在lvgl中是一个内联函数，觉得这个命名很实用，因此这里暂定加了一个2区分
 void lv_task_handler2(uint32_t ms)
 {
     if (ms == 0) {
