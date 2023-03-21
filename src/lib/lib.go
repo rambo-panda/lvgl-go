@@ -56,7 +56,7 @@ func Destroy(m CreateI, tag DelT) {
 
 	_o := (LV_OBJ_T)(m.GetObj())
 
-	if _o == nil {
+	if _o == nil || _o.class_p == nil {
 		return
 	}
 
