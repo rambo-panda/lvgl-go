@@ -23,37 +23,37 @@ func create[T Label | Img | Obj | Bar](o *T) *T {
 	return o
 }
 
-func CreateLabel[T _createI](o T) *Label {
+func CreateLabel(o _createI) *Label {
 	_o := C.lv_label_create(getParent(o, normal))
 
 	return create(&Label{
-		_m[_lvObjT]{_o},
+		createM(_o, o),
 		set.CreateLabel(toSetObj(_o)),
 		get.CreateLable(toGetObj(_o)),
 	})
 }
 
-func CreateImg[T _createI](o T) *Img {
+func CreateImg(o _createI) *Img {
 	_o := C.lv_img_create(getParent(o, normal))
 
 	return create(&Img{
-		_m[_lvObjT]{_o},
+		createM(_o, o),
 		set.CreateImg(toSetObj(_o)),
 		get.CreateImg(toGetObj(_o)),
 	})
 }
 
-func _createObj[T _createI](o T, tag tagUint) *Obj {
+func _createObj(o _createI, tag tagUint) *Obj {
 	_o := getParent(o, tag)
 
 	return create(&Obj{
-		_m[_lvObjT]{_o},
+		createM(_o, o),
 		set.CreateObj(toSetObj(_o)),
 		get.CreateObj(toGetObj(_o)),
 	})
 }
 
-func CreateObj[T _createI](o T) *Obj {
+func CreateObj(o _createI) *Obj {
 	return _createObj(o, container)
 }
 
@@ -64,11 +64,11 @@ func CreateScreen() *Obj {
 	return screen
 }
 
-func CreateBar[T _createI](o T) *Bar {
+func CreateBar(o _createI) *Bar {
 	_o := C.lv_bar_create(getParent(o, normal))
 
 	return create(&Bar{
-		_m[_lvObjT]{_o},
+		createM(_o, o),
 		set.CreateBar(toSetObj(_o)),
 		get.CreateBar(toGetObj(_o)),
 	})
@@ -85,7 +85,7 @@ func CreateAnim(a unsafe.Pointer) *AnimT {
 	C.lv_anim_init(anim)
 
 	ret := &AnimT{
-		_m[_pAnimT]{anim},
+		_m[_pAnimT]{o: anim},
 		set.CreateAnim(toSetAnimT(anim)),
 		get.CreateAnim(toGetAnimT(anim)),
 	}
@@ -109,7 +109,7 @@ func CreateStyle(a unsafe.Pointer) *StyleT {
 	}
 
 	ret := &StyleT{
-		_m[_PcStyleT]{so},
+		_m[_PcStyleT]{o: so},
 		set.CreateStyle(toSetStyleT(so)),
 		get.CreateStyle(toGetStyleT(so)),
 	}

@@ -22,7 +22,9 @@ type _cAnimT = C.lv_anim_t
 type _pAnimT = *_cAnimT
 
 type _m[T _lvObjT | _PcStyleT | _pAnimT] struct {
-	o T
+	o      T
+	parent _createI
+	child  _createI
 }
 
 func (m *_m[T]) GetObj() unsafe.Pointer {
@@ -31,6 +33,16 @@ func (m *_m[T]) GetObj() unsafe.Pointer {
 func (m *_m[T]) Destroy(tag lib.DelT) {
 	lib.Destroy(m, tag)
 	m.o = nil
+}
+func (m *_m[T]) SetChild(child _createI) {
+	m.child = child
+}
+
+func createM(o _lvObjT, parent _createI) _m[_lvObjT] {
+	j := _m[_lvObjT]{o, parent, nil}
+	parent.SetChild(&j)
+
+	return j
 }
 
 type _createI = lib.CreateI

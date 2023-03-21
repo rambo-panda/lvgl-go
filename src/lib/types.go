@@ -30,7 +30,8 @@ type LV_OBJ_CLASS_T = C.lv_obj_class_t
 // ================ inferface
 type CreateI interface {
 	GetObj() unsafe.Pointer
-	Destroy(tag DelT)
+	Destroy(DelT)
+	SetChild(CreateI)
 }
 
 type _empty struct{}
@@ -38,7 +39,8 @@ type _empty struct{}
 func (s _empty) GetObj() unsafe.Pointer {
 	return nil
 }
-func (s _empty) Destroy(_ DelT) {}
+func (s _empty) Destroy(_ DelT)     {}
+func (s _empty) SetChild(_ CreateI) {}
 
 var CREATE_NIL _empty = _empty{}
 
