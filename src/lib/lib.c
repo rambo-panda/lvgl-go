@@ -1,19 +1,17 @@
 #include "lv_17zy.h"
 
-static lv_style_t styleChinese;
-static void initChineseStyle() {
+lv_style_t * getChineseStyle() {
     static lv_ft_info_t fontDevice;
     fontDevice.name = "/lvgl_static/font/gb18030_b12.bdf";
     fontDevice.weight = 12;
     fontDevice.style = FT_FONT_STYLE_NORMAL;
     lv_ft_font_init(&fontDevice);
 
+    static lv_style_t styleChinese;
     lv_style_init(&styleChinese);
     lv_style_set_text_font(&styleChinese, fontDevice.font);
     lv_style_set_text_color(&styleChinese, lv_color_white());
-}
 
-lv_style_t * getChineseStyle() {
     return &styleChinese;
 }
 
@@ -22,8 +20,7 @@ static void tslib_read(lv_indev_drv_t *drv, lv_indev_data_t *data)
 }
 
 // TODO: 因为下面static原因，且目前对于多屏(屋里显示器)支持有些多余，暂时不考虑
-static void createDisplay()
-{
+static void createDisplay() {
     // lv_disp_set_default // 指定默认display
     // lv_obj_get_disp
 
@@ -67,8 +64,7 @@ static void createDisplay()
     lv_disp_set_theme(disp, th);
 }
 
-void lv_ready()
-{
+void lv_ready() {
     if (lv_is_initialized())
     {
         return;
@@ -88,12 +84,10 @@ void lv_ready()
     lv_png_init();      // 默认开启png LV_USE_PNG
 
     lv_freetype_init(64, 1, 0); // 开启freetype 需要使用我们自己的字体 LV_USE_FREETYPE
-    initChineseStyle();
 }
 
 // 因为lv_task_handler在lvgl中是一个内联函数，觉得这个命名很实用，因此这里暂定加了一个2区分
-void lv_task_handler2(uint32_t ms)
-{
+void lv_task_handler2(uint32_t ms) {
     if (ms == 0) {
         while (1) {
             usleep(lv_timer_handler() * 1e3);
