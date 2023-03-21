@@ -31,18 +31,9 @@ type LV_OBJ_CLASS_T = C.lv_obj_class_t
 type CreateI interface {
 	GetObj() unsafe.Pointer
 	Destroy(DelT)
-	SetChild(CreateI)
+	SetChild(any)
+	SetParent(any)
 }
-
-type _empty struct{}
-
-func (s _empty) GetObj() unsafe.Pointer {
-	return nil
-}
-func (s _empty) Destroy(_ DelT)     {}
-func (s _empty) SetChild(_ CreateI) {}
-
-var CREATE_NIL _empty = _empty{}
 
 // ================ constant
 const (

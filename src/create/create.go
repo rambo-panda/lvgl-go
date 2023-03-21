@@ -15,10 +15,12 @@ import (
 	"gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/set"
 )
 
-func create[T Label | Img | Obj | Bar](o *T) *T {
+func create(o any, parent _createI) any {
 	runtime.SetFinalizer(o, func(z _createI) {
 		lib.Destroy(z, lib.DEL)
 	})
+	parent.SetChild(o)
+	o.(_createI).SetParent(parent)
 
 	return o
 }
@@ -30,7 +32,7 @@ func CreateLabel(o _createI) *Label {
 		createM(_o, o),
 		set.CreateLabel(toSetObj(_o)),
 		get.CreateLable(toGetObj(_o)),
-	})
+	}, o).(*Label)
 }
 
 func CreateImg(o _createI) *Img {
@@ -40,7 +42,7 @@ func CreateImg(o _createI) *Img {
 		createM(_o, o),
 		set.CreateImg(toSetObj(_o)),
 		get.CreateImg(toGetObj(_o)),
-	})
+	}, o).(*Img)
 }
 
 func _createObj(o _createI, tag tagUint) *Obj {
@@ -50,7 +52,7 @@ func _createObj(o _createI, tag tagUint) *Obj {
 		createM(_o, o),
 		set.CreateObj(toSetObj(_o)),
 		get.CreateObj(toGetObj(_o)),
-	})
+	}, o).(*Obj)
 }
 
 func CreateObj(o _createI) *Obj {
@@ -58,7 +60,7 @@ func CreateObj(o _createI) *Obj {
 }
 
 func CreateScreen() *Obj {
-	screen := _createObj(&lib.CREATE_NIL, screen)
+	screen := _createObj(CREATE_NIL, screen)
 	C.lv_scr_load((_lvObjT)(screen.GetObj()))
 
 	return screen
@@ -71,7 +73,7 @@ func CreateBar(o _createI) *Bar {
 		createM(_o, o),
 		set.CreateBar(toSetObj(_o)),
 		get.CreateBar(toGetObj(_o)),
-	})
+	}, o).(*Bar)
 }
 
 func CreateAnim(a unsafe.Pointer) *AnimT {
