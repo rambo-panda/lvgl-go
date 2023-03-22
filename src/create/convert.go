@@ -24,7 +24,7 @@ func _2CObj(o unsafe.Pointer) _lvObjT {
 	return (_lvObjT)(o)
 }
 
-func _getParent[T _createI](o T, tag tagUint) _lvObjT {
+func _getParent(o _createI, tag tagUint) _lvObjT {
 	r := o.GetObj()
 
 	if r == nil {
@@ -41,7 +41,7 @@ func _getParent[T _createI](o T, tag tagUint) _lvObjT {
 	return _2CObj(r)
 }
 
-func getParent[T _createI](o T, tag tagUint) _lvObjT {
+func getParent(o _createI, tag tagUint) _lvObjT {
 	return _getParent(o, tag)
 }
 

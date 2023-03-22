@@ -35,16 +35,16 @@ func (m *_m[T]) Destroy(tag lib.DelT) {
 	m.o = nil
 }
 func (m *_m[T]) SetChild(child any) {
+	if child == nil || child == CREATE_NIL {
+		return
+	}
 	m.child = child
 }
-func (m *_m[T]) SetParent(child any) {
-	m.parent = child
-}
-
-func createMForObj(o _lvObjT, parent any) _m[_lvObjT] {
-	j := _m[_lvObjT]{o, parent, nil}
-
-	return j
+func (m *_m[T]) SetParent(parent any) {
+	if parent == nil || parent == CREATE_NIL {
+		return
+	}
+	m.parent = parent
 }
 
 var CREATE_NIL = &_m[_lvObjT]{}

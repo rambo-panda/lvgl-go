@@ -29,7 +29,7 @@ func CreateLabel(o _createI) *Label {
 	_o := C.lv_label_create(getParent(o, normal))
 
 	return create(&Label{
-		createMForObj(_o, o),
+		_m[_lvObjT]{o:_o,},
 		set.CreateLabel(toSetObj(_o)),
 		get.CreateLable(toGetObj(_o)),
 	}, o).(*Label)
@@ -39,7 +39,7 @@ func CreateImg(o _createI) *Img {
 	_o := C.lv_img_create(getParent(o, normal))
 
 	return create(&Img{
-		createMForObj(_o, o),
+		_m[_lvObjT]{o:_o,},
 		set.CreateImg(toSetObj(_o)),
 		get.CreateImg(toGetObj(_o)),
 	}, o).(*Img)
@@ -49,7 +49,7 @@ func _createObj(o _createI, tag tagUint) *Obj {
 	_o := getParent(o, tag)
 
 	return create(&Obj{
-		createMForObj(_o, o),
+		_m[_lvObjT]{o:_o,},
 		set.CreateObj(toSetObj(_o)),
 		get.CreateObj(toGetObj(_o)),
 	}, o).(*Obj)
@@ -70,7 +70,7 @@ func CreateBar(o _createI) *Bar {
 	_o := C.lv_bar_create(getParent(o, normal))
 
 	return create(&Bar{
-		createMForObj(_o, o),
+		_m[_lvObjT]{o:_o,},
 		set.CreateBar(toSetObj(_o)),
 		get.CreateBar(toGetObj(_o)),
 	}, o).(*Bar)
