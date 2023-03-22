@@ -34,17 +34,18 @@ func (m *_m[T]) Destroy(tag lib.DelT) {
 	lib.Destroy(m, tag)
 	m.o = nil
 }
+func __canSetter(o any) bool {
+	return !(o == nil || o == CREATE_NIL)
+}
 func (m *_m[T]) SetChild(child any) {
-	if child == nil || child == CREATE_NIL {
-		return
+	if __canSetter(child) && __canSetter(m) {
+		m.child = child
 	}
-	m.child = child
 }
 func (m *_m[T]) SetParent(parent any) {
-	if parent == nil || parent == CREATE_NIL {
-		return
+	if __canSetter(parent) && __canSetter(m) {
+		m.parent = parent
 	}
-	m.parent = parent
 }
 
 var CREATE_NIL = &_m[_lvObjT]{}
