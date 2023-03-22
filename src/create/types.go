@@ -41,7 +41,7 @@ func (m *_m[T]) SetParent(child any) {
 	m.parent = child
 }
 
-func createM(o _lvObjT, parent _createI) _m[_lvObjT] {
+func createMForObj(o _lvObjT, parent any) _m[_lvObjT] {
 	j := _m[_lvObjT]{o, parent, nil}
 
 	return j
