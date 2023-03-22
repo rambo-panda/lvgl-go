@@ -19,8 +19,11 @@ func create(o _createI, parent _createI) any {
 	runtime.SetFinalizer(o, func(z _createI) {
 		lib.Destroy(z, lib.DEL)
 	})
-	parent.SetChild(o)
-	o.SetParent(parent)
+
+	if parent != nil {
+		parent.SetChild(o)
+		o.SetParent(parent)
+	}
 
 	return o
 }
@@ -29,7 +32,7 @@ func CreateLabel(o _createI) *Label {
 	_o := C.lv_label_create(getParent(o, normal))
 
 	return create(&Label{
-		_m[_lvObjT]{o:_o,},
+		_m[_lvObjT]{o: _o},
 		set.CreateLabel(toSetObj(_o)),
 		get.CreateLable(toGetObj(_o)),
 	}, o).(*Label)
@@ -39,7 +42,7 @@ func CreateImg(o _createI) *Img {
 	_o := C.lv_img_create(getParent(o, normal))
 
 	return create(&Img{
-		_m[_lvObjT]{o:_o,},
+		_m[_lvObjT]{o: _o},
 		set.CreateImg(toSetObj(_o)),
 		get.CreateImg(toGetObj(_o)),
 	}, o).(*Img)
@@ -49,7 +52,7 @@ func _createObj(o _createI, tag tagUint) *Obj {
 	_o := getParent(o, tag)
 
 	return create(&Obj{
-		_m[_lvObjT]{o:_o,},
+		_m[_lvObjT]{o: _o},
 		set.CreateObj(toSetObj(_o)),
 		get.CreateObj(toGetObj(_o)),
 	}, o).(*Obj)
@@ -60,7 +63,7 @@ func CreateObj(o _createI) *Obj {
 }
 
 func CreateScreen() *Obj {
-	screen := _createObj(CREATE_NIL, screen)
+	screen := _createObj(nil, screen)
 	C.lv_scr_load((_lvObjT)(screen.GetObj()))
 
 	return screen
@@ -70,7 +73,7 @@ func CreateBar(o _createI) *Bar {
 	_o := C.lv_bar_create(getParent(o, normal))
 
 	return create(&Bar{
-		_m[_lvObjT]{o:_o,},
+		_m[_lvObjT]{o: _o},
 		set.CreateBar(toSetObj(_o)),
 		get.CreateBar(toGetObj(_o)),
 	}, o).(*Bar)

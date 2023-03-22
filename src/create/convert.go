@@ -25,9 +25,7 @@ func _2CObj(o unsafe.Pointer) _lvObjT {
 }
 
 func _getParent(o _createI, tag tagUint) _lvObjT {
-	r := o.GetObj()
-
-	if r == nil {
+	if o == nil {
 		switch tag {
 		case screen:
 			return C.lv_obj_create(nil)
@@ -38,7 +36,7 @@ func _getParent(o _createI, tag tagUint) _lvObjT {
 		}
 	}
 
-	return _2CObj(r)
+	return _2CObj(o.GetObj())
 }
 
 func getParent(o _createI, tag tagUint) _lvObjT {
