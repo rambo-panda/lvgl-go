@@ -11,9 +11,17 @@ import (
 	"unsafe"
 )
 
-func Ready(ms uint) {
+func Ready() {
+	C.lv_ready()
+}
+
+func Ready2(ms uint) {
 	C.lv_ready()
 	go C.lv_task_handler2(C.uint(ms))
+}
+
+func TimerHandler() uint {
+	return uint(C.lv_timer_handler())
 }
 
 func Noop(s ...any) {
