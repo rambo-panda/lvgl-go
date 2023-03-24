@@ -8,6 +8,7 @@ package lib
 import "C"
 import (
 	"fmt"
+	"sync"
 	"unsafe"
 )
 
@@ -54,8 +55,12 @@ const (
 	DEL       DelT = 2
 )
 
+var locker sync.Mutex
+
 func Destroy(m CreateI, tag DelT) {
+	locker.Lock()
 	defer func() {
+		locker.Unlock()
 		// NOTE: 这里偷懒了，再用reflect去判断是否是LV_OBJ_T 这个代价还不如直接recover呢
 		if err := recover(); err != nil {
 			fmt.Println("捕获异常:", err)
