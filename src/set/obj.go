@@ -3,7 +3,7 @@ package set
 import (
 	"unsafe"
 
-	lib "gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/lib"
+	lib "github.com/rambo-panda/lvgl-go.git/src/lib"
 )
 
 /*

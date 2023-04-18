@@ -10,7 +10,7 @@ import "C"
 import (
 	"unsafe"
 
-	"gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/lib"
+	"github.com/rambo-panda/lvgl-go.git/src/lib"
 )
 
 // type Anim set[CAnimT]

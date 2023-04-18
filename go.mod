@@ -1,3 +1,3 @@
-module gitlab.17zuoye.net/saas-platform/lvgl-go.git
+module github.com/rambo-panda/lvgl-go.git
 
 go 1.20

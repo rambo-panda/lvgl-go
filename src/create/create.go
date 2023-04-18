@@ -10,9 +10,9 @@ import (
 	"runtime"
 	"unsafe"
 
-	"gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/get"
-	"gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/lib"
-	"gitlab.17zuoye.net/saas-platform/lvgl-go.git/src/set"
+	"github.com/rambo-panda/lvgl-go.git/src/get"
+	"github.com/rambo-panda/lvgl-go.git/src/lib"
+	"github.com/rambo-panda/lvgl-go.git/src/set"
 )
 
 func create(o _createI, parent _createI) any {
